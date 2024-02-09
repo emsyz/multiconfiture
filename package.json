@@ -1,0 +1,16 @@
+{
+  "name": "multiconfiture",
+  "version": "1.0.0",
+  "description": "Multijam 2024",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.1.1"
+  }
+}
