@@ -1,3 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
 body {
-    background-color:pink;
+  overflow: hidden;
+}
+
+body {
+  background-color: pink;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }
