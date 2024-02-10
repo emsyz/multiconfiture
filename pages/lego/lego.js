@@ -15,6 +15,15 @@ const addLegoToScene = (path) => {
     lego.castShadow = true;
     scene.add(lego);
     legoObjects.push(lego);
+
+    // Sort legoObjects array based on the object's name property
+    legoObjects.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
   });
 };
 
@@ -23,13 +32,6 @@ const addLegoToScene = (path) => {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let currentIntersect = null;
-
-const performRaycasting = () => {
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(legoObjects);
-
-  currentIntersect = null;
-};
 
 const sizes = {
   width: window.innerWidth,
@@ -88,15 +90,31 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// Move the event listener outside the performRaycasting function
 window.addEventListener("click", () => {
-  if (!currentIntersect) {
-    console.log("mouse enter");
+  if (currentIntersect) {
+    const clickedObject = currentIntersect.object;
+
+    const legoIndex = legoObjects.indexOf(clickedObject);
+    if (legoIndex !== -1) {
+      console.log(`Mouse enter ${legoIndex + 1}`);
+    }
   }
 });
 
 const clock = new THREE.Clock();
 let previousTime = 0;
+
+const performRaycasting = () => {
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(legoObjects);
+
+  if (intersects.length > 0) {
+    currentIntersect = intersects[0];
+  } else {
+    currentIntersect = null;
+  }
+};
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
