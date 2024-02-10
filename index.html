@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TNPP</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./pages/sms/sms.css">
   </head>
   <body>
     <!-- Buttons -->
     <div class="bodyButton">
-      <img class="justBornButton" src="./assets/UX buttons/circle.png" alt="" />
-      <img class="babyButton" src="./assets/UX buttons/circle.png" alt="" />
-      <img class="childButton" src="./assets/UX buttons/circle.png" alt="" />
-      <img class="adoButton" src="./assets/UX buttons/circle.png" alt="" />
+      <img class="justBornButton minigame-button" src="./assets/UX buttons/circle.png" alt="" />
+      <img class="babyButton minigame-button" src="./assets/UX buttons/circle.png" alt="" />
+      <img class="childButton minigame-button" src="./assets/UX buttons/circle.png" alt="" />
+      <img class="adoButton minigame-button" src="./assets/UX buttons/circle.png" alt="" />
     </div>
+
+    <article id="MINIGAMES">
+      <ul class="gameslist unset">
+        <li>
+          <article class="game sms">
+            {% include "sms.html" %}
+          </article>
+        </li>
+      </ul>
+    </article>
 
     <!-- THREEJS CANVA -->
     <canvas class="webgl"></canvas>
@@ -21,7 +32,10 @@
     <!-- Script 3D -->
     <script type="module" src="./3D/threejs.js"></script>
 
+    <!-- sms js -->
+    <!-- <script type="module" src="./pages/sms/sms.js"></script> -->
+
     <!-- buttons -->
-    <script type="module" src="./script/buttonsScript.js"></script>
+    <!-- <script type="module" src="./script/buttonsScript.js"></script> -->
   </body>
 </html>
