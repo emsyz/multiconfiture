@@ -3,6 +3,12 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import gsap from "gsap";
 
+// import nunjucks from "nunjucks";
+
+// nunjucks.configure("pages", {
+//   autoescape: true
+// });
+
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
@@ -47,12 +53,15 @@ scene.add(targetObject);
 const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
 scene.add(helper);
 
+
+
+
 function toggleAllButtons(showsButtons) {
+
   let shownClass = "button-visible";
   let hiddenClass = "button-hidden";
   let displayNone = "display-none";
-  if (showsButtons == undefined)
-    showsButtons = ALL_BUTTONS[0].classList.contains(hiddenClass);
+  if (showsButtons == undefined) showsButtons = (ALL_BUTTONS[0].classList.contains(hiddenClass));
   for (let but of ALL_BUTTONS) {
     if (showsButtons) {
       but.classList.add(shownClass);
@@ -73,79 +82,66 @@ function toggleAllButtons(showsButtons) {
 
 // ThreeJs Models
 
+/**
+ * Baby Periode
+ */
+
+// Baby cube
+const testCube = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Replace with the desired color
+const testCubeMesh = new THREE.Mesh(testCube, testCubeMaterial);
+testCubeMesh.position.x = -1.5;
+testCubeMesh.position.y = 1;
+testCubeMesh.position.z = 0.3;
+scene.add(testCubeMesh);
+
+const testCube2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff }); // Replace with the desired color
+const testCubeMesh2 = new THREE.Mesh(testCube2, testCubeMaterial2);
+testCubeMesh2.position.x = -1.5;
+testCubeMesh2.position.y = -0.1;
+testCubeMesh2.position.z = 1.3;
+scene.add(testCubeMesh2);
+
+const testCube3 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // Replace with the desired color
+const testCubeMesh3 = new THREE.Mesh(testCube3, testCubeMaterial3);
+testCubeMesh3.position.x = 1.2;
+testCubeMesh3.position.y = 0.5;
+testCubeMesh3.position.z = 0.4;
+scene.add(testCubeMesh3);
+
+const testCube4 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial4 = new THREE.MeshBasicMaterial({ color: 0xfff000 }); // Replace with the desired color
+const testCubeMesh4 = new THREE.Mesh(testCube4, testCubeMaterial4);
+testCubeMesh4.position.x = 2.2;
+testCubeMesh4.position.y = 1;
+testCubeMesh4.position.z = 2;
+scene.add(testCubeMesh4);
+
 // Baby Button
 const justBornButton = document.querySelector(".justBornButton");
 const smoothingFactorJustBorn = -4;
 const babyButton = document.querySelector(".babyButton");
 const smoothingFactorBaby = 1.5;
 const childButton = document.querySelector(".childButton");
-const smoothingFactorChild = 3;
+const smoothingFactorChild = 5;
 const adoButton = document.querySelector(".adoButton");
-const smoothingFactorAdo = -10;
+const smoothingFactorAdo = -20;
 
-const ALL_BUTTONS = [justBornButton, babyButton, childButton, adoButton];
+const ALL_BUTTONS = [
+  justBornButton,
+  babyButton,
+  childButton,
+  adoButton
+]
 
 // Imported models
-// ROOM
 const gltfLoader = new GLTFLoader();
-gltfLoader.load("./3D/mesh/room/room.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// DOOR
-gltfLoader.load("./3D/mesh/room/door.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// LAPTOP
-gltfLoader.load("./3D/mesh/room/laptop.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// LEGO
-gltfLoader.load("./3D/mesh/room/lego.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// PUZZLE
-gltfLoader.load("./3D/mesh/room/puzzle.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// PHOTO
-gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// LIGHT
-gltfLoader.load("./3D/mesh/room/light.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
+gltfLoader.load("./3D/mesh/room2.gltf", (gltf) => {
+  const house = gltf.scene.children[0];
+  house.receiveShadow = true;
+  house.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
@@ -171,13 +167,20 @@ let isCameraAnimating = false;
  */
 const mouse = new THREE.Vector2();
 
+// window.addEventListener("mousemove", (event) => {
+//   mouse.x = (event.clientX / sizes.width) * 2 - 1;
+//   mouse.y = -(event.clientY / sizes.height) * 2 + 1;
+// });
+// Controls
+// const controls = new OrbitControls(camera, canvas);
+// controls.enableDamping = true;
+
 // Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.shadowMap.enabled = true;
 
 // Animate
@@ -185,17 +188,35 @@ const clock = new THREE.Clock();
 
 //////////////////////////////////////////////////
 
+// justBornButton.addEventListener(
+//   "click",
+//   function() {
+//     toggleAllButtons(false);
+//   }
+// );
+
+// for (let but of ALL_BUTTONS) {
+//   but.addEventListener(
+//     "click",
+//     function() {
+//       toggleAllButtons(false);
+//     }
+//   );
+// }
+
 const lookAtTargetBorn = new THREE.Vector3(0, -1.3, 0);
 const lookAtTargetBaby = new THREE.Vector3(0, -1.3, 0);
 const lookAtTargetChild = new THREE.Vector3(0, -1.3, 0);
 const lookAtTargetAdo = new THREE.Vector3(0, -1.3, 0);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Born ANIMATION
- */
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// LEGO
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /**
+   * Born ANIMATION
+   */
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 justBornButton.addEventListener("click", () => {
   isCameraAnimating = true;
   document.removeEventListener("mousemove", handleMouseMove);
@@ -212,7 +233,7 @@ justBornButton.addEventListener("click", () => {
 
   gsap.to(camera.position, {
     duration: 2,
-    x: -1.7,
+    x: -1.5,
     y: 0.2,
     z: 2,
     ease: "power2.inOut",
@@ -225,14 +246,28 @@ justBornButton.addEventListener("click", () => {
       document.addEventListener("mousemove", handleMouseMove);
     },
   });
+
+  // gsap.to(lookAtTargetBorn, {
+  //   duration: 5,
+  //   x: testCube2.position.x,
+  //   y: testCube2.position.y,
+  //   z: testCube2.position.z,
+  //   ease: "power2.inOut",
+  //   onUpdate: () => {
+  //     camera.lookAt(lookAtTargetBorn);
+  //   },
+  // });
 });
 
-/**
- * baby ANIMATION
- */
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// SLIDER
+
+  /**
+   * baby ANIMATION
+   */
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 babyButton.addEventListener("click", () => {
   isCameraAnimating = true;
   document.removeEventListener("mousemove", handleMouseMove);
@@ -242,11 +277,16 @@ babyButton.addEventListener("click", () => {
   /**
    * ATTENTION
    */
+  // toggleAllButtons(false);
+  // justBornButton.style.display = "none";
+  // babyButton.style.display = "none";
+  // childButton.style.display = "none";
+  // adoButton.style.display = "none";
 
   gsap.to(camera.position, {
     duration: 2,
-    x: -1.1,
-    y: 1.5,
+    x: -1.5,
+    y: 1.04,
     z: 1,
     ease: "power2.inOut",
     onComplete: () => {
@@ -258,14 +298,27 @@ babyButton.addEventListener("click", () => {
       document.addEventListener("mousemove", handleMouseMove);
     },
   });
+
+  // gsap.to(lookAtTargetBorn, {
+  //   duration: 5,
+  //   x: testCube.position.x,
+  //   y: testCube.position.y,
+  //   z: testCube.position.z,
+  //   ease: "power2.inOut",
+  //   onUpdate: () => {
+  //     camera.lookAt(lookAtTargetBaby);
+  //   },
+  // });
 });
 
-/**
- * child ANIMATION
- */
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// PUZZLE
+  /**
+   * child ANIMATION
+   */
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 childButton.addEventListener("click", () => {
   isCameraAnimating = true;
   document.removeEventListener("mousemove", handleMouseMove);
@@ -284,7 +337,7 @@ childButton.addEventListener("click", () => {
     duration: 2,
     x: 1.2,
     y: 0.6,
-    z: 1.3,
+    z: 1,
     ease: "power2.inOut",
     onComplete: () => {
       /**
@@ -295,14 +348,27 @@ childButton.addEventListener("click", () => {
       document.addEventListener("mousemove", handleMouseMove);
     },
   });
+
+  // gsap.to(lookAtTargetChild, {
+  //   duration: 5,
+  //   x: testCube3.position.x,
+  //   y: testCube3.position.y,
+  //   z: testCube3.position.z,
+  //   ease: "power2.inOut",
+  //   onUpdate: () => {
+  //     camera.lookAt(lookAtTargetChild);
+  //   },
+  // });
 });
 
-/**
- * ado ANIMATION
- */
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ORDINATEUR
+
+  /**
+   * ado ANIMATION
+   */
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 adoButton.addEventListener("click", () => {
   isCameraAnimating = true;
   document.removeEventListener("mousemove", handleMouseMove);
@@ -334,10 +400,22 @@ adoButton.addEventListener("click", () => {
       //   toggleAllButtons(true);
       // }, 3000);
 
+
       // document.querySelector(".gameslist").classList.add("shown");
       document.querySelector(".gamesdescription").classList.add("shown");
 
       document.addEventListener("mousemove", handleMouseMove);
+    },
+  });
+
+  gsap.to(lookAtTargetAdo, {
+    duration: 5,
+    x: testCube3.position.x,
+    y: testCube3.position.y,
+    z: testCube3.position.z,
+    ease: "power2.inOut",
+    onUpdate: () => {
+      camera.lookAt(lookAtTargetAdo);
     },
   });
 });
@@ -368,35 +446,33 @@ for (let button of openGameButtons) {
 
 //////////////////////////////////////////////////////////////////////////////////// TICK
 
-// Variables
-let elapsedTimeSinceLoad = 0;
-
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
-  const deltaTime = elapsedTime - elapsedTimeSinceLoad;
 
   // Update controls
   // controls.update();
 
   // Update camera rotation based on mouse position
   if (!isCameraAnimating) {
-    const speedMultiplier = Math.min(1, elapsedTimeSinceLoad / 20); // Speed increases gradually for the first 10 seconds
     camera.position.x = THREE.MathUtils.lerp(
       camera.position.x,
       (mouse.x * Math.PI) / 10,
-      0.1 * speedMultiplier
+      0.1
     );
 
     camera.position.y = THREE.MathUtils.lerp(
       (camera.position.y = 1.6),
       mouse.y * Math.PI * 1,
-      0.1 * speedMultiplier
+      0.1
     );
   }
 
   // Render
   renderer.render(scene, camera);
 
+
+
+  
   // Move justBornButton based on mouse position
   const justBornButtonX =
     ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorJustBorn;
@@ -434,27 +510,58 @@ const tick = () => {
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
+
+
+  
 };
 
 const handleMouseMove = (event) => {
   mouse.x = (event.clientX / sizes.width) * 2 - 1;
   mouse.y = (event.clientY / sizes.height) * 2 + 1;
+
+
+
+
+
+
+
 };
 
 document.addEventListener("mousemove", handleMouseMove);
 
+
+
+
+
+
+
+
+
 ///////////////////////////////// MAIN
 
+/*console.log("-------------fetch")
+
+const loadPartials = async()=>{
+  const templates = await Promise.all(['/sms.html', '/bal.html'].map((url)=>
+     fetch("/sms.html").then((obj) => obj.text())
+  ));
+  return templates;
+}
+
+loadPartials().then(templates=>{
+  console.log(templates);
+
+  document.querySelector(".gamemain.sms").innerHTML = templates[0];
+  startApp();
+
+})
+
+
+function startApp() {
+  tick();
+}
+
+*/
+
+
 tick();
-
-// Update elapsed time since the page is loaded
-const updateElapsedTime = () => {
-  elapsedTimeSinceLoad = clock.getElapsedTime();
-  if (elapsedTimeSinceLoad < 10) {
-    // If less than 10 seconds, schedule the next update
-    requestAnimationFrame(updateElapsedTime);
-  }
-};
-
-// Schedule the first update
-requestAnimationFrame(updateElapsedTime);
