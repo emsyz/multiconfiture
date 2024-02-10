@@ -106,12 +106,7 @@ const smoothingFactorChild = 5;
 const adoButton = document.querySelector(".adoButton");
 const smoothingFactorAdo = -20;
 
-const ALL_BUTTONS = [
-  justBornButton,
-  babyButton,
-  childButton,
-  adoButton
-]
+const ALL_BUTTONS = [justBornButton, babyButton, childButton, adoButton];
 
 // Imported models
 const gltfLoader = new GLTFLoader();
@@ -403,16 +398,16 @@ const tick = () => {
       },
     });
 
-    gsap.to(lookAtTargetChild, {
-      duration: 5,
-      x: testCube3.position.x,
-      y: testCube3.position.y,
-      z: testCube3.position.z,
-      ease: "power2.inOut",
-      onUpdate: () => {
-        camera.lookAt(lookAtTargetChild);
-      },
-    });
+    // gsap.to(lookAtTargetChild, {
+    //   duration: 5,
+    //   x: testCubeMesh3.position.x,
+    //   y: testCubeMesh3.position.y,
+    //   z: testCubeMesh3.position.z,
+    //   ease: "power2.inOut",
+    //   onUpdate: () => {
+    //     camera.lookAt(lookAtTargetChild);
+    //   },
+    // });
   });
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -433,13 +428,12 @@ document.addEventListener("mousemove", handleMouseMove);
 
 tick();
 
-
 function toggleAllButtons(showsButtons) {
-
   let shownClass = "button-visible";
   let hiddenClass = "button-hidden";
   let displayNone = "display-none";
-  if (showsButtons == undefined) showsButtons = (ALL_BUTTONS[0].classList.contains(hiddenClass));
+  if (showsButtons == undefined)
+    showsButtons = ALL_BUTTONS[0].classList.contains(hiddenClass);
   for (let but of ALL_BUTTONS) {
     if (showsButtons) {
       but.classList.add(shownClass);
