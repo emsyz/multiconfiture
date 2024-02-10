@@ -52,7 +52,11 @@ scene.add(helper);
 
 // ThreeJs Models
 
-// Baby periode
+/**
+ * Baby Periode
+ */
+
+// Baby cube
 const testCube = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 const testCubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Replace with the desired color
 const testCubeMesh = new THREE.Mesh(testCube, testCubeMaterial);
@@ -60,6 +64,10 @@ testCubeMesh.position.x = -1.5;
 testCubeMesh.position.y = 1;
 testCubeMesh.position.z = 0.3;
 scene.add(testCubeMesh);
+
+// Baby Button
+const babyButton = document.querySelector(".babyButton");
+const smoothingFactor = 1.5;
 
 // Imported models
 const gltfLoader = new GLTFLoader();
@@ -126,6 +134,13 @@ const tick = () => {
     mouse.y * Math.PI * 1,
     0.1
   );
+
+  // Move babyButton based on mouse position
+  const babyButtonX = ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactor;
+  const babyButtonY = ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactor;
+
+  babyButton.style.left = babyButtonX + "px";
+  babyButton.style.top = babyButtonY + "px";
 
   // Render
   renderer.render(scene, camera);
