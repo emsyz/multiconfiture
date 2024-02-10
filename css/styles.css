@@ -322,6 +322,10 @@ h1 {
   margin: auto;
   transition: 1s ease-in-out;
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .gameslist:not(.shown) {
@@ -329,18 +333,23 @@ h1 {
 }
 
 .gamemain:not(.visible) {
-  opacity: 0;
-  transition: .4s ease-in-out;
-}
-
-.gamemain:not(.visible) {
-  opacity: 0;
-  transition: .4s ease-in-out;
-}
-
-/* .gameslist:not(.shown) {
   transform: scale(0);
-} */
+}
+
+.gamemain {
+  transition: .4s ease-in-out;
+  
+  width: 80vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  padding: var(--gap);
+  background: var(--white);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+  border-radius: var(--gap);
+}
+
 
 /*****************gameslist**/
 

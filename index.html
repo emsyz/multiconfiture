@@ -13,13 +13,17 @@
 
     <!-- Buttons -->
     <div class="bodyButton">
-      <img class="justBornButton minigame-buttonaaaaa" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
-      <img class="babyButton minigame-buttonaaaaa" src="./assets/UX buttons/circle.png" alt="" data-name="puzzle"/>
-      <img class="childButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
+      <img class="justBornButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
+      <img class="babyButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
+      <img class="childButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="puzzle"/>
       <img class="adoButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="sms"/>
     </div>
 
     <article id="MINIGAMES">
+
+
+
+        <!------------------------------------- GAMESDESCRIPTION -->
 
         <ul class="gamepopup gamesdescription unset">
             <li>
@@ -43,7 +47,47 @@
             </li>
 
             <li>
-                <article class="gamedescription__card card-gamedescription legos" data-gamename="legos">
+                <article class="gamedescription__card card-gamedescription right puzzle" data-gamename="puzzle">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            les puzzle c'est chouette
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        Ca doit faire quoi
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button">
+                            Jouer
+                        </button>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article class="gamedescription__card card-gamedescription photos" data-gamename="photos">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            les photos c'est chouette
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        Ca doit faire quoi
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button">
+                            Jouer
+                        </button>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article class="gamedescription__card card-gamedescription right legos" data-gamename="legos">
                     <div class="card-gamedescription__title">
                         <h1>
                             les legos c'est chouette
@@ -62,6 +106,10 @@
                 </article>
             </li>
         </ul>
+
+
+
+        <!------------------------------------- GAMESLIST -->
         <ul class="gamepopup gameslist unset">
             <li>
             <article class="gamemain sms">
@@ -224,6 +272,24 @@
             </article>
             </li>
 
+
+
+            <li>
+                <article class="gamemain puzzle">
+                    <button class="js-closeGameWindow">
+                        close this fucking logo
+                    </button>
+                </article>
+            </li>
+
+
+            <li>
+                <article class="gamemain photos">
+                    <button class="js-closeGameWindow">
+                        close this fucking logo
+                    </button>
+                </article>
+            </li>
 
 
             <li>
