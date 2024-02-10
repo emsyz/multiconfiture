@@ -1,23 +1,21 @@
-
 :root {
   font-family: var(--font-family-main);
-  --font-family-main: 'Montserrat';
-  --font-family-titles: 'Rock Salt';
+  --font-family-main: "Montserrat";
+  --font-family-titles: "Rock Salt";
 
   --gap: 30px;
   --gap-small: 15px;
   --gap-big: 70px;
   --gutter: 8px;
 
-
-  --grey: rgb(78, 70, 70);
-  --grey-light: #bdb3b3;
+  --grey: grey;
+  --grey-light: #dfdfdf;
   --sms-self: #be6969;
   --sms-self-send: #c7a1a1;
-  --sms-other: #d7cdcd;
+  --sms-other: #e6e6e6;
   --sms-color-self: white;
 
-  --white: #e3e0da;
+  --white: rgb(255, 255, 255);
 
   color: var(--color-main);
   --color-main: #311f1f;
@@ -25,12 +23,10 @@
   line-height: 1.7em;
 }
 
-
 * {
-  
   box-sizing: border-box;
 
-/* 
+  /* 
   transition: var(--transition);
   -webkit-transition: var(--transition);
   -moz-transition: var(--transition);
@@ -40,28 +36,27 @@
 }
 
 img {
-  
 }
 
 @font-face {
-  font-family: 'Grandstander';
+  font-family: "Grandstander";
   src: url(../assets/fonts/Grandstander/Grandstander-VariableFont_wght.ttf);
   font-weight: 100 900;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Comic Neue';
+  font-family: "Comic Neue";
   src: url(../assets/fonts/Comic_Neue/ComicNeue-Bold.ttf);
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   src: url(../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
 }
 
 @font-face {
-  font-family: 'Rock Salt';
+  font-family: "Rock Salt";
   src: url(../assets/fonts/RockSalt-Regular.ttf);
 }
 
@@ -71,12 +66,12 @@ body {
 }
 
 img {
-object-fit: cover;
-max-height: 100%;
+  object-fit: cover;
+  max-height: 100%;
 }
 
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 ul.unset {
@@ -85,51 +80,49 @@ ul.unset {
   list-style: none;
 }
 
-
-
-
-
 /* - - - - FLEXCOLUMN AND FLEXROW - - - - */
 
-.display-none, .hidden {
+.display-none,
+.hidden {
   display: none !important;
 }
 
-.flexrow, .flexcolumn {
-display: flex;
-justify-content: space-between;
-overflow: hidden;
-gap: var(--grid-gap);
+.flexrow,
+.flexcolumn {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: var(--grid-gap);
 }
 
 .flexrow.fixed {
---height: 200px;
+  --height: 200px;
 }
 
 .flexrow.fixed > * {
-height: var(--height);
+  height: var(--height);
 }
 
 .flexcolumn {
-flex-direction: column;
+  flex-direction: column;
 }
 
 .flexcolumn.fixed {
-height: var(--height);
---height: 200px;
+  height: var(--height);
+  --height: 200px;
 }
 
 .flexcolumn > * {
-flex: 1 1 auto;
-margin: 0 !important;
+  flex: 1 1 auto;
+  margin: 0 !important;
 }
 
 .flexcolumn > * {
 }
 
 .flexrow > * {
-flex: 1;
-margin: 0 !important;
+  flex: 1;
+  margin: 0 !important;
 }
 
 .no-extend {
@@ -140,87 +133,88 @@ margin: 0 !important;
   height: auto;
 }
 
-.extend, fill {
+.extend,
+fill {
   flex: 1 1 auto;
 }
 
-[class*=align-], [class*=flex-] {
-display: flex !important;
+[class*="align-"],
+[class*="flex-"] {
+  display: flex !important;
 }
 
 .align-center {
-align-items: center !important;
+  align-items: center !important;
 }
 
 .align-start {
-align-items: flex-start !important;
+  align-items: flex-start !important;
 }
 
 .align-end {
-align-items: flex-end !important;
+  align-items: flex-end !important;
 }
 
 .flex-center {
-justify-content: center !important;
+  justify-content: center !important;
 }
 
 .flex-start {
-justify-content: flex-start !important;
+  justify-content: flex-start !important;
 }
 
 .flex-end {
-justify-content: flex-end !important;
+  justify-content: flex-end !important;
 }
-
-
-
-
 
 /*- - - - - GENERAL - - - - -*/
 
-.lowercase{
-text-transform: lowercase !important;
+.lowercase {
+  text-transform: lowercase !important;
 }
 
-.uppercase{
-text-transform: uppercase !important;
+.uppercase {
+  text-transform: uppercase !important;
 }
 
-.style-italic, .italic {
-font-style: italic !important;
+.style-italic,
+.italic {
+  font-style: italic !important;
 }
 
 .style-normal {
-font-style: normal !important;
+  font-style: normal !important;
 }
 
-.weight-bold, .bold {
-font-weight: bold !important;
+.weight-bold,
+.bold {
+  font-weight: bold !important;
 }
 
-.weight-normal, .weight-normal * {
-font-weight: normal !important;
+.weight-normal,
+.weight-normal * {
+  font-weight: normal !important;
 }
 
 .font-normal {
-font-weight: normal !important;
-font-style: normal !important;
+  font-weight: normal !important;
+  font-style: normal !important;
 }
 
-.left-align{
-text-align: left !important;
+.left-align {
+  text-align: left !important;
 }
 
-.center-align{
-text-align: center !important;
+.center-align {
+  text-align: center !important;
 }
 
-.right-align{
-text-align: right !important;
+.right-align {
+  text-align: right !important;
 }
 
-.justify-align{
-text-align: justify !important;
+.justify-align {
+  text-align: justify !important;
 }
 
 .grey {
@@ -239,10 +233,11 @@ text-align: justify !important;
   cursor: pointer;
 }
 
-
 /********* h1*/
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-family-titles);
 }
 
@@ -252,10 +247,6 @@ h1 {
   font-size: 2rem;
   font-weight: normal;
 }
-
-
-
-
 
 /*/////////////////////////////*/
 
@@ -277,7 +268,7 @@ h1 {
   z-index: 6;
   width: 3%;
   position: absolute;
-  transform: translate(32vw, 72vh);
+  transform: translate(30vw, 78vh);
   cursor: pointer;
 }
 
@@ -293,7 +284,7 @@ h1 {
   z-index: 6;
   width: 3%;
   position: absolute;
-  transform: translate(62vw, 62vh);
+  transform: translate(60vw, 72vh);
   cursor: pointer;
 }
 
@@ -306,18 +297,15 @@ h1 {
 }
 
 .minigame-button {
-  transition: .4s opacity ease-in-out;
+  transition: 0.4s opacity ease-in-out;
 }
 
 .button-visible {
-
 }
 
 .button-hidden {
   opacity: 0;
 }
-
-
 
 /*////////////// MINIGAMES*/
 
@@ -345,17 +333,20 @@ h1 {
   transition: .4s ease-in-out;
 }
 
+.gamemain:not(.visible) {
+  opacity: 0;
+  transition: .4s ease-in-out;
+}
 
+/* .gameslist:not(.shown) {
+  transform: scale(0);
+} */
 
 /*****************gameslist**/
 
 .gameslist {
   height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
 }
-
 
 /****************gameslist*/
 
