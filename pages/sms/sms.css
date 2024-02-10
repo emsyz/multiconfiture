@@ -12,6 +12,36 @@
     border-radius: var(--gap);
 }
 
+.sms .js-closeGameWindow {
+    display: block;
+    width: var(--sq);
+    height: var(--sq);
+    --sq: 80px;
+    background: var(--sms-self-send);
+    border-radius: 50%;
+    border: 0;
+    position: absolute;
+    top: calc(-0.5 * var(--sq));
+    right: calc(-0.5 * var(--sq));
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    color: var(--sms-color-self);
+
+    transition: .2s all ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.sms .js-closeGameWindow.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.sms .js-closeGameWindow:hover {
+    background: var(--sms-self);
+}
+
 .sms__grid {
     display: grid;
     gap: var(--gap);

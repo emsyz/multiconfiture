@@ -378,6 +378,7 @@ h1 {
   align-items: flex-start;
   gap: var(--gap-big);
   overflow: auto;
+  scrollbar-width: none;
   width: 40vw;
   height: 80vh;
   background: url(../assets/photos/paperMain.png) 50% 50% / 100% 100%;
@@ -408,3 +409,7 @@ h1 {
   top: 0;
   left: 0;
 } */
+
+.card-gamedescription__text {
+  color: var(--sms-color-self);
+}

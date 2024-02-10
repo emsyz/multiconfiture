@@ -456,7 +456,7 @@ adoButton.addEventListener("click", () => {
 
 
 
-///////////////////////////////////////////////// SHOW GAME
+///////////////////////////////////////////////// SHOW & HIDE GAME
 
 let openGameButtons = document.querySelectorAll('.js-openGameWindow');
 
@@ -468,6 +468,17 @@ for (let button of openGameButtons) {
       setTimeout(() => {
         document.querySelector('.gameslist').classList.add('shown');
       }, 400);
+    }
+  );
+
+  let gameName = button.closest(".gamedescription__card").dataset.gamename;
+
+  let closeButton = document.querySelector(`.gameslist .${gameName} .js-closeGameWindow`);
+  closeButton.addEventListener(
+    "click", function() {
+        this.closest(".gameslist").classList.remove("shown");
+        isCameraAnimating = false;
+        toggleAllButtons(true);
     }
   );
 }
