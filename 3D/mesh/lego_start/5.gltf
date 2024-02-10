@@ -15,22 +15,33 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Plane",
-			"scale":[
-				2.8571436405181885,
-				6.439609050750732,
-				5.480342864990234
-			],
+			"name":"neck.001",
 			"translation":[
-				0,
-				0,
-				4.5910162925720215
+				0.019773464649915695,
+				0.029480567201972008,
+				-0.003694529877975583
 			]
+		}
+	],
+	"materials":[
+		{
+			"doubleSided":true,
+			"name":"Material.003",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.14553654193878174,
+					0.13257397711277008,
+					0.8001416921615601,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.5
+			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Plane.001",
+			"name":"Cylinder.018",
 			"primitives":[
 				{
 					"attributes":{
@@ -38,7 +49,8 @@
 						"NORMAL":1,
 						"TEXCOORD_0":2
 					},
-					"indices":3
+					"indices":3,
+					"material":0
 				}
 			]
 		}
@@ -47,68 +59,68 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":508,
+			"count":762,
 			"max":[
-				1.6492853164672852,
-				0.619389533996582,
-				1
+				0.0038999998942017555,
+				0.0008500000112690032,
+				0.011594526469707489
 			],
 			"min":[
-				-1.6492853164672852,
-				-0.030280184000730515,
-				-1
+				-0.0038999998942017555,
+				-0.02005000039935112,
+				-0.0042054723016917706
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":508,
+			"count":762,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":508,
+			"count":762,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":774,
+			"count":1836,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":6096,
+			"byteLength":9144,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
+			"byteLength":9144,
+			"byteOffset":9144,
+			"target":34962
+		},
+		{
+			"buffer":0,
 			"byteLength":6096,
-			"byteOffset":6096,
+			"byteOffset":18288,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4064,
-			"byteOffset":12192,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":1548,
-			"byteOffset":16256,
+			"byteLength":3672,
+			"byteOffset":24384,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":17804,
-			"uri":"room2.bin"
+			"byteLength":28056,
+			"uri":"neck_start.bin"
 		}
 	]
 }
