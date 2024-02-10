@@ -1,7 +1,8 @@
 
 :root {
   font-family: var(--font-family-main);
-  --font-family-main: 'Arial';
+  --font-family-main: 'Montserrat';
+  --font-family-titles: 'Rock Salt';
 
   --gap: 30px;
   --gap-small: 15px;
@@ -15,12 +16,17 @@
   --sms-self-send: #c7a1a1;
   --sms-other: #e6e6e6;
   --sms-color-self: white;
+
+  --white: rgb(255, 255, 255);
+
+  color: var(--color-main);
+  --color-main: #311f1f;
+  font-size: 1.2em;
+  line-height: 1.7em;
 }
 
 
 * {
-  margin: 0;
-  padding: 0;
   
   box-sizing: border-box;
 
@@ -47,6 +53,16 @@ img {
 @font-face {
   font-family: 'Comic Neue';
   src: url(../assets/fonts/Comic_Neue/ComicNeue-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: 'Rock Salt';
+  src: url(../assets/fonts/RockSalt-Regular.ttf);
 }
 
 html,
@@ -211,6 +227,32 @@ text-align: justify !important;
   color: var(--grey);
 }
 
+.button {
+  border: 0;
+  background: transparent;
+  padding: var(--gutter) var(--gap-small);
+
+  color: var(--sms-self);
+  font-family: var(--font-family-titles);
+  font-size: 1.2em;
+  border-bottom: 2px solid var(--sms-self-send);
+  cursor: pointer;
+}
+
+
+/********* h1*/
+
+h1, h2, h3 {
+  font-family: var(--font-family-titles);
+}
+
+h1 {
+  text-align: center;
+  color: var(--sms-self);
+  font-size: 2rem;
+  font-weight: normal;
+}
+
 
 
 
@@ -275,6 +317,10 @@ text-align: justify !important;
   opacity: 0;
 }
 
+
+
+/*////////////// MINIGAMES*/
+
 #MINIGAMES {
   position: fixed;
   top: 0;
@@ -283,9 +329,8 @@ text-align: justify !important;
   height: 100vh;
 }
 
-.gameslist {
+.gamepopup {
   /* transform: scale(0); */
-  height: 100%;
   margin: auto;
   transition: .4s ease-in-out;
   overflow: hidden;
@@ -295,6 +340,72 @@ text-align: justify !important;
   transform: scale(0);
 }
 
-.gameslist.shown {
-  transform: scale(1);
+.gameslist:not(.shown) {
+  transform: scale(0);
 }
+
+
+
+/*****************gameslist**/
+
+.gameslist {
+  height: 100%;
+}
+
+
+/****************gameslist*/
+
+.gamesdescription:not(.shown) {
+  opacity: 0;
+}
+
+.gamesdescription:not(.shown) .gamedescription__card {
+  margin-right: 50vh;
+  margin-top: 10vh;
+  transform: rotate(-5deg);
+}
+
+.gamesdescription {
+  width: 100%;
+  height: 100%;
+  background: #091b464f;
+  /* backdrop-filter: blur(10px); */
+}
+
+.gamedescription__card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--gap-big);
+  overflow: auto;
+  width: 40vw;
+  height: 80vh;
+  background: url(../assets/photos/paperMain.png) 50% 50% / 100% 100%;
+  padding: var(--gap-big) var(--gap-big) var(--gap-big) 100px !important;
+  transition: 1s ease-in-out;
+  transform: rotate(0deg);
+
+  position: absolute;
+  top: 10vh;
+  right: 10vh;
+  z-index: 1003;
+}
+
+.gamedescription > * {
+  z-index: 2010;
+}
+/* 
+.gamesdescription:before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url(../assets/photos/grain.jpg);
+  opacity: 0.6;
+
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+} */

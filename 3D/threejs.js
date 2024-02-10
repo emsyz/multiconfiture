@@ -379,7 +379,6 @@ adoButton.addEventListener("click", () => {
    */
 
   // toggleAllButtons(false);
-  console.log("ahahah");
   // justBornButton.style.display = "none";
   // babyButton.style.display = "none";
   // childButton.style.display = "none";
@@ -401,7 +400,9 @@ adoButton.addEventListener("click", () => {
       //   toggleAllButtons(true);
       // }, 3000);
 
-      document.querySelector(".gameslist").classList.add("shown");
+
+      // document.querySelector(".gameslist").classList.add("shown");
+      document.querySelector(".gamesdescription").classList.add("shown");
 
       document.addEventListener("mousemove", handleMouseMove);
     },
@@ -506,5 +507,40 @@ const handleMouseMove = (event) => {
 };
 
 document.addEventListener("mousemove", handleMouseMove);
+
+
+
+
+
+
+
+
+
+///////////////////////////////// MAIN
+
+/*console.log("-------------fetch")
+
+const loadPartials = async()=>{
+  const templates = await Promise.all(['/sms.html', '/bal.html'].map((url)=>
+     fetch("/sms.html").then((obj) => obj.text())
+  ));
+  return templates;
+}
+
+loadPartials().then(templates=>{
+  console.log(templates);
+
+  document.querySelector(".gamemain.sms").innerHTML = templates[0];
+  startApp();
+
+})
+
+
+function startApp() {
+  tick();
+}
+
+*/
+
 
 tick();
