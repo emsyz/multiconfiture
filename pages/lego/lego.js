@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 const canvas = document.querySelector("canvas.webgl");
@@ -13,17 +12,11 @@ const addLegoToScene = (path) => {
     const lego = gltf.scene.children[0];
     lego.receiveShadow = true;
     lego.castShadow = true;
+
+    lego.position.set(Math.random() * 10 - 5, 2, 0);
+
     scene.add(lego);
     legoObjects.push(lego);
-
-    // Sort legoObjects array based on the object's name property
-    legoObjects.sort((a, b) => {
-      const nameA = a.name.toLowerCase();
-      const nameB = b.name.toLowerCase();
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-      return 0;
-    });
   });
 };
 
@@ -31,7 +24,7 @@ const addLegoToScene = (path) => {
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-let currentIntersect = null;
+let selectedObject = null;
 
 const sizes = {
   width: window.innerWidth,
@@ -75,12 +68,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(2, 2, 2);
+camera.position.set(0, 2, 5);
 scene.add(camera);
-
-const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 0.75, 0);
-controls.enableDamping = true;
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -90,16 +79,43 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-window.addEventListener("click", () => {
-  if (currentIntersect) {
-    const clickedObject = currentIntersect.object;
+document.addEventListener("mousedown", onDocumentMouseDown);
+document.addEventListener("mousemove", onDocumentMouseMove);
+document.addEventListener("mouseup", onDocumentMouseUp);
 
-    const legoIndex = legoObjects.indexOf(clickedObject);
-    if (legoIndex !== -1) {
-      console.log(`Mouse enter ${legoIndex + 1}`);
+function onDocumentMouseDown(event) {
+  event.preventDefault();
+
+  const intersects = raycaster.intersectObjects(legoObjects);
+
+  if (intersects.length > 0) {
+    selectedObject = intersects[0].object;
+  }
+}
+
+function onDocumentMouseMove(event) {
+  event.preventDefault();
+
+  if (selectedObject) {
+    const ray = new THREE.Raycaster();
+    ray.setFromCamera(mouse, camera);
+
+    // Use a larger range for the intersection
+    const intersection = ray.intersectObjects(legoObjects, true);
+
+    if (intersection.length > 0) {
+      const newPosition = intersection[0].point;
+      selectedObject.position.x = newPosition.x;
+      selectedObject.position.y = newPosition.y;
+      selectedObject.position.z = 0;
     }
   }
-});
+}
+
+function onDocumentMouseUp(event) {
+  event.preventDefault();
+  selectedObject = null;
+}
 
 const clock = new THREE.Clock();
 let previousTime = 0;
@@ -110,9 +126,9 @@ const performRaycasting = () => {
   const intersects = raycaster.intersectObjects(legoObjects);
 
   if (intersects.length > 0) {
-    currentIntersect = intersects[0];
+    document.body.style.cursor = "pointer";
   } else {
-    currentIntersect = null;
+    document.body.style.cursor = "auto";
   }
 };
 
@@ -121,7 +137,6 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  controls.update();
   performRaycasting();
   renderer.render(scene, camera);
 
