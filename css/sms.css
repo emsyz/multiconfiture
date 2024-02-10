@@ -1,0 +1,430 @@
+
+
+:root {
+    font-family: var(--font-family-main);
+    --font-family-main: 'Arial';
+
+    --gap: 30px;
+    --gap-small: 15px;
+    --gap-big: 70px;
+    --gutter: 8px;
+
+
+    --grey: grey;
+    --grey-light: #dfdfdf;
+    --sms-self: #be6969;
+    --sms-other: #e6e6e6;
+    --sms-color-self: white;
+  }
+  
+  
+* {
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+
+
+    transition: var(--transition);
+    -webkit-transition: var(--transition);
+    -moz-transition: var(--transition);
+    -ms-transition: var(--transition);
+    -o-transition: var(--transition);
+    --transition: all 0.2s ease;
+}
+
+img {
+    
+}
+
+@font-face {
+    font-family: 'Grandstander';
+    src: url(../assets/fonts/Grandstander/Grandstander-VariableFont_wght.ttf);
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comic Neue';
+    src: url(../assets/fonts/Comic_Neue/ComicNeue-Bold.ttf);
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+body {
+    background-color: over;
+}
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.section {
+    padding: 10vw 0;
+}
+
+.container {
+    padding: 0 10vw;
+}
+
+img {
+  object-fit: cover;
+  max-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul.unset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+
+
+
+/* - - - - FLEXCOLUMN AND FLEXROW - - - - */
+
+.flexrow, .flexcolumn {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: var(--grid-gap);
+}
+
+.flexrow.fixed {
+  --height: 200px;
+}
+
+.flexrow.fixed > * {
+  height: var(--height);
+}
+
+.flexcolumn {
+  flex-direction: column;
+}
+
+.flexcolumn.fixed {
+  height: var(--height);
+  --height: 200px;
+}
+
+.flexcolumn > * {
+  flex: 1 1 auto;
+  margin: 0 !important;
+}
+
+.flexcolumn > * {
+}
+
+.flexrow > * {
+  flex: 1;
+  margin: 0 !important;
+}
+
+.no-extend {
+    flex: 0 0 auto;
+}
+
+.flexcolumn > .no-extend {
+    height: auto;
+}
+
+.extend, fill {
+    flex: 1 1 auto;
+}
+
+[class*=align-], [class*=flex-] {
+  display: flex !important;
+}
+
+.align-center {
+  align-items: center !important;
+}
+
+.align-start {
+  align-items: flex-start !important;
+}
+
+.align-end {
+  align-items: flex-end !important;
+}
+
+.flex-center {
+  justify-content: center !important;
+}
+
+.flex-start {
+  justify-content: flex-start !important;
+}
+
+.flex-end {
+  justify-content: flex-end !important;
+}
+
+
+
+
+
+/*- - - - - GENERAL - - - - -*/
+
+.lowercase{
+  text-transform: lowercase !important;
+}
+
+.uppercase{
+  text-transform: uppercase !important;
+}
+
+.style-italic, .italic {
+  font-style: italic !important;
+}
+
+.style-normal {
+  font-style: normal !important;
+}
+
+.weight-bold, .bold {
+  font-weight: bold !important;
+}
+
+.weight-normal, .weight-normal * {
+  font-weight: normal !important;
+}
+
+.font-normal {
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+
+.left-align{
+  text-align: left !important;
+}
+
+.center-align{
+  text-align: center !important;
+}
+
+.right-align{
+  text-align: right !important;
+}
+
+.justify-align{
+  text-align: justify !important;
+}
+
+.grey {
+    color: var(--grey);
+}
+
+
+
+
+
+  /************************* SMS */
+
+  #SMS {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 100px;
+  }
+
+  .sms__grid {
+    display: grid;
+    gap: var(--gap);
+    height: 100%;
+
+    grid-template:
+        "title line convo" auto
+        "list  line convo" 1fr
+        / 1fr 1px 2fr;
+  }
+
+  .sms__grid::before {
+    display: block;
+    grid-area: line;
+    content: '';
+    grid-template: line;
+    background: var(--grey-light);
+    width: 1px;
+    height: 100%;
+  }
+
+  .sms__grid > * {
+  }
+
+  .grid-sms__title {
+    grid-area: title;
+  }
+
+  .grid-sms__convo {
+    grid-area: convo;
+    position: relative;
+  }
+
+  .grid-sms__list {
+    grid-area: list;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  .grid-sms__card {
+    height: 100px;
+    display: grid;
+    gap: var(--gutter);
+    grid-template:
+        "photo . name name" 1fr
+        "photo . text time" 1fr
+        / auto var(--gap-small) 1fr auto;
+  }
+
+  .card-sms {
+    cursor: crosshair;
+  }
+
+  .card-sms__name {
+    grid-area: name;
+    align-self: flex-end;
+  }
+
+  .card-sms__text {
+    grid-area: text;
+    align-self: flex-start;
+  }
+
+  .card-sms__time {
+    grid-area: time;
+    align-self: flex-start;
+  }
+
+  .card-sms__photo {
+    grid-area: photo;
+    display: grid;
+    align-items: center;
+  }
+
+  .card-sms__photo img {
+    display: block;
+    width: var(--sq);
+    height: var(--sq);
+    --sq: 70px;
+    border-radius: 50%;
+  }
+
+  .sms-chat:not(.visible) {
+    display: none !important;
+  }
+
+  .sms-chat {
+    display: grid;
+    grid-gap: var(--gutter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    grid-template:
+        "header" auto
+        "main" 1fr
+        "send" auto
+        / 1fr;
+  }
+
+  .sms-chat__header {
+    grid-area: header;
+  }
+
+  .sms-chat__main {
+    grid-area: main;
+    height: 100%;
+    padding-left: var(--gap);
+  }
+
+  /* SMS CONVO */
+
+  .sms-chat__header {
+    display: grid;
+    gap: var(--gutter);
+    grid-template:
+        "ava . name" 1fr
+        "ava . online" 1fr
+        / auto var(--gap-small) 1fr;
+    padding-bottom: var(--gutter);
+    border-bottom: 1px solid var(--grey-light);
+  }
+
+  .sms-header__ava {
+    grid-area: ava;
+  }
+
+  .sms-header__ava img {
+    display: block;
+    width: var(--sq);
+    height: var(--sq);
+    --sq: 80px;
+    border-radius: 50%;
+  }
+
+  .sms-header__name {
+    grid-area: name;
+    align-self: flex-end;
+  }
+
+  .sms-header__online {
+    grid-area: online;
+  }
+
+  .sms-chat__main {
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+
+  .chat__msg {
+    display: inline-block;
+    max-width: 70%;
+    padding: var(--gap-small);
+    margin-top: var(--gutter);
+  }
+
+.chat__li.other .chat__msg {
+    border-radius: var(--gap) var(--gap) var(--gap) 0;
+    background: var(--sms-other);
+}
+
+.chat__li.self .chat__msg {
+    border-radius: var(--gap) var(--gap) 0 var(--gap);
+    background: var(--sms-self);
+
+    color: var(--sms-color-self);
+}
+
+*:not(.chat__li.self) + .chat__li.self, *:not(.chat__li.other) + .chat__li.other {
+    margin-top: var(--gap-small);
+}
+
+/* send */
+
+.chat__sendsection {
+    grid-area: send;
+    overflow: auto;
+    max-height: 12vh;
+    scrollbar-width: none;
+}
+
+.chat__li.send, .chat__li.self {
+    display: flex;
+    justify-content: flex-end;
+}
