@@ -92,16 +92,12 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
+
+/**
+ * Camera POSITION
+ */
 camera.position.set(0, -1, 5);
 camera.lookAt(0, -1.3, 0);
-
-// Update camera position when justBornButton is clicked
-justBornButton.addEventListener("click", () => {
-  camera.position.set(0, -1, 5);
-  camera.lookAt(0, -1.3, 0);
-});
-
-// scene.add(camera);
 
 /**
  * Mouse
@@ -182,15 +178,32 @@ const tick = () => {
   adoButton.style.left = adoButtonX + "px";
   adoButton.style.top = adoButtonY + "px";
 
+  /**
+   * JUST BORN GSAP ANIMATION ON BUTTON
+   */
+
+  // based position
+  // camera.position.set(0, -1, 5);
+  // camera.lookAt(0, -1.3, 0);
+
   justBornButton.addEventListener("click", () => {
     gsap.to(camera.position, {
       duration: 2,
-      x: 10,
-      y: -4,
-      z: 5,
+      x: -2,
+      y: -1,
+      z: -0.01,
+      ease: "power2.inOut",
+    });
+
+    gsap.to(camera.lookAt, {
+      duration: 2,
+      x: -1,
+      y: -1.3,
+      z: 0,
       ease: "power2.inOut",
     });
   });
+
   // Render
   renderer.render(scene, camera);
 
