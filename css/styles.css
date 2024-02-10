@@ -24,13 +24,13 @@
   
   box-sizing: border-box;
 
-
+/* 
   transition: var(--transition);
   -webkit-transition: var(--transition);
   -moz-transition: var(--transition);
   -ms-transition: var(--transition);
   -o-transition: var(--transition);
-  --transition: all 0.2s ease;
+  --transition: all 0.2s ease; */
 }
 
 img {
@@ -264,7 +264,7 @@ text-align: justify !important;
 }
 
 .minigame-button {
-  transition: .4s all ease-in-out;
+  transition: .4s opacity ease-in-out;
 }
 
 .button-visible {
@@ -276,13 +276,25 @@ text-align: justify !important;
 }
 
 #MINIGAMES {
-  border: 4px solid red;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-
-  color: white;
 }
 
+.gameslist {
+  /* transform: scale(0); */
+  height: 100%;
+  margin: auto;
+  transition: .4s ease-in-out;
+  overflow: hidden;
+}
+
+.gameslist:not(.shown) {
+  transform: scale(0);
+}
+
+.gameslist.shown {
+  transform: scale(1);
+}
