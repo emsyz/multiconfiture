@@ -1,42 +1,9 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-
-/**
- * Base
- */
+import gsap from "gsap";
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
-
-// Scene
-const scene = new THREE.Scene();
-
-/**
- * Lights
- */
-const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
-scene.add(ambientLight);
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8);
-directionalLight.castShadow = true;
-directionalLight.shadow.mapSize.set(1024, 1024);
-directionalLight.shadow.camera.far = 15;
-directionalLight.shadow.camera.left = -7;
-directionalLight.shadow.camera.top = 7;
-directionalLight.shadow.camera.right = 7;
-directionalLight.shadow.camera.bottom = -7;
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
-
-// Object
-
-/**
- * Imported models
- */
-const gltfLoader = new GLTFLoader();
-gltfLoader.load("./3D/mesh/test2.gltf", (gltf) => {
-  scene.add(gltf.scene.children[0]);
-});
 
 // Sizes
 const sizes = {
@@ -44,33 +11,111 @@ const sizes = {
   height: window.innerHeight,
 };
 
-window.addEventListener("resize", () => {
-  // Update sizes
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
+// Scene
+const scene = new THREE.Scene();
 
-  // Update camera
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
+// Grid helper
+const size = 10;
+const divisions = 10;
 
-  // Update renderer
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+const gridHelper = new THREE.GridHelper(size, divisions);
+scene.add(gridHelper);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+directionalLight.castShadow = true;
+directionalLight.shadow.mapSize.x = 3000;
+directionalLight.shadow.mapSize.y = 3000;
+directionalLight.shadowCameraLeft = -3000;
+directionalLight.shadowCameraRight = 3000;
+directionalLight.shadowCameraTop = 3500;
+directionalLight.shadowCameraBottom = -3000;
+directionalLight.position.set(0, 1, 20);
+scene.add(directionalLight);
+
+const targetObject = new THREE.Object3D();
+targetObject.position.set(0, 0.6, 0);
+
+directionalLight.target = targetObject;
+
+scene.add(targetObject);
+
+const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
+scene.add(helper);
+
+/***
+ * Models
+ */
+
+// ThreeJs Models
+
+/**
+ * Baby Periode
+ */
+
+// Baby cube
+const testCube = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Replace with the desired color
+const testCubeMesh = new THREE.Mesh(testCube, testCubeMaterial);
+testCubeMesh.position.x = -1.5;
+testCubeMesh.position.y = 1;
+testCubeMesh.position.z = 0.3;
+scene.add(testCubeMesh);
+
+// Baby Button
+const justBornButton = document.querySelector(".justBornButton");
+const smoothingFactorJustBorn = -4;
+const babyButton = document.querySelector(".babyButton");
+const smoothingFactorBaby = 1.5;
+const childButton = document.querySelector(".childButton");
+const smoothingFactorChild = 5;
+const adoButton = document.querySelector(".adoButton");
+const smoothingFactorAdo = -20;
+
+// Imported models
+const gltfLoader = new GLTFLoader();
+gltfLoader.load("./3D/mesh/room2.gltf", (gltf) => {
+  const house = gltf.scene.children[0];
+  house.receiveShadow = true;
+  house.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
 });
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-  75,
+  60,
   sizes.width / sizes.height,
   0.1,
   100
 );
-camera.position.z = 3;
-scene.add(camera);
+camera.position.set(0, -1, 5);
+camera.lookAt(0, -1.3, 0);
+
+// Update camera position when justBornButton is clicked
+justBornButton.addEventListener("click", () => {
+  camera.position.set(0, -1, 5);
+  camera.lookAt(0, -1.3, 0);
+});
+
+// scene.add(camera);
+
+/**
+ * Mouse
+ */
+const mouse = new THREE.Vector2();
+
+window.addEventListener("mousemove", (event) => {
+  mouse.x = (event.clientX / sizes.width) * 2 - 1;
+  mouse.y = -(event.clientY / sizes.height) * 2 + 1;
+});
 
 // Controls
-const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true;
+// const controls = new OrbitControls(camera, canvas);
+// controls.enableDamping = true;
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -78,6 +123,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
 
 // Animate
 const clock = new THREE.Clock();
@@ -86,8 +132,65 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
   // Update controls
-  controls.update();
+  // controls.update();
 
+  // Update camera rotation based on mouse position
+  camera.position.x = THREE.MathUtils.lerp(
+    camera.position.x,
+    (mouse.x * Math.PI) / 10,
+    0.1
+  );
+
+  camera.position.y = THREE.MathUtils.lerp(
+    (camera.position.y = 1.6),
+    mouse.y * Math.PI * 1,
+    0.1
+  );
+
+  // Move justBornButton based on mouse position
+  const justBornButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorJustBorn;
+  const justBornButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorJustBorn;
+
+  justBornButton.style.left = justBornButtonX + "px";
+  justBornButton.style.top = justBornButtonY + "px";
+
+  // Move babyButton based on mouse position
+  const babyButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorBaby;
+  const babyButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorBaby;
+
+  babyButton.style.left = babyButtonX + "px";
+  babyButton.style.top = babyButtonY + "px";
+
+  // Move childButton based on mouse position
+  const childButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorChild;
+  const childButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorChild;
+
+  childButton.style.left = childButtonX + "px";
+  childButton.style.top = childButtonY + "px";
+
+  // Move adoButton based on mouse position
+  const adoButtonX = ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorAdo;
+  const adoButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorAdo;
+
+  adoButton.style.left = adoButtonX + "px";
+  adoButton.style.top = adoButtonY + "px";
+
+  justBornButton.addEventListener("click", () => {
+    gsap.to(camera.position, {
+      duration: 2,
+      x: 10,
+      y: -4,
+      z: 5,
+      ease: "power2.inOut",
+    });
+  });
   // Render
   renderer.render(scene, camera);
 

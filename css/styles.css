@@ -9,7 +9,7 @@ body {
 }
 
 body {
-  background-color: pink;
+  background-color: rgb(255, 255, 255);
 }
 
 .webgl {
@@ -17,6 +17,45 @@ body {
   top: 0;
   left: 0;
   outline: none;
+  z-index: -1;
+}
+
+/* UI Buttons */
+.bodyButton {
+  width: 100vw;
+  height: 100vh;
+}
+
+.justBornButton {
+  z-index: 6;
+  width: 3%;
+  position: absolute;
+  transform: translate(32vw, 72vh);
+  cursor: pointer;
+}
+
+.babyButton {
+  z-index: 6;
+  width: 3%;
+  position: absolute;
+  transform: translate(35.5vw, 50vh);
+  cursor: pointer;
+}
+
+.childButton {
+  z-index: 6;
+  width: 3%;
+  position: absolute;
+  transform: translate(62vw, 62vh);
+  cursor: pointer;
+}
+
+.adoButton {
+  z-index: 6;
+  width: 3%;
+  position: absolute;
+  transform: translate(80vw, 55vh);
+  cursor: pointer;
 }
 
 
