@@ -2,60 +2,45 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-/**
- * Base
- */
-
-// Canvas
 const canvas = document.querySelector("canvas.webgl");
-
-// Scene
 const scene = new THREE.Scene();
 
-/**
- * Models
- */
-// Imported models
 const gltfLoader = new GLTFLoader();
+const legoObjects = [];
 
-gltfLoader.load("/3D/mesh/lego_resolved/head.gltf", (gltf) => {
-  const lego = gltf.scene.children[0];
-  lego.receiveShadow = true;
-  lego.castShadow = true;
-  scene.add(lego);
+const addLegoToScene = (path) => {
+  gltfLoader.load(`/3D/mesh/lego_resolved/${path}.gltf`, (gltf) => {
+    const lego = gltf.scene.children[0];
+    lego.receiveShadow = true;
+    lego.castShadow = true;
+    scene.add(lego);
+    legoObjects.push(lego);
+  });
+};
+
+["head", "neck", "body", "backleg", "frontleg"].forEach(addLegoToScene);
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let currentIntersect = null;
+
+const performRaycasting = () => {
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(legoObjects);
+
+  currentIntersect = null;
+};
+
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight,
+};
+
+window.addEventListener("mousemove", (event) => {
+  mouse.x = (event.clientX / sizes.width) * 2 - 1;
+  mouse.y = -(event.clientY / sizes.height) * 2 + 1;
 });
 
-gltfLoader.load("/3D/mesh/lego_resolved/neck.gltf", (gltf) => {
-  const lego = gltf.scene.children[0];
-  lego.receiveShadow = true;
-  lego.castShadow = true;
-  scene.add(lego);
-});
-
-gltfLoader.load("/3D/mesh/lego_resolved/body.gltf", (gltf) => {
-  const lego = gltf.scene.children[0];
-  lego.receiveShadow = true;
-  lego.castShadow = true;
-  scene.add(lego);
-});
-
-gltfLoader.load("/3D/mesh/lego_resolved/backleg.gltf", (gltf) => {
-  const lego = gltf.scene.children[0];
-  lego.receiveShadow = true;
-  lego.castShadow = true;
-  scene.add(lego);
-});
-
-gltfLoader.load("/3D/mesh/lego_resolved/frontleg.gltf", (gltf) => {
-  const lego = gltf.scene.children[0];
-  lego.receiveShadow = true;
-  lego.castShadow = true;
-  scene.add(lego);
-});
-
-/**
- * Floor
- */
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(10, 10),
   new THREE.MeshStandardMaterial({
@@ -68,9 +53,6 @@ floor.receiveShadow = true;
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
-/**
- * Lights
- */
 const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
 scene.add(ambientLight);
 
@@ -85,32 +67,6 @@ directionalLight.shadow.camera.bottom = -7;
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
-/**
- * Sizes
- */
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
-window.addEventListener("resize", () => {
-  // Update sizes
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-
-  // Update camera
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
-
-  // Update renderer
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-});
-
-/**
- * Camera
- */
-// Base camera
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
@@ -120,14 +76,10 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(2, 2, 2);
 scene.add(camera);
 
-// Controls
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0, 0.75, 0);
 controls.enableDamping = true;
 
-/**
- * Renderer
- */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
@@ -136,9 +88,13 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/**
- * Animate
- */
+// Move the event listener outside the performRaycasting function
+window.addEventListener("click", () => {
+  if (!currentIntersect) {
+    console.log("mouse enter");
+  }
+});
+
 const clock = new THREE.Clock();
 let previousTime = 0;
 
@@ -147,13 +103,10 @@ const tick = () => {
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
 
-  // Update controls
   controls.update();
-
-  // Render
+  performRaycasting();
   renderer.render(scene, camera);
 
-  // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
 
