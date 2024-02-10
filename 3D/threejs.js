@@ -78,8 +78,16 @@ const testCubeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // R
 const testCubeMesh3 = new THREE.Mesh(testCube3, testCubeMaterial3);
 testCubeMesh3.position.x = 1.2;
 testCubeMesh3.position.y = 0.5;
-testCubeMesh3.position.z = 1.3;
+testCubeMesh3.position.z = 0.4;
 scene.add(testCubeMesh3);
+
+const testCube4 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial4 = new THREE.MeshBasicMaterial({ color: 0xfff000 }); // Replace with the desired color
+const testCubeMesh4 = new THREE.Mesh(testCube4, testCubeMaterial4);
+testCubeMesh4.position.x = 2.2;
+testCubeMesh4.position.y = 1;
+testCubeMesh4.position.z = 2;
+scene.add(testCubeMesh4);
 
 // Baby Button
 const justBornButton = document.querySelector(".justBornButton");
@@ -232,16 +240,16 @@ const tick = () => {
       },
     });
 
-    gsap.to(lookAtTargetBorn, {
-      duration: 5,
-      x: testCube2.position.x,
-      y: testCube2.position.y,
-      z: testCube2.position.z,
-      ease: "power2.inOut",
-      onUpdate: () => {
-        camera.lookAt(lookAtTargetBorn);
-      },
-    });
+    // gsap.to(lookAtTargetBorn, {
+    //   duration: 5,
+    //   x: testCube2.position.x,
+    //   y: testCube2.position.y,
+    //   z: testCube2.position.z,
+    //   ease: "power2.inOut",
+    //   onUpdate: () => {
+    //     camera.lookAt(lookAtTargetBorn);
+    //   },
+    // });
   });
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -278,16 +286,16 @@ const tick = () => {
       },
     });
 
-    gsap.to(lookAtTargetBorn, {
-      duration: 5,
-      x: testCube.position.x,
-      y: testCube.position.y,
-      z: testCube.position.z,
-      ease: "power2.inOut",
-      onUpdate: () => {
-        camera.lookAt(lookAtTargetBaby);
-      },
-    });
+    // gsap.to(lookAtTargetBorn, {
+    //   duration: 5,
+    //   x: testCube.position.x,
+    //   y: testCube.position.y,
+    //   z: testCube.position.z,
+    //   ease: "power2.inOut",
+    //   onUpdate: () => {
+    //     camera.lookAt(lookAtTargetBaby);
+    //   },
+    // });
   });
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -311,9 +319,56 @@ const tick = () => {
 
     gsap.to(camera.position, {
       duration: 2,
-      x: -1.5,
-      y: 1.04,
+      x: 1.2,
+      y: 0.6,
       z: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        /**
+         * ATTENTION METTRE ISCAMERAANIMATING = FALSE EN SORTANT DU MINI JEU EST FINI
+         */
+        // isCameraAnimating = false;
+
+        document.addEventListener("mousemove", handleMouseMove);
+      },
+    });
+
+    // gsap.to(lookAtTargetChild, {
+    //   duration: 5,
+    //   x: testCube3.position.x,
+    //   y: testCube3.position.y,
+    //   z: testCube3.position.z,
+    //   ease: "power2.inOut",
+    //   onUpdate: () => {
+    //     camera.lookAt(lookAtTargetChild);
+    //   },
+    // });
+  });
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /**
+   * child ANIMATION
+   */
+  const lookAtTargetAdo = new THREE.Vector3(0, -1.3, 0);
+
+  adoButton.addEventListener("click", () => {
+    isCameraAnimating = true;
+    document.removeEventListener("mousemove", handleMouseMove);
+
+    /**
+     * ATTENTION
+     */
+    justBornButton.style.display = "none";
+    babyButton.style.display = "none";
+    childButton.style.display = "none";
+    adoButton.style.display = "none";
+
+    gsap.to(camera.position, {
+      duration: 2,
+      x: 2.1,
+      y: 1.06,
+      z: 2.7,
       ease: "power2.inOut",
       onComplete: () => {
         /**
@@ -327,9 +382,9 @@ const tick = () => {
 
     gsap.to(lookAtTargetChild, {
       duration: 5,
-      x: testCube.position.x,
-      y: testCube.position.y,
-      z: testCube.position.z,
+      x: testCube3.position.x,
+      y: testCube3.position.y,
+      z: testCube3.position.z,
       ease: "power2.inOut",
       onUpdate: () => {
         camera.lookAt(lookAtTargetChild);
