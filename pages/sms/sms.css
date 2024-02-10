@@ -7,8 +7,8 @@
     top: 10vh;
     left: 10vw;
     padding: var(--gap);
-    background: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
     border-radius: var(--gap);
 }
 

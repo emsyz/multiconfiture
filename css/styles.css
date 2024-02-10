@@ -10,14 +10,14 @@
   --gutter: 8px;
 
 
-  --grey: grey;
-  --grey-light: #dfdfdf;
+  --grey: rgb(78, 70, 70);
+  --grey-light: #bdb3b3;
   --sms-self: #be6969;
   --sms-self-send: #c7a1a1;
-  --sms-other: #e6e6e6;
+  --sms-other: #d7cdcd;
   --sms-color-self: white;
 
-  --white: rgb(255, 255, 255);
+  --white: #e3e0da;
 
   color: var(--color-main);
   --color-main: #311f1f;
@@ -340,16 +340,15 @@ h1 {
   transform: scale(0);
 }
 
-.gameslist:not(.shown) {
-  transform: scale(0);
-}
-
 
 
 /*****************gameslist**/
 
 .gameslist {
   height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 
