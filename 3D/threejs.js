@@ -65,6 +65,22 @@ testCubeMesh.position.y = 1;
 testCubeMesh.position.z = 0.3;
 scene.add(testCubeMesh);
 
+const testCube2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff }); // Replace with the desired color
+const testCubeMesh2 = new THREE.Mesh(testCube2, testCubeMaterial2);
+testCubeMesh2.position.x = -1.5;
+testCubeMesh2.position.y = -0.1;
+testCubeMesh2.position.z = 1.3;
+scene.add(testCubeMesh2);
+
+const testCube3 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+const testCubeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // Replace with the desired color
+const testCubeMesh3 = new THREE.Mesh(testCube3, testCubeMaterial3);
+testCubeMesh3.position.x = 1.2;
+testCubeMesh3.position.y = 0.5;
+testCubeMesh3.position.z = 1.3;
+scene.add(testCubeMesh3);
+
 // Baby Button
 const justBornButton = document.querySelector(".justBornButton");
 const smoothingFactorJustBorn = -4;
@@ -92,16 +108,14 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
+
+/**
+ * Camera POSITION
+ */
 camera.position.set(0, -1, 5);
 camera.lookAt(0, -1.3, 0);
 
-// Update camera position when justBornButton is clicked
-justBornButton.addEventListener("click", () => {
-  camera.position.set(0, -1, 5);
-  camera.lookAt(0, -1.3, 0);
-});
-
-// scene.add(camera);
+let isCameraAnimating = false;
 
 /**
  * Mouse
@@ -135,17 +149,19 @@ const tick = () => {
   // controls.update();
 
   // Update camera rotation based on mouse position
-  camera.position.x = THREE.MathUtils.lerp(
-    camera.position.x,
-    (mouse.x * Math.PI) / 10,
-    0.1
-  );
+  if (!isCameraAnimating) {
+    camera.position.x = THREE.MathUtils.lerp(
+      camera.position.x,
+      (mouse.x * Math.PI) / 10,
+      0.1
+    );
 
-  camera.position.y = THREE.MathUtils.lerp(
-    (camera.position.y = 1.6),
-    mouse.y * Math.PI * 1,
-    0.1
-  );
+    camera.position.y = THREE.MathUtils.lerp(
+      (camera.position.y = 1.6),
+      mouse.y * Math.PI * 1,
+      0.1
+    );
+  }
 
   // Move justBornButton based on mouse position
   const justBornButtonX =
@@ -182,20 +198,159 @@ const tick = () => {
   adoButton.style.left = adoButtonX + "px";
   adoButton.style.top = adoButtonY + "px";
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /**
+   * Born ANIMATION
+   */
+  const lookAtTargetBorn = new THREE.Vector3(0, -1.3, 0);
+
   justBornButton.addEventListener("click", () => {
+    isCameraAnimating = true;
+    document.removeEventListener("mousemove", handleMouseMove);
+
+    /**
+     * ATTENTION
+     */
+    justBornButton.style.display = "none";
+    babyButton.style.display = "none";
+    childButton.style.display = "none";
+    adoButton.style.display = "none";
+
     gsap.to(camera.position, {
       duration: 2,
-      x: 10,
-      y: -4,
-      z: 5,
+      x: -1.5,
+      y: 0.2,
+      z: 2,
       ease: "power2.inOut",
+      onComplete: () => {
+        /**
+         * ATTENTION METTRE ISCAMERAANIMATING = FALSE EN SORTANT DU MINI JEU EST FINI
+         */
+        // isCameraAnimating = false;
+
+        document.addEventListener("mousemove", handleMouseMove);
+      },
+    });
+
+    gsap.to(lookAtTargetBorn, {
+      duration: 5,
+      x: testCube2.position.x,
+      y: testCube2.position.y,
+      z: testCube2.position.z,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        camera.lookAt(lookAtTargetBorn);
+      },
     });
   });
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /**
+   * baby ANIMATION
+   */
+  const lookAtTargetBaby = new THREE.Vector3(0, -1.3, 0);
+
+  babyButton.addEventListener("click", () => {
+    isCameraAnimating = true;
+    document.removeEventListener("mousemove", handleMouseMove);
+
+    /**
+     * ATTENTION
+     */
+    justBornButton.style.display = "none";
+    babyButton.style.display = "none";
+    childButton.style.display = "none";
+    adoButton.style.display = "none";
+
+    gsap.to(camera.position, {
+      duration: 2,
+      x: -1.5,
+      y: 1.04,
+      z: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        /**
+         * ATTENTION METTRE ISCAMERAANIMATING = FALSE EN SORTANT DU MINI JEU EST FINI
+         */
+        // isCameraAnimating = false;
+
+        document.addEventListener("mousemove", handleMouseMove);
+      },
+    });
+
+    gsap.to(lookAtTargetBorn, {
+      duration: 5,
+      x: testCube.position.x,
+      y: testCube.position.y,
+      z: testCube.position.z,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        camera.lookAt(lookAtTargetBaby);
+      },
+    });
+  });
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /**
+   * child ANIMATION
+   */
+  const lookAtTargetChild = new THREE.Vector3(0, -1.3, 0);
+
+  childButton.addEventListener("click", () => {
+    isCameraAnimating = true;
+    document.removeEventListener("mousemove", handleMouseMove);
+
+    /**
+     * ATTENTION
+     */
+    justBornButton.style.display = "none";
+    babyButton.style.display = "none";
+    childButton.style.display = "none";
+    adoButton.style.display = "none";
+
+    gsap.to(camera.position, {
+      duration: 2,
+      x: -1.5,
+      y: 1.04,
+      z: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        /**
+         * ATTENTION METTRE ISCAMERAANIMATING = FALSE EN SORTANT DU MINI JEU EST FINI
+         */
+        // isCameraAnimating = false;
+
+        document.addEventListener("mousemove", handleMouseMove);
+      },
+    });
+
+    gsap.to(lookAtTargetChild, {
+      duration: 5,
+      x: testCube.position.x,
+      y: testCube.position.y,
+      z: testCube.position.z,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        camera.lookAt(lookAtTargetChild);
+      },
+    });
+  });
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   // Render
   renderer.render(scene, camera);
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
+
+const handleMouseMove = (event) => {
+  mouse.x = (event.clientX / sizes.width) * 2 - 1;
+  mouse.y = -(event.clientY / sizes.height) * 2 + 1;
+};
+
+document.addEventListener("mousemove", handleMouseMove);
 
 tick();
