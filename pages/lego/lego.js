@@ -38,10 +38,10 @@ window.addEventListener("resize", () => {
 
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
-  µ;
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
+const clock = new THREE.Clock();
 /**
  * Renderer
  */

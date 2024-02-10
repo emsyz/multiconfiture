@@ -382,9 +382,9 @@ const tick = () => {
 
     gsap.to(lookAtTargetChild, {
       duration: 5,
-      x: testCube3.position.x,
-      y: testCube3.position.y,
-      z: testCube3.position.z,
+      x: testCubeMesh3.position.x,
+      y: testCubeMesh3.position.y,
+      z: testCubeMesh3.position.z,
       ease: "power2.inOut",
       onUpdate: () => {
         camera.lookAt(lookAtTargetChild);
