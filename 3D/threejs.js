@@ -66,8 +66,14 @@ testCubeMesh.position.z = 0.3;
 scene.add(testCubeMesh);
 
 // Baby Button
+const justBornButton = document.querySelector(".justBornButton");
+const smoothingFactorJustBorn = -4;
 const babyButton = document.querySelector(".babyButton");
-const smoothingFactor = 1.5;
+const smoothingFactorBaby = 1.5;
+const childButton = document.querySelector(".childButton");
+const smoothingFactorChild = 5;
+const adoButton = document.querySelector(".adoButton");
+const smoothingFactorAdo = -20;
 
 // Imported models
 const gltfLoader = new GLTFLoader();
@@ -135,12 +141,40 @@ const tick = () => {
     0.1
   );
 
+  // Move justBornButton based on mouse position
+  const justBornButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorJustBorn;
+  const justBornButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorJustBorn;
+
+  justBornButton.style.left = justBornButtonX + "px";
+  justBornButton.style.top = justBornButtonY + "px";
+
   // Move babyButton based on mouse position
-  const babyButtonX = ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactor;
-  const babyButtonY = ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactor;
+  const babyButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorBaby;
+  const babyButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorBaby;
 
   babyButton.style.left = babyButtonX + "px";
   babyButton.style.top = babyButtonY + "px";
+
+  // Move childButton based on mouse position
+  const childButtonX =
+    ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorChild;
+  const childButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorChild;
+
+  childButton.style.left = childButtonX + "px";
+  childButton.style.top = childButtonY + "px";
+
+  // Move adoButton based on mouse position
+  const adoButtonX = ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorAdo;
+  const adoButtonY =
+    ((mouse.y * sizes.height * -0.5) / 120) * smoothingFactorAdo;
+
+  adoButton.style.left = adoButtonX + "px";
+  adoButton.style.top = adoButtonY + "px";
 
   // Render
   renderer.render(scene, camera);
