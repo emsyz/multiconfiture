@@ -1,79 +1,207 @@
-// create an element with 'tagname'
-function create(tagname) {return document.createElement(tagname)};
-// create an element with 'tagname' and containing 'text' (can be anything)
-function createHTML(tagname, text) {
-    let nw = create(tagname);
-    if (typeof text == "string")
-        nw.appendChild(document.createTextNode(text));
-    else nw.appendChild(text);
-    return nw;
-};
+import * as decisions from "./decisionTree.js";
+import {random, create, createHTML} from "./header.js";
 
-// returns a random int [min; max]
-function random(min, max) {
-    if (min > max) {
-        let oldMin = min;
-        min = max;
-        max = oldMin;
+
+
+let sendsection = document.querySelector(".js-chat__send");
+let messagessection = document.querySelector(".js-chat");
+let smsExample = document.querySelector(".display-none .js-smsExample");
+const ALL_MESSAGES = document.querySelector(".chat__messages");
+
+    
+
+function createSMS(infos) {
+    console.log("create sms");
+    let nw = smsExample.cloneNode(true);
+    nw.classList.remove('js-smsExample');
+    if (!infos.pending) {
+        nw.classList.remove('send');
+    } else {
+        sendingTextHandling(nw, infos);
     }
-  
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+    if (infos.character == "other") {
+        nw.classList.add(infos.character);
+        nw.classList.remove("self");
+
+    }
+
+
+    let inner = nw.querySelector(".chat__msg");
+    inner.innerHTML = infos.text;
+    inner.classList = "chat__msg";
+
+    if (infos.id) {
+        inner.dataset.id = infos.id;
+    }
+
+
+    console.log("end sms");
+    return nw;
+}
+
+function sendingTextHandling(el, infos) {
+    el.addEventListener(
+        "click",
+        function() {
+            let nw = updateConvo(this, infos);
+        }
+    )
+}
+
+function respondTextHandling(el, infos) {
+    setTimeout(() => {
+        console.log("---------decision tree");
+        
+        if (!infos.next) {
+            let nw = createSMS({
+                text: infos.text,
+                id: infos.id,
+                pending: false
+            });
+            return;
+        }
+
+        let nw = createSMS(
+            decisions.tree[infos.next]
+        );
+
+        nw.classList.add("removing");
+        ALL_MESSAGES.appendChild(nw);
+        setTimeout(() => {
+            nw.classList.remove("removing");
+        }, 10);
+        ALL_MESSAGES.scrollTo(0, ALL_MESSAGES.scrollHeight);
+
+        let nexts = decisions.tree[infos.next].next;
+
+        if (nexts == undefined) return;
+        console.log("next next");
+
+        setTimeout(() => {
+            addSendingTexts(nexts);
+        }, 300);
+
+        
+        console.log(nw);
+    }, 1500);
+}
+
+function updateConvo(element, infos) {
+    console.log("---- update convo");
+    let article = element.querySelector(".chat__msg");
+    let nw = createSMS({
+        text: infos.trueText != undefined ? infos.trueText : infos.text,
+        id: infos.id,
+        pending: false
+    });
+
+    console.log(nw);
+    
+    
+    //////// MOVE MESSAGE
+    let elements = document.querySelectorAll(".chat__sendsection .chat__li.send");
+        sendsection.classList.add("removing");
+    setTimeout(() => {
+        nw.classList.add("removing");
+        ALL_MESSAGES.appendChild(nw);
+        setTimeout(() => {
+            nw.classList.remove("removing");
+            sendsection.classList.remove("removing");
+            respondTextHandling(nw, infos);
+            
+        }, 400);
+
+        for (let msg of elements) {
+            msg.remove();
+        }
+    }, 400);
+
+    return nw;
 }
 
 
-(function() {
-    let smsCards = document.querySelectorAll(".grid-sms__card");
 
-    let article = document.querySelector("#SMS");
 
-    for (const card of smsCards) {
-        card.addEventListener(
-            "click",
-            function(event) {
-                let name = this.dataset.person;
-                let pages = article.querySelectorAll(".sms-chat");
-                let page = article.querySelector(`.sms-chat[data-person='${name}']`);
 
-                for (let p of pages) {
-                    p.classList.remove('visible');
-                }
-                page.classList.add('visible');
+//////////////////////////: CHAT
 
+let smsCards = document.querySelectorAll(".grid-sms__card");
+
+let article = document.querySelector("#SMS");
+
+for (const card of smsCards) {
+    card.addEventListener(
+        "click",
+        function(event) {
+            let name = this.dataset.person;
+            let pages = article.querySelectorAll(".sms-chat");
+            let page = article.querySelector(`.sms-chat[data-person='${name}']`);
+
+            for (let p of pages) {
+                p.classList.remove('visible');
             }
-        )
+            page.classList.add('visible');
+
+        }
+    )
+}
+
+
+/////////////// MAIN
+
+function addSendingTexts(textsIds) {
+    console.log(">>>>> add sending");
+    if (typeof textsIds == "string") textsIds = [textsIds];
+    for (let text of textsIds) {
+        let infos = decisions.tree[text];
+        console.log("add sending texts");
+        let nw = createSMS(infos);
+
+        console.log(nw);
+        nw.classList.add("removing");
+        sendsection.appendChild(nw);
+        setTimeout(() => {
+            nw.classList.remove("removing");
+        }, 1000);
     }
 
     
-    /////////////// chat
-
-    let convo = document.querySelector(".js-chat");
-
-    let sendsection = convo.querySelector(".js-chat__send");
-
-    let messages = document.querySelectorAll(".chat__send");
-
-    for (let message of messages) {
-        message.addEventListener(
-            "click",
-            function() {
-                updateConvo(this, messages);
-            }
-        );
-    }
-
-    console.log(createSMS("ahahah"));
-})();
-
-function createSMS(text) {
-    let nw = document.querySelector(".js-smsExample").cloneNode(true);
-    nw.classList.remove('js-smsExample');
-    nw.querySelector(".chat__msg").innerHTML = text;
-    return nw;
 }
 
-function updateConvo(element, elements) {
-    console.log(element.innerHTML);
-    let nw = createSMS(element.innerHTML);
-    document.querySelector(".chat__messages").appendChild(nw);
-    for (msg of elements) msg.remove();
-}
+addSendingTexts(decisions.tree.start);
+
+
+
+// let nw = createSMS({
+//     text: "ta gueule mamy",
+//     trueText: "En fait ferme-là wesh",
+//     id: "0-tg",
+//     pending: true,
+//     next: "1-why"
+// });
+
+// let nw1 = createSMS({
+//     text: "quand est-ce que tu crèves",
+//     id: "0-die",
+//     pending: true,
+//     next: "1-why"
+// });
+
+// let nw2 = createSMS({
+//     text: "fdp",
+//     id: "0-fdp",
+//     pending: true
+// });
+
+// let mamy1 = createSMS({
+//     text: "mais pourquoi",
+//     id: "1-why",
+//     pending: false
+// })
+
+// console.log(">>>> main");
+// console.log(nw);
+// sendsection.appendChild(nw);
+// sendsection.appendChild(nw1);
+// sendsection.appendChild(nw2);
