@@ -1,7 +1,7 @@
 import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-
+import gsap from "gsap";
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
@@ -95,6 +95,12 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, -1, 5);
 camera.lookAt(0, -1.3, 0);
 
+// Update camera position when justBornButton is clicked
+justBornButton.addEventListener("click", () => {
+  camera.position.set(0, -1, 5);
+  camera.lookAt(0, -1.3, 0);
+});
+
 // scene.add(camera);
 
 /**
@@ -176,6 +182,15 @@ const tick = () => {
   adoButton.style.left = adoButtonX + "px";
   adoButton.style.top = adoButtonY + "px";
 
+  justBornButton.addEventListener("click", () => {
+    gsap.to(camera.position, {
+      duration: 2,
+      x: 10,
+      y: -4,
+      z: 5,
+      ease: "power2.inOut",
+    });
+  });
   // Render
   renderer.render(scene, camera);
 
