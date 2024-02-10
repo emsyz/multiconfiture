@@ -7,6 +7,11 @@ const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 const legoObjects = [];
 
+const meshTransparent = new THREE.BoxGeometry(5, 5, 5);
+const material = new THREE.MeshBasicMaterial({ alphaMap: true, opacity: 0.5 });
+const meshRaycast = new THREE.Mesh(meshTransparent, material);
+scene.add(meshRaycast);
+
 const addLegoToScene = (path) => {
   gltfLoader.load(`/3D/mesh/lego_resolved/${path}.gltf`, (gltf) => {
     const lego = gltf.scene.children[0];
