@@ -433,7 +433,7 @@ adoButton.addEventListener("click", () => {
       // }, 3000);
 
       // document.querySelector(".gameslist").classList.add("shown");
-      document.querySelector(".gamesdescription").classList.add("shown");
+      // document.querySelector(".gamesdescription").classList.add("shown");
 
       document.addEventListener("mousemove", handleMouseMove);
     },
@@ -460,27 +460,60 @@ adoButton.addEventListener("click", () => {
 
 let openGameButtons = document.querySelectorAll('.js-openGameWindow');
 
-for (let button of openGameButtons) {
-  button.addEventListener(
+let gsapButtons = document.querySelectorAll(".minigame-button");
+
+let gamedescription = document.querySelector(`.gamesdescription`);
+
+let allGamesDescriptions = gamedescription.querySelectorAll(".gamedescription__card");
+let allGamesWindows = document.querySelectorAll(".gamemain");
+
+for (let gsapBut of gsapButtons) {
+
+  console.log(">>>>> gsap but");
+
+  let gameName = gsapBut.dataset.name;
+  let openButton = gamedescription.querySelector(`.${gameName} .js-openGameWindow`);
+  let closeButton = document.querySelector(`.gameslist .${gameName} .js-closeGameWindow`);
+
+  gsapBut.addEventListener(
     "click",
     function() {
-      document.querySelector('.gamesdescription').classList.remove('shown');
+
+      setTimeout(() => {
+        gamedescription.classList.add("shown");
+        openButton.closest(".gamedescription__card").classList.add("visible");
+
+      }, 1500);
+    }
+  );
+
+  openButton.addEventListener(
+    "click",
+    function() {
+      gamedescription.classList.remove("shown");
+      for (let gameDesc of allGamesDescriptions) {
+        gameDesc.classList.remove("visible");
+      }
       setTimeout(() => {
         document.querySelector('.gameslist').classList.add('shown');
+        closeButton.closest(".gamemain").classList.add("visible");
       }, 400);
     }
   );
 
-  let gameName = button.closest(".gamedescription__card").dataset.gamename;
 
-  let closeButton = document.querySelector(`.gameslist .${gameName} .js-closeGameWindow`);
   closeButton.addEventListener(
     "click", function() {
         this.closest(".gameslist").classList.remove("shown");
+        for (let gameWindow of allGamesWindows) {
+          gameWindow.classList.remove("visible");
+        }
         isCameraAnimating = false;
         toggleAllButtons(true);
     }
   );
+
+  console.log(closeButton);
 }
 
 

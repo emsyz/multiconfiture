@@ -332,12 +332,17 @@ h1 {
 .gamepopup {
   /* transform: scale(0); */
   margin: auto;
-  transition: .4s ease-in-out;
+  transition: 1s ease-in-out;
   overflow: hidden;
 }
 
 .gameslist:not(.shown) {
   transform: scale(0);
+}
+
+.gamemain:not(.visible) {
+  opacity: 0;
+  transition: .4s ease-in-out;
 }
 
 
@@ -358,9 +363,15 @@ h1 {
   opacity: 0;
 }
 
-.gamesdescription:not(.shown) .gamedescription__card {
+.gamedescription__card:not(.visible) {
   margin-right: 50vh;
-  margin-top: 10vh;
+  margin-top: 100vh;
+  transform: rotate(-5deg);
+}
+
+.gamedescription__card.right:not(.shown) {
+  margin-left: 50vh;
+  margin-right: unset;
   transform: rotate(-5deg);
 }
 
@@ -388,8 +399,13 @@ h1 {
 
   position: absolute;
   top: 10vh;
-  right: 10vh;
+  left: 10vh;
   z-index: 1003;
+}
+
+.gamedescription__card.right {
+  left: unset !important;
+  right: 10vh;
 }
 
 .gamedescription > * {

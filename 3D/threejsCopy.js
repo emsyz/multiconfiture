@@ -53,15 +53,12 @@ scene.add(targetObject);
 const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
 scene.add(helper);
 
-
-
-
 function toggleAllButtons(showsButtons) {
-
   let shownClass = "button-visible";
   let hiddenClass = "button-hidden";
   let displayNone = "display-none";
-  if (showsButtons == undefined) showsButtons = (ALL_BUTTONS[0].classList.contains(hiddenClass));
+  if (showsButtons == undefined)
+    showsButtons = ALL_BUTTONS[0].classList.contains(hiddenClass);
   for (let but of ALL_BUTTONS) {
     if (showsButtons) {
       but.classList.add(shownClass);
@@ -87,37 +84,37 @@ function toggleAllButtons(showsButtons) {
  */
 
 // Baby cube
-const testCube = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-const testCubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Replace with the desired color
-const testCubeMesh = new THREE.Mesh(testCube, testCubeMaterial);
-testCubeMesh.position.x = -1.5;
-testCubeMesh.position.y = 1;
-testCubeMesh.position.z = 0.3;
-scene.add(testCubeMesh);
+// const testCube = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+// const testCubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Replace with the desired color
+// const testCubeMesh = new THREE.Mesh(testCube, testCubeMaterial);
+// testCubeMesh.position.x = -1.5;
+// testCubeMesh.position.y = 1;
+// testCubeMesh.position.z = 0.3;
+// scene.add(testCubeMesh);
 
-const testCube2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-const testCubeMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff }); // Replace with the desired color
-const testCubeMesh2 = new THREE.Mesh(testCube2, testCubeMaterial2);
-testCubeMesh2.position.x = -1.5;
-testCubeMesh2.position.y = -0.1;
-testCubeMesh2.position.z = 1.3;
-scene.add(testCubeMesh2);
+// const testCube2 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+// const testCubeMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff }); // Replace with the desired color
+// const testCubeMesh2 = new THREE.Mesh(testCube2, testCubeMaterial2);
+// testCubeMesh2.position.x = -1.5;
+// testCubeMesh2.position.y = -0.1;
+// testCubeMesh2.position.z = 1.3;
+// scene.add(testCubeMesh2);
 
-const testCube3 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-const testCubeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // Replace with the desired color
-const testCubeMesh3 = new THREE.Mesh(testCube3, testCubeMaterial3);
-testCubeMesh3.position.x = 1.2;
-testCubeMesh3.position.y = 0.5;
-testCubeMesh3.position.z = 0.4;
-scene.add(testCubeMesh3);
+// const testCube3 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+// const testCubeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // Replace with the desired color
+// const testCubeMesh3 = new THREE.Mesh(testCube3, testCubeMaterial3);
+// testCubeMesh3.position.x = 1.2;
+// testCubeMesh3.position.y = 0.5;
+// testCubeMesh3.position.z = 0.4;
+// scene.add(testCubeMesh3);
 
-const testCube4 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-const testCubeMaterial4 = new THREE.MeshBasicMaterial({ color: 0xfff000 }); // Replace with the desired color
-const testCubeMesh4 = new THREE.Mesh(testCube4, testCubeMaterial4);
-testCubeMesh4.position.x = 2.2;
-testCubeMesh4.position.y = 1;
-testCubeMesh4.position.z = 2;
-scene.add(testCubeMesh4);
+// const testCube4 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+// const testCubeMaterial4 = new THREE.MeshBasicMaterial({ color: 0xfff000 }); // Replace with the desired color
+// const testCubeMesh4 = new THREE.Mesh(testCube4, testCubeMaterial4);
+// testCubeMesh4.position.x = 2.2;
+// testCubeMesh4.position.y = 1;
+// testCubeMesh4.position.z = 2;
+// scene.add(testCubeMesh4);
 
 // Baby Button
 const justBornButton = document.querySelector(".justBornButton");
@@ -129,19 +126,63 @@ const smoothingFactorChild = 5;
 const adoButton = document.querySelector(".adoButton");
 const smoothingFactorAdo = -20;
 
-const ALL_BUTTONS = [
-  justBornButton,
-  babyButton,
-  childButton,
-  adoButton
-]
+const ALL_BUTTONS = [justBornButton, babyButton, childButton, adoButton];
 
 // Imported models
+// ROOM
 const gltfLoader = new GLTFLoader();
-gltfLoader.load("./3D/mesh/room2.gltf", (gltf) => {
-  const house = gltf.scene.children[0];
-  house.receiveShadow = true;
-  house.castShadow = true;
+gltfLoader.load("./3D/mesh/room/room.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.receiveShadow = true;
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// DOOR
+gltfLoader.load("./3D/mesh/room/door.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// LAPTOP
+gltfLoader.load("./3D/mesh/room/laptop.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// LEGO
+gltfLoader.load("./3D/mesh/room/lego.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// PUZZLE
+gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// PHOTO
+gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
+
+  scene.add(gltf.scene.children[0]);
+});
+
+// LIGHT
+gltfLoader.load("./3D/mesh/room/light.gltf", (gltf) => {
+  const room = gltf.scene.children[0];
+  room.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
@@ -209,13 +250,11 @@ const lookAtTargetBaby = new THREE.Vector3(0, -1.3, 0);
 const lookAtTargetChild = new THREE.Vector3(0, -1.3, 0);
 const lookAtTargetAdo = new THREE.Vector3(0, -1.3, 0);
 
-
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /**
-   * Born ANIMATION
-   */
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Born ANIMATION
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 justBornButton.addEventListener("click", () => {
   isCameraAnimating = true;
@@ -259,14 +298,11 @@ justBornButton.addEventListener("click", () => {
   // });
 });
 
+/**
+ * baby ANIMATION
+ */
 
-
-  /**
-   * baby ANIMATION
-   */
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 babyButton.addEventListener("click", () => {
   isCameraAnimating = true;
@@ -311,13 +347,11 @@ babyButton.addEventListener("click", () => {
   // });
 });
 
+/**
+ * child ANIMATION
+ */
 
-  /**
-   * child ANIMATION
-   */
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 childButton.addEventListener("click", () => {
   isCameraAnimating = true;
@@ -361,13 +395,11 @@ childButton.addEventListener("click", () => {
   // });
 });
 
+/**
+ * ado ANIMATION
+ */
 
-
-  /**
-   * ado ANIMATION
-   */
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 adoButton.addEventListener("click", () => {
   isCameraAnimating = true;
@@ -400,9 +432,8 @@ adoButton.addEventListener("click", () => {
       //   toggleAllButtons(true);
       // }, 3000);
 
-
       // document.querySelector(".gameslist").classList.add("shown");
-      document.querySelector(".gamesdescription").classList.add("shown");
+      // document.querySelector(".gamesdescription").classList.add("shown");
 
       document.addEventListener("mousemove", handleMouseMove);
     },
@@ -410,9 +441,9 @@ adoButton.addEventListener("click", () => {
 
   gsap.to(lookAtTargetAdo, {
     duration: 5,
-    x: testCube3.position.x,
-    y: testCube3.position.y,
-    z: testCube3.position.z,
+    // x: testMeshCube3.position.x,
+    // y: testMeshCube3.position.y,
+    // z: testMeshCube3.position.z,
     ease: "power2.inOut",
     onUpdate: () => {
       camera.lookAt(lookAtTargetAdo);
@@ -425,20 +456,64 @@ adoButton.addEventListener("click", () => {
 
 
 
-///////////////////////////////////////////////// SHOW GAME
+///////////////////////////////////////////////// SHOW & HIDE GAME
 
 let openGameButtons = document.querySelectorAll('.js-openGameWindow');
 
-for (let button of openGameButtons) {
-  button.addEventListener(
+let gsapButtons = document.querySelectorAll(".minigame-button");
+
+let gamedescription = document.querySelector(`.gamesdescription`);
+
+let allGamesDescriptions = gamedescription.querySelectorAll(".gamedescription__card");
+let allGamesWindows = document.querySelectorAll(".gamemain");
+
+for (let gsapBut of gsapButtons) {
+
+  console.log(">>>>> gsap but");
+
+  let gameName = gsapBut.dataset.name;
+  let openButton = gamedescription.querySelector(`.${gameName} .js-openGameWindow`);
+  let closeButton = document.querySelector(`.gameslist .${gameName} .js-closeGameWindow`);
+
+  gsapBut.addEventListener(
     "click",
     function() {
-      document.querySelector('.gamesdescription').classList.remove('shown');
+
+      setTimeout(() => {
+        gamedescription.classList.add("shown");
+        openButton.closest(".gamedescription__card").classList.add("visible");
+
+      }, 1500);
+    }
+  );
+
+  openButton.addEventListener(
+    "click",
+    function() {
+      gamedescription.classList.remove("shown");
+      for (let gameDesc of allGamesDescriptions) {
+        gameDesc.classList.remove("visible");
+      }
       setTimeout(() => {
         document.querySelector('.gameslist').classList.add('shown');
+        closeButton.closest(".gamemain").classList.add("visible");
       }, 400);
     }
   );
+
+
+  closeButton.addEventListener(
+    "click", function() {
+        this.closest(".gameslist").classList.remove("shown");
+        for (let gameWindow of allGamesWindows) {
+          gameWindow.classList.remove("visible");
+        }
+        isCameraAnimating = false;
+        toggleAllButtons(true);
+    }
+  );
+
+  console.log(closeButton);
 }
 
 
@@ -470,9 +545,6 @@ const tick = () => {
   // Render
   renderer.render(scene, camera);
 
-
-
-  
   // Move justBornButton based on mouse position
   const justBornButtonX =
     ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorJustBorn;
@@ -510,32 +582,14 @@ const tick = () => {
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
-
-
-  
 };
 
 const handleMouseMove = (event) => {
   mouse.x = (event.clientX / sizes.width) * 2 - 1;
   mouse.y = (event.clientY / sizes.height) * 2 + 1;
-
-
-
-
-
-
-
 };
 
 document.addEventListener("mousemove", handleMouseMove);
-
-
-
-
-
-
-
-
 
 ///////////////////////////////// MAIN
 
@@ -562,6 +616,5 @@ function startApp() {
 }
 
 */
-
 
 tick();
