@@ -55,25 +55,6 @@ body {
     overflow: hidden;
 }
 
-body {
-    background-color: over;
-}
-
-.webgl {
-    position: fixed;
-    top: 0;
-    left: 0;
-    outline: none;
-}
-
-.section {
-    padding: 10vw 0;
-}
-
-.container {
-    padding: 0 10vw;
-}
-
 img {
   object-fit: cover;
   max-height: 100%;

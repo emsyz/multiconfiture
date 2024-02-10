@@ -2,6 +2,13 @@ import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import gsap from "gsap";
+
+// import nunjucks from "nunjucks";
+
+// nunjucks.configure("pages", {
+//   autoescape: true
+// });
+
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
@@ -98,6 +105,13 @@ const childButton = document.querySelector(".childButton");
 const smoothingFactorChild = 5;
 const adoButton = document.querySelector(".adoButton");
 const smoothingFactorAdo = -20;
+
+const ALL_BUTTONS = [
+  justBornButton,
+  babyButton,
+  childButton,
+  adoButton
+]
 
 // Imported models
 const gltfLoader = new GLTFLoader();
@@ -219,10 +233,11 @@ const tick = () => {
     /**
      * ATTENTION
      */
-    justBornButton.style.display = "none";
-    babyButton.style.display = "none";
-    childButton.style.display = "none";
-    adoButton.style.display = "none";
+    toggleAllButtons(false);
+    // justBornButton.style.display = "none";
+    // babyButton.style.display = "none";
+    // childButton.style.display = "none";
+    // adoButton.style.display = "none";
 
     gsap.to(camera.position, {
       duration: 2,
@@ -265,10 +280,11 @@ const tick = () => {
     /**
      * ATTENTION
      */
-    justBornButton.style.display = "none";
-    babyButton.style.display = "none";
-    childButton.style.display = "none";
-    adoButton.style.display = "none";
+    toggleAllButtons(false);
+    // justBornButton.style.display = "none";
+    // babyButton.style.display = "none";
+    // childButton.style.display = "none";
+    // adoButton.style.display = "none";
 
     gsap.to(camera.position, {
       duration: 2,
@@ -312,10 +328,11 @@ const tick = () => {
     /**
      * ATTENTION
      */
-    justBornButton.style.display = "none";
-    babyButton.style.display = "none";
-    childButton.style.display = "none";
-    adoButton.style.display = "none";
+    toggleAllButtons(false);
+    // justBornButton.style.display = "none";
+    // babyButton.style.display = "none";
+    // childButton.style.display = "none";
+    // adoButton.style.display = "none";
 
     gsap.to(camera.position, {
       duration: 2,
@@ -348,7 +365,7 @@ const tick = () => {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /**
-   * child ANIMATION
+   * ado ANIMATION
    */
   const lookAtTargetAdo = new THREE.Vector3(0, -1.3, 0);
 
@@ -359,10 +376,12 @@ const tick = () => {
     /**
      * ATTENTION
      */
-    justBornButton.style.display = "none";
-    babyButton.style.display = "none";
-    childButton.style.display = "none";
-    adoButton.style.display = "none";
+
+    toggleAllButtons(false);
+    // justBornButton.style.display = "none";
+    // babyButton.style.display = "none";
+    // childButton.style.display = "none";
+    // adoButton.style.display = "none";
 
     gsap.to(camera.position, {
       duration: 2,
@@ -375,6 +394,10 @@ const tick = () => {
          * ATTENTION METTRE ISCAMERAANIMATING = FALSE EN SORTANT DU MINI JEU EST FINI
          */
         // isCameraAnimating = false;
+        setTimeout(() => {
+          isCameraAnimating = false;
+          toggleAllButtons(true);
+        }, 3000);
 
         document.addEventListener("mousemove", handleMouseMove);
       },
@@ -409,3 +432,24 @@ const handleMouseMove = (event) => {
 document.addEventListener("mousemove", handleMouseMove);
 
 tick();
+
+
+function toggleAllButtons(showsButtons) {
+
+  let shownClass = "button-visible";
+  let hiddenClass = "button-hidden";
+  let displayNone = "display-none";
+  if (showsButtons == undefined) showsButtons = (ALL_BUTTONS[0].classList.contains(hiddenClass));
+  for (let but of ALL_BUTTONS) {
+    if (showsButtons) {
+      but.classList.add(shownClass);
+      but.classList.remove(hiddenClass, displayNone);
+    } else {
+      but.classList.add(hiddenClass);
+      but.classList.remove(shownClass);
+      setTimeout(() => {
+        but.classList.add(displayNone);
+      }, 400);
+    }
+  }
+}
