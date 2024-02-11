@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-const canvas = document.querySelector("canvas.webgl");
+const canvas = document.querySelector("canvas.webgl2");
 const scene = new THREE.Scene();
 
 const gltfLoader = new GLTFLoader();
@@ -170,8 +170,14 @@ function checkCollisions() {
 const checkWinCondition = () => {
   if (collisionCounter >= 5) {
     console.log("You win!");
+    document.querySelector('.gamemain.legos .js-closeGameWindow').classList.add('visible');
   }
 };
+
+
+
+
+
 
 const clock = new THREE.Clock();
 let previousTime = 0;

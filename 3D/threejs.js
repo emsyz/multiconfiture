@@ -519,7 +519,7 @@ let STORY = {
 
   checkIfGameOver: function () {
     console.log(this["legos"] && this["puzzle"]);
-    if (this["legos"] && this["puzzle"]) {
+    if (this["legos"] && this["puzzle"] && this["photos"] && this["sms"]) {
       toggleAllButtons(false);
 
       document.querySelector(".endButton").classList.add("visible");
@@ -694,9 +694,27 @@ document.querySelector(".js-openPuzzle").addEventListener("click", function () {
     puzzleList.classList.add("display-none");
   } catch (e) {}
 
-  setTimeout(() => {
-    document
-      .querySelector(".gamemain.puzzle .js-closeGameWindow")
-      .classList.add("visible");
-  }, 2000);
-});
+    setTimeout(() => {
+      document.querySelector('.gamemain.puzzle .js-closeGameWindow').classList.add('visible');
+    }, 2000);
+  }
+);
+
+
+
+
+/////////////// legos
+
+
+
+
+
+
+// document.querySelector(".js-openLegos").addEventListener(
+//   "click",
+//   function() {
+//     setTimeout(() => {
+//       document.querySelector('.gamemain.legos .js-closeGameWindow').classList.add('visible');
+//     }, 2000);
+//   }
+// );
