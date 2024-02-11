@@ -93,8 +93,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://i.pinimg.com/564x/36/18/c5/3618c544af9803004da77bf7847ce217.jpg")
-    50% 50% / cover;
+  background: url(../../assets/BouttonIcones/nextPhoto.png) 50% 50% / cover;
+  border: 0 !important;
   width: var(--sq);
   height: var(--sq);
   --sq: 120px;
