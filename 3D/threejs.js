@@ -502,29 +502,22 @@ endButton.addEventListener("click", () => {
   });
 });
 
-
-
-
-
-
-
-
 ///////////////////////////////// VICTORY
 
 let STORY = {
-  "sms": false,
-  "puzzle": false,
-  "photos": false,
-  "legos": false,
+  sms: false,
+  puzzle: false,
+  photos: false,
+  legos: false,
 
-  checkIfGameOver: function() {
+  checkIfGameOver: function () {
     console.log(this["legos"] && this["puzzle"]);
     if (this["legos"] && this["puzzle"]) {
       toggleAllButtons(false);
 
-      document.querySelector(".endButton").classList.add('visible');
+      document.querySelector(".endButton").classList.add("visible");
     }
-  }
+  },
 };
 
 ///////////////////////////////////////////////// SHOW & HIDE GAME
@@ -667,13 +660,6 @@ const handleMouseMove = (event) => {
 };
 
 document.addEventListener("mousemove", handleMouseMove);
-
-
-
-
-
-
-
 
 ///////////////////////////////// MAIN
 
