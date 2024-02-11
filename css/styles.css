@@ -519,6 +519,10 @@ h2 {
   right: var(--gap);
 }
 
+.gamepopup:not(.shown) .legos canvas {
+  display: none;
+}
+
 .webgl2 {
 }
 

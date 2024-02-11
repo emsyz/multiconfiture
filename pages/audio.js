@@ -142,9 +142,8 @@ for (let controller of audiocontrollers) {
 
 
 ALL_AUDIOS.effect.volume = 0.3;
-ALL_AUDIOS.effect.volume = 0.3;
-let goodbye = document.querySelector(".audio[data-name='goodbye']");
-goodbye.volume = 0.3;
+// let goodbye = document.querySelector(".audio[data-name='goodbye']");
+// goodbye.volume = 0.3;
 
 
 
