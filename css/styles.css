@@ -463,3 +463,22 @@ h1 {
 .card-gamedescription__text {
   color: var(--sms-color-self);
 }
+
+
+
+
+
+
+/*********************** AUDIOS */
+
+#AUDIOS {
+  position: fixed;
+  z-index: 8000;
+  top: 0;
+  right: 0;
+  border: 1px solid red;
+  width: 500px;
+  height: auto;
+  max-height: 300px;
+  overflow: auto; 
+}

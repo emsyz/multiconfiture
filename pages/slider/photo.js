@@ -52,11 +52,19 @@ for (let i = 0; i < photosets.length; i++) {
             }
         );
     } else {
-        // but.addEventListener(
-        //     "click",
-        //     function() {
-        //     }
-        // );
+
+        but.addEventListener(
+            "click",
+            function() {
+                gsap.to(photos, { scrollTop: 0, duration: 0.5, ease: "power2.inOut" });
+
+                let buts = document.querySelectorAll('.js-photoset__button');
+
+                for (let but of buts) {
+                    but.classList.remove('visible');
+                }
+            }
+        );
     }
 }
 
