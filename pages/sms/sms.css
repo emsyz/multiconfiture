@@ -76,7 +76,8 @@
 .grid-sms__card {
     height: 100px;
     display: grid;
-    gap: var(--gutter);
+    margin-bottom: var(--gap);
+    column-gap: var(--gutter);
     grid-template:
         "photo . name name" 1fr
         "photo . text time" 1fr
@@ -195,6 +196,16 @@
     margin-top: var(--gutter);
 }
 
+.img .chat__msg {
+    padding: 0;
+    overflow: auto;
+}
+
+.img .chat__msg img {
+    display: block;
+    width: 100%;
+}
+
 .chat__li.other .chat__msg {
     border-radius: var(--gap) var(--gap) var(--gap) 0;
     background: var(--sms-other);
@@ -212,7 +223,7 @@
 }
 
 .chat__sendsection .chat__msg {
-    min-width: 140px;
+    min-width: 240px;
 }
 
 /* send */
