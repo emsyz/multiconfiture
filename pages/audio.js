@@ -61,8 +61,7 @@ ALL_AUDIOS.musics = document.querySelectorAll(".audio.music");
 ALL_AUDIOS.effect = document.querySelector(".audio.effect");
 ALL_AUDIOS.voff = document.querySelectorAll("audio.voff");
 
-console.log(">>>>>>>>>>> ALL AUDIOS <<<<<<<<<<<<<<<<<<")
-console.log(ALL_AUDIOS);
+// console.log(">>>>>>>>>>> ALL AUDIOS <<<<<<<<<<<<<<<<<<")
 
 let audiocontrollers = document.querySelectorAll(".JS_AUDIOMANAGE");
 

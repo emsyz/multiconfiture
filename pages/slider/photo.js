@@ -3,7 +3,7 @@ import * as THREE from "three";
 import {random} from "./header.js";
 
 let photos = document.querySelector("#PHOTOS");
-console.log(photos);
+// console.log(photos);
 
 let CurrentPosition = 0;
 
