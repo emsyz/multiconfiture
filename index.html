@@ -586,11 +586,11 @@
 
 
 
-    <div class="audios display-none" id="AUDIOS">
+    <div class="audios " id="AUDIOS">
         <div>
-            <!-- <button class="JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="dessin">
-                dessin
-            </button> -->
+            <button class="JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="goodbye" id="startMusic">
+                goodbye
+            </button>
         </div>
 
         <ul class="audios__cat musics">
@@ -603,7 +603,7 @@
             </li>
             <li>
                 music goodbye
-                <audio class="audio music" data-type="music" data-name="goodbye" controls loop autoplay>
+                <audio class="audio music" data-type="music" data-name="goodbye" controls loop autoplay playsinline>
                     <source src="./assets/audios/music/Another-Goodbye.mp3" type="audio/mp3">
                     Votre navigateur ne supporte pas cet élément
                 </audio>

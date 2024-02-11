@@ -149,7 +149,6 @@ goodbye.volume = 0.3;
 
 
 
-
 //////////////
 
 let photoAudios = document.querySelectorAll('.JS_photo_list');
