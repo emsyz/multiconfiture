@@ -14,14 +14,14 @@
 
     <!-- Buttons -->
     <div class="bodyButton">
-      <img class="justBornButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
-      <img class="babyButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
-      <img class="childButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="puzzle"/>
-      <img class="adoButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="sms"/>
+      <img class="justBornButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
+      <img class="babyButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
+      <img class="childButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="./assets/UX buttons/circle.png" alt="" data-name="puzzle"/>
+      <img class="adoButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="./assets/UX buttons/circle.png" alt="" data-name="sms"/>
 
 
       <div id="overlay"></div>
-      <img class="endButton" src="./assets/UX buttons/circle.png" alt="" data-name="sms"/>
+      <img class="endButton" src="./assets/UX buttons/circle.png" alt=""/>
     </div>
 
     <article id="MINIGAMES">
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE" data-audiofct="button">
                             Messenger
                         </button>
                     </div>
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE" data-audiofct="button">
                             Jouer
                         </button>
                     </div>
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button">
+                        <button class="js-openGameWindow card__gamedescription button JS_photo_list JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,ecoleprimaire">
                             Jouer
                         </button>
                     </div>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE" data-audiofct="button">
                             Jouer
                         </button>
                     </div>
@@ -121,7 +121,7 @@
 
                 <article id="SMS" class="sms">
 
-                    <button class="js-closeGameWindow">
+                    <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                         X
                     </button>
                     <div class="sms__grid grid-sms">
@@ -470,7 +470,7 @@
 
             <li>
                 <article class="gamemain puzzle plain">
-                    <button class="js-closeGameWindow">
+                    <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                         Retour
                     </button>
                     <div id="forPuzzle"></div>
@@ -485,7 +485,7 @@
             <article id="PHOTOS">
                 <ul class="photos-list unset">
                     <li class="photoset__li">
-                        <article class="photos-list__photoset photoset">
+                        <article class="photos-list__photoset photoset ecoleprimaire">
                             <div class="photoset__img">
                                 <img 
                                 src="../../assets/photos/illus_slider/photosouvenir_minnijeu2.png"
@@ -498,13 +498,13 @@
                                 </h2>
                             </div>
                             <div class="photoset__button">
-                                <button class="js-photoset__button">
+                                <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="dessin">
                                 </button>
                             </div>
                         </article>
                     </li>
                     <li class="photoset__li">
-                        <article class="photos-list__photoset photoset">
+                        <article class="photos-list__photoset photoset dessin">
                             <div class="photoset__img">
                                 <img 
                                 src="../../assets/photos/illus_slider/dessin.png"
@@ -517,13 +517,13 @@
                                 </h2>
                             </div>
                             <div class="photoset__button">
-                                <button class="js-photoset__button">
+                                <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="guitar">
                                 </button>
                             </div>
                         </article>
                     </li>
                     <li class="photoset__li">
-                        <article class="photos-list__photoset photoset">
+                        <article class="photos-list__photoset photoset guitar">
                             <div class="photoset__img">
                                 <img 
                                 src="../../assets/photos/illus_slider/photosouvenir_minnijeu3.png"
@@ -536,13 +536,13 @@
                                 </h2>
                             </div>
                             <div class="photoset__button">
-                                <button class="js-photoset__button">
+                                <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="cheveux">
                                 </button>
                             </div>
                         </article>
                     </li>
                     <li class="photoset__li">
-                        <article class="photos-list__photoset photoset">
+                        <article class="photos-list__photoset photoset cheveux">
                             <div class="photoset__img">
                                 <img 
                                 src="../../assets/photos/illus_slider/photosouvenir_minnijeu4.png"
@@ -555,7 +555,7 @@
                                 </h2>
                             </div>
                             <div class="photoset__button">
-                                <button class="js-photoset__button js-closeGameWindow">
+                                <button class="js-photoset__button js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                                 </button>
                             </div>
                         </article>
@@ -568,7 +568,7 @@
 
             <li>
                 <article class="gamemain legos">
-                    <button class="js-closeGameWindow">
+                    <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                         Retour
                     </button>
                     <div id="legosCanvasContainer">
@@ -579,6 +579,191 @@
             </li>
         </ul>
     </article>
+
+
+
+
+
+
+
+    <div class="audios display-none" id="AUDIOS">
+        <div>
+            <button class="JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="goodbye" id="startMusic">
+                goodbye
+            </button>
+        </div>
+
+        <ul class="audios__cat musics">
+            <li>
+                music isolation
+                <audio class="audio music" data-type="music" data-name="isolation" controls>
+                    <source src="./assets/audios/music/Isolation.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                music goodbye
+                <audio class="audio music" data-type="music" data-name="goodbye" controls loop autoplay playsinline>
+                    <source src="./assets/audios/music/Another-Goodbye.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+
+        <ul class="audios__cat effects">
+            <li>
+                effect button
+                <audio class="audio effect" data-type="effect" data-name="button" controls>
+                    <source src="./assets/audios/effects/button_effect.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+
+
+
+
+
+
+        <!-- VOFF -->
+
+        <ul class="audios__cat voff">
+            <li>
+                voff annivsansmaman
+                <audio class="audio voff" data-type="voff" data-name="annivsansmaman" controls>
+                    <source src="./assets/audios/voff/annivsansmaman.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff cheveux
+                <audio class="audio voff" data-type="voff" data-name="cheveux" controls>
+                    <source src="./assets/audios/voff/cheveux.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff dessin
+                <audio class="audio voff" data-type="voff" data-name="dessin" controls>
+                    <source src="./assets/audios/voff/dessin.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff dinodromadaire
+                <audio class="audio voff" data-type="voff" data-name="dinodromadaire" controls>
+                    <source src="./assets/audios/voff/dinodromadaire.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff ecoleprimaire
+                <audio class="audio voff" data-type="voff" data-name="ecoleprimaire" controls>
+                    <source src="./assets/audios/voff/ecoleprimaire.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff guitar
+                <audio class="audio voff" data-type="voff" data-name="guitar" controls>
+                    <source src="./assets/audios/voff/guitar.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff intro
+                <audio class="audio voff" data-type="voff" data-name="intro" controls>
+                    <source src="./assets/audios/voff/intro.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jarrivepas
+                <audio class="audio voff" data-type="voff" data-name="jarrivepas" controls>
+                    <source src="./assets/audios/voff/jarrivepas.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jarrivepas2
+                <audio class="audio voff" data-type="voff" data-name="jarrivepas2" controls>
+                    <source src="./assets/audios/voff/jarrivepas2.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu1
+                <audio class="audio voff" data-type="voff" data-name="jeu1" controls>
+                    <source src="./assets/audios/voff/jeu1.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu2
+                <audio class="audio voff" data-type="voff" data-name="jeu2" controls>
+                    <source src="./assets/audios/voff/jeu2.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu3
+                <audio class="audio voff" data-type="voff" data-name="jeu3" controls>
+                    <source src="./assets/audios/voff/jeu3.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff mrlapinou
+                <audio class="audio voff" data-type="voff" data-name="mrlapinou" controls>
+                    <source src="./assets/audios/voff/mrlapinou.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff mrlapinou2
+                <audio class="audio voff" data-type="voff" data-name="mrlapinou2" controls>
+                    <source src="./assets/audios/voff/mrlapinou2.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff noah
+                <audio class="audio voff" data-type="voff" data-name="noah" controls>
+                    <source src="./assets/audios/voff/noah.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff papamaman
+                <audio class="audio voff" data-type="voff" data-name="papamaman" controls>
+                    <source src="./assets/audios/voff/papamaman.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff passerlecap
+                <audio class="audio voff" data-type="voff" data-name="passerlecap" controls>
+                    <source src="./assets/audios/voff/passerlecap.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff puzzlenoah
+                <audio class="audio voff" data-type="voff" data-name="puzzlenoah" controls>
+                    <source src="./assets/audios/voff/puzzlenoah.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff regarderenarriere
+                <audio class="audio voff" data-type="voff" data-name="regarderenarriere" controls>
+                    <source src="./assets/audios/voff/regarderenarriere.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+        
+    </div>
 
     <!-- THREEJS CANVA -->
     <canvas class="webgl"></canvas>
@@ -594,6 +779,8 @@
 
     <!-- photos js -->
     <script type="module" src="./pages/slider/photo.js"></script>
+
+    <script type="module" src="./pages/audio.js"></script>
      <!-- puzzl js -->
     <script type="module" src="./pages/lego/lego.html"></script>
 
