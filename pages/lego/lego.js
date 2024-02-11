@@ -8,6 +8,8 @@ const gltfLoader = new GLTFLoader();
 const legoObjects = [];
 const meshRaycasts = [];
 
+let collisionCounter = 0;
+
 const addLegoToScene = (path) => {
   gltfLoader.load(`/3D/mesh/lego_resolved/${path}.gltf`, (gltf) => {
     const lego = gltf.scene.children[0];
@@ -15,7 +17,6 @@ const addLegoToScene = (path) => {
     lego.castShadow = true;
 
     lego.position.set(Math.random() * 10 - 5, 2, 0);
-    lego.scale.set(80, 80, 80);
 
     scene.add(lego);
     legoObjects.push(lego);
@@ -107,7 +108,20 @@ function onDocumentMouseMove(event) {
 
     if (intersection.length > 0) {
       const newPosition = intersection[0].point;
-      selectedObject.position.x = newPosition.x;
+
+      // Check if the selected object is the first lego model and if its x-coordinate is within the specified range
+      if (
+        legoObjects.indexOf(selectedObject) === 0 &&
+        newPosition.x >= 0 &&
+        newPosition.x <= 1
+      ) {
+        // Lock the x-coordinate to be within the specified range
+        selectedObject.position.x = Math.min(Math.max(newPosition.x, 0), 1);
+      } else {
+        // Allow movement for other objects or outside the specified range
+        selectedObject.position.x = newPosition.x;
+      }
+
       selectedObject.position.y = newPosition.y + 0.1;
       selectedObject.position.z = 0;
     }
@@ -117,7 +131,47 @@ function onDocumentMouseMove(event) {
 function onDocumentMouseUp(event) {
   event.preventDefault();
   selectedObject = null;
+
+  // Check for collisions after releasing the mouse
+  checkCollisions();
 }
+
+function checkCollisions() {
+  let newCollisionCounter = 0;
+
+  for (let i = 0; i < legoObjects.length; i++) {
+    for (let j = i + 1; j < legoObjects.length; j++) {
+      const object1 = legoObjects[i];
+      const object2 = legoObjects[j];
+
+      const distance = object1.position.distanceTo(object2.position);
+
+      // You can adjust the threshold distance for collision as needed
+      if (distance < 0.5) {
+        // Objects are considered collided
+        newCollisionCounter++;
+      }
+    }
+  }
+
+  if (newCollisionCounter > 0) {
+    // At least one collision detected in the current check
+    collisionCounter += newCollisionCounter;
+
+    checkWinCondition();
+  } else {
+    // No collisions in the current check, decrement the counter by 1
+    collisionCounter = Math.max(0, collisionCounter - 1);
+  }
+
+  console.log(`Collision Count: ${collisionCounter}`);
+}
+
+const checkWinCondition = () => {
+  if (collisionCounter >= 5) {
+    console.log("You win!");
+  }
+};
 
 const clock = new THREE.Clock();
 let previousTime = 0;

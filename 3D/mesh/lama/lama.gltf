@@ -15,33 +15,42 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"neck.001",
+			"name":"pCube1",
+			"rotation":[
+				0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
+			],
+			"scale":[
+				0.009999999776482582,
+				0.0013026033993810415,
+				0.009999999776482582
+			],
 			"translation":[
-				0.019773464649915695,
-				0.029480567201972008,
-				-0.003694529877975583
+				0,
+				0.6275383830070496,
+				0
 			]
 		}
 	],
 	"materials":[
 		{
+			"alphaMode":"BLEND",
 			"doubleSided":true,
-			"name":"Material.003",
+			"name":"lambert1",
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.14553654193878174,
-					0.13257397711277008,
-					0.8001416921615601,
-					1
-				],
+				"baseColorTexture":{
+					"index":0
+				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"roughnessFactor":0.5527864098548889
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Cylinder.018",
+			"name":"Mesh",
 			"primitives":[
 				{
 					"attributes":{
@@ -55,72 +64,91 @@
 			]
 		}
 	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/png",
+			"name":"lama",
+			"uri":"lama.png"
+		}
+	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":762,
+			"count":24,
 			"max":[
-				0.0038999998942017555,
-				0.0008500000112690032,
-				0.011594526469707489
+				50,
+				50,
+				50
 			],
 			"min":[
-				-0.0038999998942017555,
-				-0.02005000039935112,
-				-0.0042054723016917706
+				-50,
+				-50,
+				-50
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":762,
+			"count":24,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":762,
+			"count":24,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":1836,
+			"count":36,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":9144,
+			"byteLength":288,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9144,
-			"byteOffset":9144,
+			"byteLength":288,
+			"byteOffset":288,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6096,
-			"byteOffset":18288,
+			"byteLength":192,
+			"byteOffset":576,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3672,
-			"byteOffset":24384,
+			"byteLength":72,
+			"byteOffset":768,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":28056,
-			"uri":"neck_start.bin"
+			"byteLength":840,
+			"uri":"lama.bin"
 		}
 	]
 }
