@@ -3,25 +3,14 @@
   src: url(../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-canvas {
-  width: 30vw !important;
-  height: 30vh !important;
-  border: 1px solid red;
+.puzzle canvas {
+  width: 100%;
+  height: 100%;
 }
 
 #divmenu {
   position: absolute;
-  width: 0px;
+  width: auto;
   height: 10vh;
   cursor: pointer;
   z-index: 50001;
@@ -45,9 +34,6 @@ canvas {
   font-weight: bold;
   font-size: 15px;
 
-  width: 5vw;
-  height: 2vw;
-
   color: rgb(255, 213, 213);
   background-color: rgba(103, 4, 4, 0.7);
   padding: 5px;
@@ -64,7 +50,6 @@ canvas {
   font-weight: bold;
   font-size: 15px;
   text-align: center;
-  position: absolute;
   padding-top: 10%;
 
   color: rgb(255, 213, 213);
@@ -77,4 +62,11 @@ canvas {
 #divmenu.open .line:hover {
   color: black;
   cursor: pointer;
+}
+
+.gamemain.puzzle .js-closeGameWindow.round {
+  position: absolute;
+  top: var(--gap);
+  right: var(--gap);
+  z-index: 10000;
 }

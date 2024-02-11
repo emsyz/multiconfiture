@@ -676,3 +676,26 @@ const updateElapsedTime = () => {
 
 // Schedule the first update
 requestAnimationFrame(updateElapsedTime);
+
+
+
+
+/////////////// puzzle
+
+document.querySelector(".js-openPuzzle").addEventListener(
+  "click",
+  function() {
+    try {
+      let puzzleList = document.querySelector("#divmenu");
+      let puzzle = puzzleList.querySelector(".line:nth-of-type(3)");
+      puzzle.click();
+      puzzleList.classList.add('display-none');
+    } catch (e) {
+
+    }
+
+    setTimeout(() => {
+      document.querySelector('.gamemain.puzzle .js-closeGameWindow').classList.add('visible');
+    }, 2000);
+  }
+);

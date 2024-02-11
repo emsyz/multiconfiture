@@ -1641,4 +1641,8 @@ window.addEventListener("load", function () {
     puzzle.npieces = 12; // Set the number of pieces to 12 as per your requirement
     puzzle.next(); // Start the puzzle
   }
+
+
+  
+
 });
