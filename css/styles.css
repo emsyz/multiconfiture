@@ -320,17 +320,36 @@ h1 {
 .gamepopup {
   /* transform: scale(0); */
   margin: auto;
-  transition: 0.4s ease-in-out;
+  transition: 1s ease-in-out;
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .gameslist:not(.shown) {
   transform: scale(0);
 }
 
-.gameslist:not(.shown) {
+.gamemain:not(.visible) {
   transform: scale(0);
 }
+
+.gamemain {
+  transition: .4s ease-in-out;
+  
+  width: 80vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  padding: var(--gap);
+  background: var(--white);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+  border-radius: var(--gap);
+}
+
 
 /*****************gameslist**/
 
@@ -344,9 +363,15 @@ h1 {
   opacity: 0;
 }
 
-.gamesdescription:not(.shown) .gamedescription__card {
+.gamedescription__card:not(.visible) {
   margin-right: 50vh;
-  margin-top: 10vh;
+  margin-top: 100vh;
+  transform: rotate(-5deg);
+}
+
+.gamedescription__card.right:not(.shown) {
+  margin-left: 50vh;
+  margin-right: unset;
   transform: rotate(-5deg);
 }
 
@@ -364,19 +389,43 @@ h1 {
   align-items: flex-start;
   gap: var(--gap-big);
   overflow: auto;
+  scrollbar-width: none;
   width: 40vw;
   height: 80vh;
   background: url(../assets/photos/paperMain.png) 50% 50% / 100% 100%;
   padding: var(--gap-big) var(--gap-big) var(--gap-big) 100px !important;
   transition: 1s ease-in-out;
-  transform: rotate(0deg);
+  transform: rotate(0deg) !important;
 
   position: absolute;
   top: 10vh;
-  right: 10vh;
+  left: 10vh;
   z-index: 1003;
+}
+
+.gamedescription__card.right {
+  left: unset !important;
+  right: 10vh;
 }
 
 .gamedescription > * {
   z-index: 2010;
+}
+/* 
+.gamesdescription:before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url(../assets/photos/grain.jpg);
+  opacity: 0.6;
+
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+} */
+
+.card-gamedescription__text {
+  color: var(--sms-color-self);
 }

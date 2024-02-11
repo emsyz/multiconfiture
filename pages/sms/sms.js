@@ -23,8 +23,9 @@ function createSMS(infos) {
     if (infos.character == "other") {
         nw.classList.add(infos.character);
         nw.classList.remove("self");
-
     }
+
+
 
 
     let inner = nw.querySelector(".chat__msg");
@@ -75,7 +76,12 @@ function respondTextHandling(el, infos) {
 
         let nexts = decisions.tree[infos.next].next;
 
-        if (nexts == undefined) return;
+        if (nexts == undefined) {
+            setTimeout(() => {
+                document.querySelector("#SMS .js-closeGameWindow").classList.add('visible');
+                return;
+            }, 1000);
+        }
         console.log("next next");
 
         setTimeout(() => {
@@ -101,9 +107,15 @@ function updateConvo(element, infos) {
     
     //////// MOVE MESSAGE
     let elements = document.querySelectorAll(".chat__sendsection .chat__li.send");
-        sendsection.classList.add("removing");
+    sendsection.classList.add("removing");
     setTimeout(() => {
         nw.classList.add("removing");
+
+        
+
+        if (infos.image != undefined) {
+            nw.classList.add("img");
+        }
         ALL_MESSAGES.appendChild(nw);
         setTimeout(() => {
             nw.classList.remove("removing");
@@ -155,7 +167,6 @@ function addSendingTexts(textsIds) {
     if (typeof textsIds == "string") textsIds = [textsIds];
     for (let text of textsIds) {
         let infos = decisions.tree[text];
-        console.log("add sending texts");
         let nw = createSMS(infos);
 
         console.log(nw);
@@ -171,37 +182,37 @@ function addSendingTexts(textsIds) {
 
 addSendingTexts(decisions.tree.start);
 
+/*
 
+let nw = createSMS({
+    text: "ta gueule mamy",
+    trueText: "En fait ferme-là wesh",
+    id: "0-tg",
+    pending: true,
+    next: "1-why"
+});
 
-// let nw = createSMS({
-//     text: "ta gueule mamy",
-//     trueText: "En fait ferme-là wesh",
-//     id: "0-tg",
-//     pending: true,
-//     next: "1-why"
-// });
+let nw1 = createSMS({
+    text: "quand est-ce que tu crèves",
+    id: "0-die",
+    pending: true,
+    next: "1-why"
+});
 
-// let nw1 = createSMS({
-//     text: "quand est-ce que tu crèves",
-//     id: "0-die",
-//     pending: true,
-//     next: "1-why"
-// });
+let nw2 = createSMS({
+    text: "fdp",
+    id: "0-fdp",
+    pending: true
+});
 
-// let nw2 = createSMS({
-//     text: "fdp",
-//     id: "0-fdp",
-//     pending: true
-// });
+let mamy1 = createSMS({
+    text: "mais pourquoi",
+    id: "1-why",
+    pending: false
+})
 
-// let mamy1 = createSMS({
-//     text: "mais pourquoi",
-//     id: "1-why",
-//     pending: false
-// })
-
-// console.log(">>>> main");
-// console.log(nw);
-// sendsection.appendChild(nw);
-// sendsection.appendChild(nw1);
-// sendsection.appendChild(nw2);
+console.log(">>>> main");
+console.log(nw);
+sendsection.appendChild(nw);
+sendsection.appendChild(nw1);
+sendsection.appendChild(nw2);*/

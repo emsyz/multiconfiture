@@ -1,15 +1,37 @@
   /************************* SMS */
 
 #SMS {
-    width: 80vw;
-    height: 80vh;
-    position: fixed;
-    top: 10vh;
-    left: 10vw;
-    padding: var(--gap);
-    background: var(--white);
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
-    border-radius: var(--gap);
+    height: 100%;
+}
+
+.sms .js-closeGameWindow {
+    display: block;
+    width: var(--sq);
+    height: var(--sq);
+    --sq: 80px;
+    background: var(--sms-self-send);
+    border-radius: 50%;
+    border: 0;
+    position: absolute;
+    top: calc(-0.5 * var(--sq));
+    right: calc(-0.5 * var(--sq));
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    color: var(--sms-color-self);
+
+    transition: .2s all ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.sms .js-closeGameWindow.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.sms .js-closeGameWindow:hover {
+    background: var(--sms-self);
 }
 
 .sms__grid {
@@ -54,7 +76,8 @@
 .grid-sms__card {
     height: 100px;
     display: grid;
-    gap: var(--gutter);
+    margin-bottom: var(--gap);
+    column-gap: var(--gutter);
     grid-template:
         "photo . name name" 1fr
         "photo . text time" 1fr
@@ -173,6 +196,16 @@
     margin-top: var(--gutter);
 }
 
+.img .chat__msg {
+    padding: 0;
+    overflow: auto;
+}
+
+.img .chat__msg img {
+    display: block;
+    width: 100%;
+}
+
 .chat__li.other .chat__msg {
     border-radius: var(--gap) var(--gap) var(--gap) 0;
     background: var(--sms-other);
@@ -190,7 +223,7 @@
 }
 
 .chat__sendsection .chat__msg {
-    min-width: 140px;
+    min-width: 240px;
 }
 
 /* send */
