@@ -4,13 +4,14 @@
 }
 
 .gamemain.photos {
+    background: url(../../assets/photos/bqckground.jpg) 50% 50% / cover;
 
+    color: var(--white);
 }
 
 .photos-list {
     display: grid;
     grid-gap: 40vh;
-    border: 1px solid red;
     padding-top: 10vh !important;
 }
 
@@ -74,6 +75,7 @@
 .photoset__text {
     grid-area: text;
     align-self: end;
+    max-width: 250px;
 }
 
 .photoset__button {
@@ -92,7 +94,8 @@
     border-radius: 50%;
     cursor: pointer;
     margin-left: calc(0.5 * var(--sq));
-    transition: .4s ease-in-out all;
+    transition: transform .4s ease-in-out, box-shadow .4s ease-in-out;
+    position: relative;
 }
 
 .photoset__button button:hover {
