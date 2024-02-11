@@ -306,11 +306,12 @@ h1 {
 
 #overlay {
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: white;
   opacity: 0; /* Initial opacity set to transparent */
   pointer-events: none;
 }
@@ -324,6 +325,14 @@ h1 {
 
 .button-hidden {
   opacity: 0;
+}
+
+.endButton {
+  transition: transform .3s ease-in-out;
+}
+
+.endButton:not(.visible) {
+  transform: scale(0);
 }
 
 /*////////////// MINIGAMES*/
@@ -350,6 +359,10 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.gamepopup.shown {
+  z-index: 100;
 }
 
 .gameslist:not(.shown) {
