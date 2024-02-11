@@ -326,7 +326,7 @@ adoButton.addEventListener("click", () => {
       //   isCameraAnimating = false;
       //   toggleAllButtons(true);
       // }, 3000);
-
+      //
       // document.querySelector(".gameslist").classList.add("shown");
       // document.querySelector(".gamesdescription").classList.add("shown");
 
