@@ -23,26 +23,24 @@ const divisions = 10;
 // scene.add(gridHelper);
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
+const ambientLight = new THREE.AmbientLight(0xbdbdbd, 1.1);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+// DirectionnalLight
+const directionalLight = new THREE.DirectionalLight(0x666666, 1);
 directionalLight.castShadow = true;
-directionalLight.shadow.mapSize.x = 3000;
-directionalLight.shadow.mapSize.y = 3000;
-directionalLight.shadowCameraLeft = -3000;
-directionalLight.shadowCameraRight = 3000;
-directionalLight.shadowCameraTop = 3500;
-directionalLight.shadowCameraBottom = -3000;
-directionalLight.position.set(0, 1, 20);
+directionalLight.position.set(0, 0, 20);
 scene.add(directionalLight);
 
-const targetObject = new THREE.Object3D();
-targetObject.position.set(0, 0.6, 0);
+// PointLight
+const pointLight = new THREE.PointLight(0x666666, 50); // Note the corrected THREE.PointLight
+pointLight.castShadow = true;
+pointLight.position.set(0, 1.3, 3);
+scene.add(pointLight);
 
-directionalLight.target = targetObject;
-
-scene.add(targetObject);
+// const sphereSize = 0.5;
+// const pointLightHelper = new THREE.PointLightHelper(pointLight, sphereSize);
+// scene.add(pointLightHelper);
 
 // const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
 // scene.add(helper);
@@ -234,7 +232,6 @@ const gltfLoader = new GLTFLoader();
 gltfLoader.load("./3D/mesh/room/room.gltf", (gltf) => {
   const room = gltf.scene.children[0];
   room.receiveShadow = true;
-  room.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
@@ -502,29 +499,22 @@ endButton.addEventListener("click", () => {
   });
 });
 
-
-
-
-
-
-
-
 ///////////////////////////////// VICTORY
 
 let STORY = {
-  "sms": false,
-  "puzzle": false,
-  "photos": false,
-  "legos": false,
+  sms: false,
+  puzzle: false,
+  photos: false,
+  legos: false,
 
-  checkIfGameOver: function() {
+  checkIfGameOver: function () {
     console.log(this["legos"] && this["puzzle"]);
     if (this["legos"] && this["puzzle"] && this["photos"] && this["sms"]) {
       toggleAllButtons(false);
 
-      document.querySelector(".endButton").classList.add('visible');
+      document.querySelector(".endButton").classList.add("visible");
     }
-  }
+  },
 };
 
 ///////////////////////////////////////////////// SHOW & HIDE GAME
@@ -668,13 +658,6 @@ const handleMouseMove = (event) => {
 
 document.addEventListener("mousemove", handleMouseMove);
 
-
-
-
-
-
-
-
 ///////////////////////////////// MAIN
 
 tick();
@@ -691,38 +674,24 @@ const updateElapsedTime = () => {
 // Schedule the first update
 requestAnimationFrame(updateElapsedTime);
 
-
-
-
 /////////////// puzzle
 
-document.querySelector(".js-openPuzzle").addEventListener(
-  "click",
-  function() {
-    try {
-      let puzzleList = document.querySelector("#divmenu");
-      let puzzle = puzzleList.querySelector(".line:nth-of-type(3)");
-      puzzle.click();
-      puzzleList.classList.add('display-none');
-    } catch (e) {
+document.querySelector(".js-openPuzzle").addEventListener("click", function () {
+  try {
+    let puzzleList = document.querySelector("#divmenu");
+    let puzzle = puzzleList.querySelector(".line:nth-of-type(3)");
+    puzzle.click();
+    puzzleList.classList.add("display-none");
+  } catch (e) {}
 
-    }
-
-    setTimeout(() => {
-      document.querySelector('.gamemain.puzzle .js-closeGameWindow').classList.add('visible');
-    }, 2000);
-  }
-);
-
-
-
+  setTimeout(() => {
+    document
+      .querySelector(".gamemain.puzzle .js-closeGameWindow")
+      .classList.add("visible");
+  }, 2000);
+});
 
 /////////////// legos
-
-
-
-
-
 
 // document.querySelector(".js-openLegos").addEventListener(
 //   "click",

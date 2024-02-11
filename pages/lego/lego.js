@@ -170,14 +170,11 @@ function checkCollisions() {
 const checkWinCondition = () => {
   if (collisionCounter >= 5) {
     console.log("You win!");
-    document.querySelector('.gamemain.legos .js-closeGameWindow').classList.add('visible');
+    document
+      .querySelector(".gamemain.legos .js-closeGameWindow")
+      .classList.add("visible");
   }
 };
-
-
-
-
-
 
 const clock = new THREE.Clock();
 let previousTime = 0;
