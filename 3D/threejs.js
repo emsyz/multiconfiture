@@ -361,6 +361,31 @@ endButton.addEventListener("click", () => {
   });
 });
 
+
+
+
+
+
+
+
+///////////////////////////////// VICTORY
+
+let STORY = {
+  "sms": false,
+  "puzzle": false,
+  "photos": false,
+  "legos": false,
+
+  checkIfGameOver: function() {
+    console.log(this["legos"] && this["puzzle"]);
+    if (this["legos"] && this["puzzle"]) {
+      toggleAllButtons(false);
+
+      document.querySelector(".endButton").classList.add('visible');
+    }
+  }
+};
+
 ///////////////////////////////////////////////// SHOW & HIDE GAME
 
 let openGameButtons = document.querySelectorAll(".js-openGameWindow");
@@ -419,6 +444,9 @@ for (let gsapBut of gsapButtons) {
       });
       toggleAllButtons(true);
     }
+
+    STORY[gameName] = true;
+    STORY.checkIfGameOver();
   });
 }
 
@@ -498,6 +526,13 @@ const handleMouseMove = (event) => {
 };
 
 document.addEventListener("mousemove", handleMouseMove);
+
+
+
+
+
+
+
 
 ///////////////////////////////// MAIN
 
