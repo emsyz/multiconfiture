@@ -132,17 +132,17 @@ const picture4 = textureLoader.load(
 );
 
 const cube4 = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 2, 0),
+  new THREE.BoxGeometry(0.8, 1.3, 0),
   new THREE.MeshStandardMaterial({
     map: picture4,
   })
 );
 
-cube4.position.y = 1.5;
-cube4.position.x = -1.6;
+cube4.position.y = 1.48;
+cube4.position.x = -1.51;
 cube4.position.z = 0.2;
 cube4.rotation.z = Math.PI * 0.03;
-cube4.scale.set(0.1, 0.1, 0.1);
+cube4.scale.set(0.2, 0.2, 0.2);
 
 // PICTURE 5
 const picture5 = textureLoader.load("../assets/textures/photo_bebe.png");
@@ -160,7 +160,57 @@ cube5.position.z = 0.2;
 cube5.rotation.z = Math.PI * -0.01;
 cube5.scale.set(0.1, 0.1, 0.1);
 
-scene.add(cube1, cube2, cube3, cube4, cube5);
+// PICTURE 6
+const picture6 = textureLoader.load(
+  "../assets/textures/photo_anniversaire.png"
+);
+
+const cube6 = new THREE.Mesh(
+  new THREE.BoxGeometry(2, 1.3, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture6,
+  })
+);
+
+cube6.position.y = 1.2;
+cube6.position.x = -1.3;
+cube6.position.z = 0.2;
+cube6.rotation.z = Math.PI * -0.01;
+cube6.scale.set(0.15, 0.15, 0.15);
+
+// PICTURE 7
+const picture7 = textureLoader.load("../assets/textures/photo_famille.png");
+
+const cube7 = new THREE.Mesh(
+  new THREE.BoxGeometry(0.8, 1.3, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture7,
+  })
+);
+
+cube7.position.y = 1.8;
+cube7.position.x = -1.55;
+cube7.position.z = 0.2;
+cube7.rotation.z = Math.PI * -0.01;
+cube7.scale.set(0.2, 0.2, 0.2);
+
+// PICTURE 8
+const picture8 = textureLoader.load("../assets/textures/photo_puzzle.png");
+
+const cube8 = new THREE.Mesh(
+  new THREE.BoxGeometry(1.4, 0.9, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture8,
+  })
+);
+
+cube8.position.y = 1.45;
+cube8.position.x = -1.8;
+cube8.position.z = 0.2;
+cube8.rotation.z = Math.PI * -0.01;
+cube8.scale.set(0.16, 0.15, 0.15);
+
+scene.add(cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8);
 
 // ThreeJs Models
 
@@ -226,13 +276,13 @@ gltfLoader.load("./3D/mesh/room/puzzle.gltf", (gltf) => {
 });
 
 // PHOTO
-gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
-  const photos = gltf.scene.children[0];
-  photos.receiveShadow = true;
-  photos.castShadow = true;
+// gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
+//   const photos = gltf.scene.children[0];
+//   photos.receiveShadow = true;
+//   photos.castShadow = true;
 
-  scene.add(gltf.scene.children[0]);
-});
+//   scene.add(gltf.scene.children[0]);
+// });
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
