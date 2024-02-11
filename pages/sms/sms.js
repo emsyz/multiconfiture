@@ -23,8 +23,9 @@ function createSMS(infos) {
     if (infos.character == "other") {
         nw.classList.add(infos.character);
         nw.classList.remove("self");
-
     }
+
+
 
 
     let inner = nw.querySelector(".chat__msg");
@@ -106,9 +107,15 @@ function updateConvo(element, infos) {
     
     //////// MOVE MESSAGE
     let elements = document.querySelectorAll(".chat__sendsection .chat__li.send");
-        sendsection.classList.add("removing");
+    sendsection.classList.add("removing");
     setTimeout(() => {
         nw.classList.add("removing");
+
+        
+
+        if (infos.image != undefined) {
+            nw.classList.add("img");
+        }
         ALL_MESSAGES.appendChild(nw);
         setTimeout(() => {
             nw.classList.remove("removing");
