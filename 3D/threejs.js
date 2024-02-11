@@ -26,7 +26,8 @@ const divisions = 10;
 const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+// DirectionnalLight
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.castShadow = true;
 directionalLight.shadow.mapSize.x = 3000;
 directionalLight.shadow.mapSize.y = 3000;
@@ -36,6 +37,12 @@ directionalLight.shadowCameraTop = 3500;
 directionalLight.shadowCameraBottom = -3000;
 directionalLight.position.set(0, 1, 20);
 scene.add(directionalLight);
+
+// // pointLight
+// const pointLight = new THREE.pointLight(0xffffff, 1);
+// pointLight.castShadow = true;
+// pointLight.position.set(0, 1, 20);
+// scene.add(pointLightLight);
 
 const targetObject = new THREE.Object3D();
 targetObject.position.set(0, 0.6, 0);
@@ -677,25 +684,19 @@ const updateElapsedTime = () => {
 // Schedule the first update
 requestAnimationFrame(updateElapsedTime);
 
-
-
-
 /////////////// puzzle
 
-document.querySelector(".js-openPuzzle").addEventListener(
-  "click",
-  function() {
-    try {
-      let puzzleList = document.querySelector("#divmenu");
-      let puzzle = puzzleList.querySelector(".line:nth-of-type(3)");
-      puzzle.click();
-      puzzleList.classList.add('display-none');
-    } catch (e) {
+document.querySelector(".js-openPuzzle").addEventListener("click", function () {
+  try {
+    let puzzleList = document.querySelector("#divmenu");
+    let puzzle = puzzleList.querySelector(".line:nth-of-type(3)");
+    puzzle.click();
+    puzzleList.classList.add("display-none");
+  } catch (e) {}
 
-    }
-
-    setTimeout(() => {
-      document.querySelector('.gamemain.puzzle .js-closeGameWindow').classList.add('visible');
-    }, 2000);
-  }
-);
+  setTimeout(() => {
+    document
+      .querySelector(".gamemain.puzzle .js-closeGameWindow")
+      .classList.add("visible");
+  }, 2000);
+});
