@@ -8,17 +8,20 @@
   --gap-big: 70px;
   --gutter: 8px;
 
-  --grey: grey;
-  --grey-light: #dfdfdf;
-  --sms-self: #be6969;
-  --sms-self-send: #c7a1a1;
-  --sms-other: #e6e6e6;
-  --sms-color-self: white;
+  --grey: rgb(190, 190, 190);
+  --grey-light: #cb5d9a;
+  --sms-self: #cb5d9a;
+  --sms-self-send: #90627b;
+  --sms-other: #614b53;
+  --sms-color-self: rgb(255, 255, 255);
+
+
+  --background-gamemain: #4a343c;
 
   --white: rgb(255, 255, 255);
 
   color: var(--color-main);
-  --color-main: #311f1f;
+  --color-main: #ffffff;
   font-size: 1.2em;
   line-height: 1.7em;
 }
@@ -382,7 +385,7 @@ h1 {
   top: 10vh;
   left: 10vw;
   padding: var(--gap);
-  background: var(--white);
+  background: var(--background-gamemain);
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
   border-radius: var(--gap);
 }
