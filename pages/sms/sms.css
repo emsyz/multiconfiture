@@ -4,6 +4,10 @@
     height: 100%;
 }
 
+.plain #SMS {
+    padding: 8vh 10vw;
+}
+
 .sms .js-closeGameWindow {
     display: block;
     width: var(--sq);
@@ -23,6 +27,11 @@
     transition: .2s all ease-in-out;
     transform: scale(0);
     opacity: 0;
+}
+
+.plain .sms .js-closeGameWindow {
+    top: calc(0.5 * var(--sq));
+    right: calc(0.5 * var(--sq));
 }
 
 .sms .js-closeGameWindow.visible {

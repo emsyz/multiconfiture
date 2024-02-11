@@ -6,6 +6,7 @@
     <title>TNPP</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./pages/sms/sms.css">
+    <link rel="stylesheet" href="./pages/slider/photo.css">
   </head>
   <body>
 
@@ -13,8 +14,8 @@
 
     <!-- Buttons -->
     <div class="bodyButton">
-      <img class="justBornButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
-      <img class="babyButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
+      <img class="justBornButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="legos"/>
+      <img class="babyButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="photos"/>
       <img class="childButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="puzzle"/>
       <img class="adoButton minigame-button" src="./assets/UX buttons/circle.png" alt="" data-name="sms"/>
     </div>
@@ -67,7 +68,7 @@
             </li>
 
             <li>
-                <article class="gamedescription__card card-gamedescription photos" data-gamename="photos">
+                <article class="gamedescription__card card-gamedescription right photos" data-gamename="photos">
                     <div class="card-gamedescription__title">
                         <h1>
                             les photos c'est chouette
@@ -87,7 +88,7 @@
             </li>
 
             <li>
-                <article class="gamedescription__card card-gamedescription right legos" data-gamename="legos">
+                <article class="gamedescription__card card-gamedescription legos" data-gamename="legos">
                     <div class="card-gamedescription__title">
                         <h1>
                             les legos c'est chouette
@@ -112,7 +113,7 @@
         <!------------------------------------- GAMESLIST -->
         <ul class="gamepopup gameslist unset">
             <li>
-            <article class="gamemain sms">
+            <article class="gamemain sms plain">
 
                 <article id="SMS" class="sms">
 
@@ -464,7 +465,7 @@
 
 
             <li>
-                <article class="gamemain puzzle">
+                <article class="gamemain puzzle plain">
                     <button class="js-closeGameWindow">
                         Retour
                     </button>
@@ -474,10 +475,89 @@
 
 
             <li>
-                <article class="gamemain photos">
-                    <button class="js-closeGameWindow">
-                        Retour
-                    </button>
+                <article class="gamemain photos plain">
+                    
+
+            <article id="PHOTOS">
+                <ul class="photos-list unset">
+                    <li class="photoset__li">
+                        <article class="photos-list__photoset photoset">
+                            <div class="photoset__img">
+                                <img 
+                                src="../../assets/photos/illus_slider/photosouvenir_minnijeu2.png"
+                                />
+                            </div>
+
+                            <div class="photoset__text">
+                                <h2>
+                                    Rentree des classes, 2002
+                                </h2>
+                            </div>
+                            <div class="photoset__button">
+                                <button class="js-photoset__button">
+                                </button>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="photoset__li">
+                        <article class="photos-list__photoset photoset">
+                            <div class="photoset__img">
+                                <img 
+                                src="../../assets/photos/illus_slider/dessin.png"
+                                />
+                            </div>
+
+                            <div class="photoset__text">
+                                <h2>
+                                    La famille sous l'arc-en-ciel
+                                </h2>
+                            </div>
+                            <div class="photoset__button">
+                                <button class="js-photoset__button">
+                                </button>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="photoset__li">
+                        <article class="photos-list__photoset photoset">
+                            <div class="photoset__img">
+                                <img 
+                                src="../../assets/photos/illus_slider/photosouvenir_minnijeu3.png"
+                                />
+                            </div>
+
+                            <div class="photoset__text">
+                                <h2>
+                                    7 ans et deja guitariste !!
+                                </h2>
+                            </div>
+                            <div class="photoset__button">
+                                <button class="js-photoset__button">
+                                </button>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="photoset__li">
+                        <article class="photos-list__photoset photoset">
+                            <div class="photoset__img">
+                                <img 
+                                src="../../assets/photos/illus_slider/photosouvenir_minnijeu4.png"
+                                />
+                            </div>
+
+                            <div class="photoset__text">
+                                <h2>
+                                    Les cheveux roses !?
+                                </h2>
+                            </div>
+                            <div class="photoset__button">
+                                <button class="js-photoset__button js-closeGameWindow">
+                                </button>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </article>
                 </article>
             </li>
 
@@ -503,6 +583,9 @@
 
     <!-- puzzl js -->
     <script type="module" src="./pages/puzzle/puzzle.js"></script>
+
+    <!-- photos js -->
+    <script type="module" src="./pages/slider/photo.js"></script>
 
     <!-- buttons -->
     <!-- <script type="module" src="./script/buttonsScript.js"></script> -->
