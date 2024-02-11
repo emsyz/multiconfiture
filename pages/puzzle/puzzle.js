@@ -4,6 +4,7 @@ let autoStart;
 const mrandom = Math.random,
   mfloor = Math.floor,
   mhypot = Math.hypot;
+
 //-----------------------------------------------------------------------------
 function isMiniature() {
   return location.pathname.includes("/fullcpgrid/");
@@ -44,23 +45,7 @@ function arrayShuffle(array) {
   return array;
 } // arrayShuffle
 
-//-----------------------------------------------------------------------------
-// Menu class
-/*
-Vertical single level menu
-
-It is called with an object containing the following properties:
-
-  parentDiv : name of a div, or the div itself
-  idDivMenu : id which will be attributed to the menu div (child of parentDiv)
-  title : text for title of menu. remains visible when menu closed
-  lineOffset : vertical position of 1st line of menu
-  lineStep : vertical distance between top of two menu lines
-  lines : Array. Each element of this array is an object with two properties :
-          - text : text line
-          - func : "onclick" callback associated with line
-
-*/
+//----------------------------------------------------------------------------
 
 function Menu(params) {
   let parentDiv = params.parentDiv;
@@ -742,17 +727,14 @@ on number of pieces
     this.menu = new Menu({
       parentDiv: this.divGame,
       idDivMenu: "divmenu",
-      title: "MENU",
+      title: "Start the puzzle",
       lineOffset: 30,
       lineStep: 30,
       lines: [
-        { text: "load image", func: this.loadImage() },
+        { text: "6 piece", func: this.returnFunct(6) },
         { text: "12 piece", func: this.returnFunct(12) },
-        { text: "25 piece", func: this.returnFunct(25) },
-        { text: "50 piece", func: this.returnFunct(50) },
-        { text: "100 piece", func: this.returnFunct(100) },
-        { text: "200 piece", func: this.returnFunct(200) },
-        { text: "200 piece", func: this.returnFunct(20000) },
+        { text: "18 piece", func: this.returnFunct(18) },
+        { text: "24 piece", func: this.returnFunct(24) },
       ],
     });
   }
@@ -1648,10 +1630,15 @@ window.addEventListener("load", function () {
 
   autoStart = isMiniature(); // used for nice miniature in CodePen
 
-  let x = new Puzzle({
-    img: img,
+  const puzzle = new Puzzle({
+    img: "/assets/photos/peppa_pig.png",
     width: window.innerWidth,
     height: window.innerHeight,
     idiv: "forPuzzle",
   });
+
+  if (autoStart) {
+    puzzle.npieces = 12; // Set the number of pieces to 12 as per your requirement
+    puzzle.next(); // Start the puzzle
+  }
 });

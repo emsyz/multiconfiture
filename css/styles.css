@@ -337,8 +337,8 @@ h1 {
 }
 
 .gamemain {
-  transition: .4s ease-in-out;
-  
+  transition: 0.4s ease-in-out;
+
   width: 80vw;
   height: 80vh;
   position: fixed;
@@ -349,7 +349,6 @@ h1 {
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
   border-radius: var(--gap);
 }
-
 
 /*****************gameslist**/
 
