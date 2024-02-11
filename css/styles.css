@@ -247,6 +247,13 @@ h3 {
 h1 {
   text-align: center;
   color: var(--sms-self);
+  font-size: 8em;
+  font-weight: normal;
+}
+
+h2 {
+  text-align: center;
+  color: var(--sms-self);
   font-size: 2rem;
   font-weight: normal;
 }
@@ -514,3 +521,102 @@ h1 {
 
 .webgl2 {
 }
+
+
+
+
+
+
+/*********************** INTRO */
+
+#INTRO {
+  z-index: 20000;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/photos/bqckground.jpg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  transition: all var(--seconds) ease-in-out;
+  --seconds: 1.5s;
+}
+
+#INTRO:not(.visible) {
+  margin-top: -140vh;
+  border-radius: var(--gap-small);
+}
+
+.intro__titre {
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.intro__titretext {
+  position: relative;
+  z-index: 10;
+}
+
+.button.js-START_GAME {
+  position: relative;
+  z-index: 500;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.button.js-START_GAME img{
+  max-width: 30vw;
+}
+
+
+
+.sticker {
+  display: block;
+  position: absolute;
+  height: 30vh;
+  transition: all var(--seconds) ease-in-out;
+}
+
+#INTRO:not(.visible) .sticker {
+  margin-top: 20vh;
+}
+
+.sticker.lapinou {
+  bottom: 0;
+  left: 0;
+  height: 50vh;
+}
+
+.sticker.lego {
+  top: 80%;
+  right: 50%;
+  transform: rotate(10deg);
+}
+
+.sticker.peter {
+  top: 10%;
+  left: 10%;
+}
+
+.sticker.star1 {
+  top: 20%;
+  right: 20%;
+}
+
+.sticker.puzzle {
+  top: 60%;
+
+  right: -5%;
+  height: 40vh;
+}
+
+.sticker.guitar {
+  top: 5%;
+  left: 10%;
+  height: 40vh;
+}
+

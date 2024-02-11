@@ -732,3 +732,20 @@ document.querySelector(".js-openPuzzle").addEventListener(
 //     }, 2000);
 //   }
 // );
+
+
+
+
+
+
+
+
+/////////////////// intro
+
+
+document.querySelector("#INTRO .js-START_GAME").addEventListener(
+  "click",
+  function() {
+    this.closest('#INTRO').classList.remove('visible');
+  }
+);

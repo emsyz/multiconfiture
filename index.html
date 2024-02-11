@@ -25,6 +25,33 @@
       <img class="endButton JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,jarrivepas" src="./assets/UX buttons/circle.png" alt=""/>
     </div>
 
+
+    <article id="INTRO" class="intro visible">
+        <div class="intro__titre">
+            <div class="intro__titretext">
+                <h1>
+                    perdue
+                </h1>
+            </div>
+
+            <button class="button js-START_GAME JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,intro,goodbye">
+                <img src="./assets/BouttonIcones/btn_start.png" alt="">
+            </button>
+
+            <img src="./assets/photos/sticker/guitar.png" alt="" class="sticker sticker--1 guitar">
+    
+            <!-- <img src="./assets/photos/sticker/lego.png" alt="" class="sticker sticker--3 lego"> -->
+            <!-- <img src="./assets/photos/sticker/petererpow.png" alt="" class="sticker sticker--4 peter"> -->
+    
+            <img src="./assets/photos/sticker/puzzle.png" alt="" class="sticker sticker--5 puzzle">
+            <img src="./assets/photos/sticker/star.png" alt="" class="sticker sticker--6 star1">
+        </div>
+        <img src="./assets/photos/sticker/lapinou.png" alt="" class="sticker sticker--2 lapinou">
+
+        <!-- <img src="./assets/photos/sticker/star2.png" alt="" class="sticker sticker--7 star2"> -->
+        <!-- <img src="./assets/photos/sticker/tinkerbell.png" alt="" class="sticker sticker--8 tinkerbell"> -->
+    </article>
+
     <article id="MINIGAMES">
 
 
@@ -35,9 +62,9 @@
             <li>
                 <article class="gamedescription__card card-gamedescription sms" data-gamename="sms">
                     <div class="card-gamedescription__title">
-                        <h1>
+                        <h2>
                             12 janvier 2007
-                        </h1>
+                        </h2>
                     </div>
 
                     <div class="card-gamedescription__text">
@@ -55,9 +82,9 @@
             <li>
                 <article class="gamedescription__card card-gamedescription right puzzle" data-gamename="puzzle">
                     <div class="card-gamedescription__title">
-                        <h1>
+                        <h2>
                             Les puzzles de mon enfance
-                        </h1>
+                        </h2>
                     </div>
 
                     <div class="card-gamedescription__text">
@@ -75,9 +102,9 @@
             <li>
                 <article class="gamedescription__card card-gamedescription right photos" data-gamename="photos">
                     <div class="card-gamedescription__title">
-                        <h1>
+                        <h2>
                             Polaroids
-                        </h1>
+                        </h2>
                     </div>
 
                     <div class="card-gamedescription__text">
@@ -95,9 +122,9 @@
             <li>
                 <article class="gamedescription__card card-gamedescription legos" data-gamename="legos">
                     <div class="card-gamedescription__title">
-                        <h1>
+                        <h2>
                             Les legos
-                        </h1>
+                        </h2>
                     </div>
 
                     <div class="card-gamedescription__text">
@@ -127,7 +154,7 @@
                     </button>
                     <div class="sms__grid grid-sms">
                         <div class="grid-sms__title">
-                            <h2>Discussions</h2>
+                            <h3>Discussions</h3>
                         </div>
                 
                         <div class="grid-sms__list">
@@ -507,9 +534,9 @@
                                     </div>
 
                                     <div class="photoset__text">
-                                        <h2>
+                                        <h3>
                                             Rentree des classes, 2002
-                                        </h2>
+                                        </h3>
                                     </div>
                                     <div class="photoset__button">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="dessin">
@@ -526,9 +553,9 @@
                                     </div>
 
                                     <div class="photoset__text">
-                                        <h2>
+                                        <h3>
                                             La famille sous l'arc-en-ciel
-                                        </h2>
+                                        </h3>
                                     </div>
                                     <div class="photoset__button">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="guitar">
@@ -545,9 +572,9 @@
                                     </div>
 
                                     <div class="photoset__text">
-                                        <h2>
+                                        <h3>
                                             7 ans et deja guitariste !!
-                                        </h2>
+                                        </h3>
                                     </div>
                                     <div class="photoset__button">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="cheveux">
@@ -564,9 +591,9 @@
                                     </div>
 
                                     <div class="photoset__text">
-                                        <h2>
+                                        <h3>
                                             Les cheveux roses !?
-                                        </h2>
+                                        </h3>
                                     </div>
                                     <div class="photoset__button">
                                         <button class="js-photoset__button js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
@@ -604,7 +631,7 @@
             </li>
             <li>
                 music goodbye
-                <audio class="audio music" data-type="music" data-name="goodbye" controls loop autoplay playsinline>
+                <audio class="audio music" data-type="music" data-name="goodbye" controls loop>
                     <source src="./assets/audios/music/Another-Goodbye.mp3" type="audio/mp3">
                     Votre navigateur ne supporte pas cet élément
                 </audio>
