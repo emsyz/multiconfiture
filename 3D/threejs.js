@@ -71,6 +71,97 @@ function toggleAllButtons(showsButtons) {
  * Models
  */
 
+// PICTURE ON THE WALL
+const textureLoader = new THREE.TextureLoader();
+
+// PICTURE 1
+const picture1 = textureLoader.load("../assets/textures/dessinenfant.png");
+
+const cube1 = new THREE.Mesh(
+  new THREE.BoxGeometry(0.9, 1, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture1,
+  })
+);
+
+cube1.position.y = 1.7;
+cube1.position.x = -1.3;
+cube1.position.z = 0.2;
+cube1.rotation.z = Math.PI / -25;
+cube1.scale.set(0.2, 0.2, 0.2);
+
+// PICTURE 2
+const picture2 = textureLoader.load(
+  "../assets/textures/photosouvenir_minnijeu2.png"
+);
+
+const cube2 = new THREE.Mesh(
+  new THREE.BoxGeometry(0.7, 1.1, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture2,
+  })
+);
+
+cube2.position.y = 1.7;
+cube2.position.x = -1.8;
+cube2.position.z = 0.2;
+cube2.rotation.z = Math.PI * 0.01;
+cube2.scale.set(0.2, 0.2, 0.2);
+
+// PICTURE 3
+const picture3 = textureLoader.load(
+  "../assets/textures/photosouvenir_minnijeu3.png"
+);
+
+const cube3 = new THREE.Mesh(
+  new THREE.BoxGeometry(2, 1.1, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture3,
+  })
+);
+
+cube3.position.y = 1.2;
+cube3.position.x = -1.8;
+cube3.position.z = 0.2;
+cube3.rotation.z = Math.PI * 0.015736832;
+cube3.scale.set(0.2, 0.2, 0.2);
+
+// PICTURE 4
+const picture4 = textureLoader.load(
+  "../assets/textures/photosouvenir_minnijeu4.png"
+);
+
+const cube4 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 2, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture4,
+  })
+);
+
+cube4.position.y = 1.5;
+cube4.position.x = -1.6;
+cube4.position.z = 0.2;
+cube4.rotation.z = Math.PI * 0.03;
+cube4.scale.set(0.1, 0.1, 0.1);
+
+// PICTURE 5
+const picture5 = textureLoader.load("../assets/textures/photo_bebe.png");
+
+const cube5 = new THREE.Mesh(
+  new THREE.BoxGeometry(2, 1.3, 0),
+  new THREE.MeshStandardMaterial({
+    map: picture5,
+  })
+);
+
+cube5.position.y = 1.45;
+cube5.position.x = -1.2;
+cube5.position.z = 0.2;
+cube5.rotation.z = Math.PI * -0.01;
+cube5.scale.set(0.1, 0.1, 0.1);
+
+scene.add(cube1, cube2, cube3, cube4, cube5);
+
 // ThreeJs Models
 
 // Baby Button
