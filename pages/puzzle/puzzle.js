@@ -4,6 +4,7 @@ let autoStart;
 const mrandom = Math.random,
   mfloor = Math.floor,
   mhypot = Math.hypot;
+
 //-----------------------------------------------------------------------------
 function isMiniature() {
   return location.pathname.includes("/fullcpgrid/");
@@ -44,23 +45,7 @@ function arrayShuffle(array) {
   return array;
 } // arrayShuffle
 
-//-----------------------------------------------------------------------------
-// Menu class
-/*
-Vertical single level menu
-
-It is called with an object containing the following properties:
-
-  parentDiv : name of a div, or the div itself
-  idDivMenu : id which will be attributed to the menu div (child of parentDiv)
-  title : text for title of menu. remains visible when menu closed
-  lineOffset : vertical position of 1st line of menu
-  lineStep : vertical distance between top of two menu lines
-  lines : Array. Each element of this array is an object with two properties :
-          - text : text line
-          - func : "onclick" callback associated with line
-
-*/
+//----------------------------------------------------------------------------
 
 function Menu(params) {
   let parentDiv = params.parentDiv;
@@ -742,16 +727,14 @@ on number of pieces
     this.menu = new Menu({
       parentDiv: this.divGame,
       idDivMenu: "divmenu",
-      title: "MENU",
+      title: "Start the puzzle",
       lineOffset: 30,
       lineStep: 30,
       lines: [
-        { text: "load image", func: this.loadImage() },
+        { text: "6 piece", func: this.returnFunct(6) },
         { text: "12 piece", func: this.returnFunct(12) },
-        { text: "25 piece", func: this.returnFunct(25) },
-        { text: "50 piece", func: this.returnFunct(50) },
-        { text: "100 piece", func: this.returnFunct(100) },
-        { text: "200 piece", func: this.returnFunct(200) },
+        { text: "18 piece", func: this.returnFunct(18) },
+        { text: "24 piece", func: this.returnFunct(24) },
       ],
     });
   }
@@ -1449,17 +1432,7 @@ Puzzle.prototype.emphasize = function (npp) {
     } // for kc
   } // for kbcl;
 
-  // make shadow
-  // ctx.fillStyle = "none";
-  // // ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-  // // ctx.shadowBlur = 4;
-  // // ctx.shadowOffsetX = 4;
-  // // ctx.shadowOffsetY = 4;
-  // ctx.fill();
-
-  // add image clipped by path
   ctx.clip("evenodd");
-  // reset shadow else FF does not clip image
   ctx.shadowColor = "rgba(0, 0, 0, 0)";
   ctx.shadowBlur = 0;
   ctx.shadowOffsetX = 0;
@@ -1476,11 +1449,9 @@ Puzzle.prototype.emphasize = function (npp) {
     this.width,
     this.height
   );
-
-  // hide original PolyPiece
   for (k = 0; k < ppc.pieces.length; k++) {
     ppc.pieces[k].theDiv.style.visibility = "hidden";
-  } // for k
+  }
 
   ctx.restore();
 
@@ -1491,12 +1462,6 @@ Puzzle.prototype.emphasize = function (npp) {
     ppc.pieces[0].where().y - (ppc.pieces[0].ky - 1) * this.dy + "px";
   this.canvMobile.style.visibility = "visible";
 }; // emphasize
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -
-
-// checks if p1 and p2 pieces are close to each other
-// dx is -1, 0 or 1 to check left, (top or bottom) or right side of p1
-// dy is -1, 0 or 1 to check top, (left or right) or bottom of p2
 
 Puzzle.prototype.near = function (p1, p2, dx, dy) {
   let ou1 = p1.where();
@@ -1665,10 +1630,15 @@ window.addEventListener("load", function () {
 
   autoStart = isMiniature(); // used for nice miniature in CodePen
 
-  let x = new Puzzle({
-    img: img,
+  const puzzle = new Puzzle({
+    img: "/assets/photos/peppa_pig.png",
     width: window.innerWidth,
     height: window.innerHeight,
     idiv: "forPuzzle",
   });
+
+  if (autoStart) {
+    puzzle.npieces = 12; // Set the number of pieces to 12 as per your requirement
+    puzzle.next(); // Start the puzzle
+  }
 });
