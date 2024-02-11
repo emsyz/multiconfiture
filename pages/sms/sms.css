@@ -1,298 +1,301 @@
-  /************************* SMS */
+/************************* SMS */
 
 #SMS {
-    height: 100%;
+  height: 100%;
 }
 
 .plain #SMS {
-    padding: 8vh 10vw;
+  padding: 8vh 10vw;
 }
 
 .js-closeGameWindow.round {
-    display: block;
-    width: var(--sq);
-    height: var(--sq);
-    --sq: 80px;
-    background: var(--sms-self-send);
-    border-radius: 50%;
-    border: 0;
+  display: block;
+  width: var(--sq);
+  height: var(--sq);
+  --sq: 80px;
+  background: var(--sms-self-send);
+  border-radius: 50%;
+  border: 0;
 
-    color: var(--sms-color-self);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+  color: var(--sms-color-self);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 
-    transition: .2s all ease-in-out;
-    transform: scale(0);
-    opacity: 0;
+  transition: 0.2s all ease-in-out;
+  transform: scale(0);
+  opacity: 0;
 }
 
 .sms .js-closeGameWindow {
-    position: absolute;
-    top: calc(-0.5 * var(--sq));
-    right: calc(-0.5 * var(--sq));
+  position: absolute;
+  top: calc(-0.5 * var(--sq));
+  right: calc(-0.5 * var(--sq));
 }
 
 .plain .sms .js-closeGameWindow {
-    top: calc(0.5 * var(--sq));
-    right: calc(0.5 * var(--sq));
+  top: calc(0.5 * var(--sq));
+  right: calc(0.5 * var(--sq));
 }
 
 .js-closeGameWindow.round.visible {
-    transform: scale(1);
-    opacity: 1;
+  transform: scale(1);
+  opacity: 1;
 }
 
 .sms .js-closeGameWindow:hover {
-    background: var(--sms-self);
+  background: var(--sms-self);
 }
 
 .sms__grid {
-    display: grid;
-    gap: var(--gap);
-    height: 100%;
+  display: grid;
+  gap: var(--gap);
+  height: 100%;
 
-    grid-template:
-        "title line convo" auto
-        "list  line convo" 1fr
-        / 1fr 1px 2fr;
+  grid-template:
+    "title line convo" auto
+    "list  line convo" 1fr
+    / 1fr 1px 2fr;
 }
 
 .sms__grid::before {
-    display: block;
-    grid-area: line;
-    content: '';
-    grid-template: line;
-    background: var(--grey-light);
-    width: 1px;
-    height: 100%;
+  display: block;
+  grid-area: line;
+  content: "";
+  grid-template: line;
+  background: var(--grey-light);
+  width: 1px;
+  height: 100%;
 }
 
 .sms__grid > * {
 }
 
 .grid-sms__title {
-    grid-area: title;
+  grid-area: title;
 }
 
 .grid-sms__convo {
-    grid-area: convo;
-    position: relative;
+  grid-area: convo;
+  position: relative;
 }
 
 .grid-sms__list {
-    grid-area: list;
-    overflow: auto;
-    scrollbar-width: none;
+  grid-area: list;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .grid-sms__card {
-    height: 100px;
-    display: grid;
-    margin-bottom: var(--gap);
-    column-gap: var(--gutter);
-    grid-template:
-        "photo . name name" 1fr
-        "photo . text time" 1fr
-        / auto var(--gap-small) 1fr auto;
+  height: 100px;
+  display: grid;
+  margin-bottom: var(--gap);
+  column-gap: var(--gutter);
+  grid-template:
+    "photo . name name" 1fr
+    "photo . text time" 1fr
+    / auto var(--gap-small) 1fr auto;
 }
 
 .card-sms {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .card-sms__name {
-    grid-area: name;
-    align-self: flex-end;
+  grid-area: name;
+  align-self: flex-end;
 }
 
 .card-sms__text {
-    grid-area: text;
-    align-self: flex-start;
+  grid-area: text;
+  align-self: flex-start;
 }
 
 .card-sms__time {
-    grid-area: time;
-    align-self: flex-start;
+  grid-area: time;
+  align-self: flex-start;
 }
 
 .card-sms__photo {
-    grid-area: photo;
-    display: grid;
-    align-items: center;
+  grid-area: photo;
+  display: grid;
+  align-items: center;
 }
 
 .card-sms__photo img {
-    display: block;
-    width: var(--sq);
-    height: var(--sq);
-    --sq: 4vw;
-    min-width: var(--sq-min);
-    min-height: var(--sq-min);
-    --sq-min: 30px;
-    border-radius: 50%;
+  display: block;
+  width: var(--sq);
+  height: var(--sq);
+  --sq: 4vw;
+  min-width: var(--sq-min);
+  min-height: var(--sq-min);
+  --sq-min: 30px;
+  border-radius: 50%;
 }
 
 .sms-chat:not(.visible) {
-    display: none !important;
+  display: none !important;
 }
 
 .sms-chat {
-    display: grid;
-    grid-gap: var(--gutter);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    grid-template:
-        "header" auto
-        "main" 1fr
-        "send" auto
-        / 1fr;
+  display: grid;
+  grid-gap: var(--gutter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  grid-template:
+    "header" auto
+    "main" 1fr
+    "send" auto
+    / 1fr;
 }
 
 .sms-chat__header {
-    grid-area: header;
+  grid-area: header;
 }
 
 .sms-chat__main {
-    grid-area: main;
-    height: 100%;
-    padding-left: var(--gap);
+  grid-area: main;
+  height: 100%;
+  padding-left: var(--gap);
 }
 
-  /* SMS CONVO */
+/* SMS CONVO */
 
 .sms-chat__header {
-    display: grid;
-    gap: var(--gutter);
-    grid-template:
-        "ava . name" 1fr
-        "ava . online" 1fr
-        / auto var(--gap-small) 1fr;
-    padding-bottom: var(--gutter);
-    border-bottom: 1px solid var(--grey-light);
+  display: grid;
+  gap: var(--gutter);
+  grid-template:
+    "ava . name" 1fr
+    "ava . online" 1fr
+    / auto var(--gap-small) 1fr;
+  padding-bottom: var(--gutter);
+  border-bottom: 1px solid var(--grey-light);
 }
 
 .sms-header__ava {
-    grid-area: ava;
+  grid-area: ava;
 }
 
 .sms-header__ava img {
-    display: block;
-    width: var(--sq);
-    height: var(--sq);
-    --sq: 80px;
-    border-radius: 50%;
+  display: block;
+  width: var(--sq);
+  height: var(--sq);
+  --sq: 80px;
+  border-radius: 50%;
 }
 
 .sms-header__name {
-    grid-area: name;
-    align-self: flex-end;
+  grid-area: name;
+  align-self: flex-end;
 }
 
 .sms-header__online {
-    grid-area: online;
+  grid-area: online;
 }
 
 .sms-chat__main {
-    overflow: auto;
-    scrollbar-width: none;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
-
 .chat__msg {
-    display: inline-block;
-    max-width: 70%;
-    padding: var(--gap-small);
-    margin-top: var(--gutter);
+  display: inline-block;
+  max-width: 70%;
+  padding: var(--gap-small);
+  margin-top: var(--gutter);
 }
 
 .img .chat__msg {
-    padding: 0;
-    overflow: auto;
+  padding: 0;
+  overflow: auto;
 }
 
 .img .chat__msg img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .chat__li.other .chat__msg {
-    border-radius: var(--gap) var(--gap) var(--gap) 0;
-    background: var(--sms-other);
+  border-radius: var(--gap) var(--gap) var(--gap) 0;
+  background: var(--sms-other);
 }
 
 .chat__li.self .chat__msg {
-    border-radius: var(--gap) var(--gap) 0 var(--gap);
-    background: var(--sms-self);
+  border-radius: var(--gap) var(--gap) 0 var(--gap);
+  background: var(--sms-self);
 
-    color: var(--sms-color-self);
+  color: var(--sms-color-self);
 }
 
-.sms-chat__main *:not(.chat__li.self) + .chat__li.self, .sms-chat__main *:not(.chat__li.other) + .chat__li.other {
-    margin-top: var(--gap-small);
+.sms-chat__main *:not(.chat__li.self) + .chat__li.self,
+.sms-chat__main *:not(.chat__li.other) + .chat__li.other {
+  margin-top: var(--gap-small);
 }
 
 .chat__sendsection .chat__msg {
-    min-width: 240px;
+  min-width: 240px;
 }
 
 /* send */
 
 .chat__sendsection {
-    overflow: auto;
-    max-height: 20vh;
-    scrollbar-width: none;
-    /* border-top: 1px solid var(--grey-light); */
-    padding-top: var(--gutter);
+  overflow: auto;
+  max-height: 20vh;
+  scrollbar-width: none;
+  /* border-top: 1px solid var(--grey-light); */
+  padding-top: var(--gutter);
 }
 
 .js-chat__send {
-    gap: var(--gutter);
+  gap: var(--gutter);
 }
 
 .chat__sendsection > ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
-    align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
-.chat__li.send, .chat__li.self {
-    display: flex;
-    justify-content: flex-end;
+.chat__li.send,
+.chat__li.self {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .chat__sendsection_title {
-    flex: 1 0 100%;
-    order: -1;
-    text-align: right;
+  flex: 1 0 100%;
+  order: -1;
+  text-align: right;
 }
 
-.chat__sendsection_title:last-child, .chat__sendsection_title.unseen {
+.chat__sendsection_title:last-child,
+.chat__sendsection_title.unseen {
   opacity: 0;
-  transition: .4s ease-in-out all;
+  transition: 0.4s ease-in-out all;
 }
 
 .chat__li.self.send .chat__msg {
-    background: var(--sms-self-send);
+  background: var(--sms-self-send);
 }
 
 .chat__li.self.send .chat__msg:hover {
-    background: var(--sms-self);
-    cursor: pointer;
+  background: var(--sms-self);
+  cursor: pointer;
 }
 
-.chat__msg, .chat__sendsection_title {
-    transition: 1s all ease-in-out;
+.chat__msg,
+.chat__sendsection_title {
+  transition: 1s all ease-in-out;
 }
 
 .removing .chat__msg {
-    opacity: 0;
-    transform: scale(0);
+  opacity: 0;
+  transform: scale(0);
 }
 
 .removing .chat__sendsection_title {
-    opacity: 0;
+  opacity: 0;
 }
