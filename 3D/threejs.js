@@ -83,6 +83,8 @@ const smoothingFactorChild = 3;
 const adoButton = document.querySelector(".adoButton");
 const smoothingFactorAdo = -10;
 
+const endButton = document.querySelector(".endButton");
+
 const ALL_BUTTONS = [justBornButton, babyButton, childButton, adoButton];
 
 // Imported models
@@ -333,6 +335,32 @@ adoButton.addEventListener("click", () => {
   });
 });
 
+// END BUTTON
+endButton.addEventListener("click", () => {
+  isCameraAnimating = true;
+  document.removeEventListener("mousemove", handleMouseMove);
+
+  toggleAllButtons(false);
+
+  gsap.to(camera.position, {
+    duration: 5,
+    x: 0,
+    y: 2,
+    z: 1,
+    ease: "power2.inOut",
+    onComplete: () => {
+      // Add a fade-in animation for the overlay
+      gsap.to(overlay, {
+        duration: 1, // Adjust the duration as needed
+        opacity: 1,
+        onComplete: () => {
+          document.addEventListener("mousemove", handleMouseMove);
+        },
+      });
+    },
+  });
+});
+
 ///////////////////////////////////////////////// SHOW & HIDE GAME
 
 let openGameButtons = document.querySelectorAll(".js-openGameWindow");
@@ -425,7 +453,7 @@ const tick = () => {
   // Render
   renderer.render(scene, camera);
 
-  // Move justBornButton based on mouse position
+  // Move justBornButton based on mouse positiozn
   const justBornButtonX =
     ((mouse.x * sizes.width * 0.5) / 120) * smoothingFactorJustBorn;
   const justBornButtonY =

@@ -11,7 +11,6 @@ const ALL_MESSAGES = document.querySelector(".chat__messages");
     
 
 function createSMS(infos) {
-    console.log("create sms");
     let nw = smsExample.cloneNode(true);
     nw.classList.remove('js-smsExample');
     if (!infos.pending) {
@@ -37,7 +36,6 @@ function createSMS(infos) {
     }
 
 
-    console.log("end sms");
     return nw;
 }
 
@@ -51,9 +49,7 @@ function sendingTextHandling(el, infos) {
 }
 
 function respondTextHandling(el, infos) {
-    setTimeout(() => {
-        console.log("---------decision tree");
-        
+    setTimeout(() => {     
         if (!infos.next) {
             let nw = createSMS({
                 text: infos.text,
@@ -82,19 +78,16 @@ function respondTextHandling(el, infos) {
                 return;
             }, 1000);
         }
-        console.log("next next");
 
         setTimeout(() => {
             addSendingTexts(nexts);
         }, 300);
 
         
-        console.log(nw);
     }, 1500);
 }
 
 function updateConvo(element, infos) {
-    console.log("---- update convo");
     let article = element.querySelector(".chat__msg");
     let nw = createSMS({
         text: infos.trueText != undefined ? infos.trueText : infos.text,
@@ -102,7 +95,7 @@ function updateConvo(element, infos) {
         pending: false
     });
 
-    console.log(nw);
+
     
     
     //////// MOVE MESSAGE
@@ -163,13 +156,12 @@ for (const card of smsCards) {
 /////////////// MAIN
 
 function addSendingTexts(textsIds) {
-    console.log(">>>>> add sending");
     if (typeof textsIds == "string") textsIds = [textsIds];
     for (let text of textsIds) {
         let infos = decisions.tree[text];
         let nw = createSMS(infos);
 
-        console.log(nw);
+
         nw.classList.add("removing");
         sendsection.appendChild(nw);
         setTimeout(() => {
