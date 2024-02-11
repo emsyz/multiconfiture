@@ -15,13 +15,14 @@ const addLegoToScene = (path) => {
     lego.castShadow = true;
 
     lego.position.set(Math.random() * 10 - 5, 2, 0);
+    lego.scale.set(80, 80, 80);
 
     scene.add(lego);
     legoObjects.push(lego);
   });
 };
 
-["head", "neck", "body", "backleg", "frontleg"].forEach(addLegoToScene);
+["head", "body", "neck", "backleg", "frontleg"].forEach(addLegoToScene);
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -72,20 +73,6 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 2, 5);
 scene.add(camera);
 
-// RAYCAST MODEL
-const meshTransparent = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({
-  alphaTest: 0.5,
-  transparent: true,
-  opacity: 0.5,
-});
-
-for (let i = 0; i < 5; i++) {
-  const meshRaycast = new THREE.Mesh(meshTransparent, material);
-  scene.add(meshRaycast);
-  meshRaycasts.push(meshRaycast);
-}
-
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
@@ -101,7 +88,7 @@ document.addEventListener("mouseup", onDocumentMouseUp);
 function onDocumentMouseDown(event) {
   event.preventDefault();
 
-  const intersects = raycaster.intersectObjects(meshRaycasts);
+  const intersects = raycaster.intersectObjects(legoObjects);
 
   if (intersects.length > 0) {
     selectedObject = intersects[0].object;
@@ -121,7 +108,7 @@ function onDocumentMouseMove(event) {
     if (intersection.length > 0) {
       const newPosition = intersection[0].point;
       selectedObject.position.x = newPosition.x;
-      selectedObject.position.y = newPosition.y;
+      selectedObject.position.y = newPosition.y + 0.1;
       selectedObject.position.z = 0;
     }
   }
@@ -138,7 +125,7 @@ let previousTime = 0;
 const performRaycasting = () => {
   raycaster.setFromCamera(mouse, camera);
 
-  const intersects = raycaster.intersectObjects(meshRaycasts);
+  const intersects = raycaster.intersectObjects(legoObjects);
 
   if (intersects.length > 0) {
     document.body.style.cursor = "pointer";
