@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./pages/sms/sms.css">
     <link rel="stylesheet" href="./pages/slider/photo.css">
+    <link rel="stylesheet" href="./pages/puzzle/puzzle.css">
   </head>
   <body>
 
@@ -55,16 +56,16 @@
                 <article class="gamedescription__card card-gamedescription right puzzle" data-gamename="puzzle">
                     <div class="card-gamedescription__title">
                         <h1>
-                            les puzzle c'est chouette
+                            Les puzzles de mon enfance
                         </h1>
                     </div>
 
                     <div class="card-gamedescription__text">
-                        Les puzzles, une de mes grande passion depuis l'enfance.
+                        Les puzzles et moi c'était une grande histoire d'amour quand j'étais petite. J'entraînais souvent Noah avec moi pendant des heures !
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE" data-audiofct="button">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE js-openPuzzle" data-audiofct="button">
                             Jouer
                         </button>
                     </div>
@@ -75,12 +76,12 @@
                 <article class="gamedescription__card card-gamedescription right photos" data-gamename="photos">
                     <div class="card-gamedescription__title">
                         <h1>
-                            les photos c'est chouette
+                            Polaroids
                         </h1>
                     </div>
 
                     <div class="card-gamedescription__text">
-                        Ca doit faire quoi
+                        Qu'elles sont vieilles ces photos ! Repasser devant ramène tellement de souvenirs à la surface.
                     </div>
 
                     <div class="card_gamedescription__goto">
@@ -95,12 +96,12 @@
                 <article class="gamedescription__card card-gamedescription legos" data-gamename="legos">
                     <div class="card-gamedescription__title">
                         <h1>
-                            les legos c'est chouette
+                            Les legos
                         </h1>
                     </div>
 
                     <div class="card-gamedescription__text">
-                        Ca doit faire quoi
+                        J'ai dû trier ma chambre et laisser ces legos par terre... Qu'est-ce que je construisais déjà quand j'étais petite ?
                     </div>
 
                     <div class="card_gamedescription__goto">
@@ -121,7 +122,7 @@
 
                 <article id="SMS" class="sms">
 
-                    <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
+                    <button class="js-closeGameWindow round JS_AUDIOMANAGE" data-audiofct="button">
                         X
                     </button>
                     <div class="sms__grid grid-sms">
@@ -470,8 +471,8 @@
 
             <li>
                 <article class="gamemain puzzle plain">
-                    <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
-                        Retour
+                    <button class="js-closeGameWindow round JS_AUDIOMANAGE" data-audiofct="button">
+                        X
                     </button>
                     <div id="forPuzzle"></div>
                 </article>
@@ -567,7 +568,7 @@
 
 
             <li>
-                <article class="gamemain legos">
+                <article class="gamemain legos plain">
                     <button class="js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                         Retour
                     </button>
@@ -770,14 +771,14 @@
 
     <script type="module" src="./pages/game.js"></script>
 
+    <!-- puzzl js -->
+    <script type="module" src="./pages/puzzle/puzzle.js"></script>
+
     <!-- Script 3D -->
     <script type="module" src="./3D/threejs.js"></script>
 
     <!-- sms js -->
     <script type="module" src="./pages/sms/sms.js"></script>
-
-    <!-- puzzl js -->
-    <script type="module" src="./pages/puzzle/puzzle.js"></script>
 
     <!-- photos js -->
     <script type="module" src="./pages/slider/photo.js"></script>

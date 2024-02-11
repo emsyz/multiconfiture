@@ -8,7 +8,7 @@
     padding: 8vh 10vw;
 }
 
-.sms .js-closeGameWindow {
+.js-closeGameWindow.round {
     display: block;
     width: var(--sq);
     height: var(--sq);
@@ -16,17 +16,21 @@
     background: var(--sms-self-send);
     border-radius: 50%;
     border: 0;
-    position: absolute;
-    top: calc(-0.5 * var(--sq));
-    right: calc(-0.5 * var(--sq));
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
 
     color: var(--sms-color-self);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    cursor: pointer;
 
     transition: .2s all ease-in-out;
     transform: scale(0);
     opacity: 0;
+}
+
+.sms .js-closeGameWindow {
+    position: absolute;
+    top: calc(-0.5 * var(--sq));
+    right: calc(-0.5 * var(--sq));
 }
 
 .plain .sms .js-closeGameWindow {
@@ -34,7 +38,7 @@
     right: calc(0.5 * var(--sq));
 }
 
-.sms .js-closeGameWindow.visible {
+.js-closeGameWindow.round.visible {
     transform: scale(1);
     opacity: 1;
 }
