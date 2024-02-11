@@ -1449,17 +1449,7 @@ Puzzle.prototype.emphasize = function (npp) {
     } // for kc
   } // for kbcl;
 
-  // make shadow
-  // ctx.fillStyle = "none";
-  // // ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-  // // ctx.shadowBlur = 4;
-  // // ctx.shadowOffsetX = 4;
-  // // ctx.shadowOffsetY = 4;
-  // ctx.fill();
-
-  // add image clipped by path
   ctx.clip("evenodd");
-  // reset shadow else FF does not clip image
   ctx.shadowColor = "rgba(0, 0, 0, 0)";
   ctx.shadowBlur = 0;
   ctx.shadowOffsetX = 0;
@@ -1476,11 +1466,9 @@ Puzzle.prototype.emphasize = function (npp) {
     this.width,
     this.height
   );
-
-  // hide original PolyPiece
   for (k = 0; k < ppc.pieces.length; k++) {
     ppc.pieces[k].theDiv.style.visibility = "hidden";
-  } // for k
+  }
 
   ctx.restore();
 
@@ -1491,12 +1479,6 @@ Puzzle.prototype.emphasize = function (npp) {
     ppc.pieces[0].where().y - (ppc.pieces[0].ky - 1) * this.dy + "px";
   this.canvMobile.style.visibility = "visible";
 }; // emphasize
-
-// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -
-
-// checks if p1 and p2 pieces are close to each other
-// dx is -1, 0 or 1 to check left, (top or bottom) or right side of p1
-// dy is -1, 0 or 1 to check top, (left or right) or bottom of p2
 
 Puzzle.prototype.near = function (p1, p2, dx, dy) {
   let ou1 = p1.where();
