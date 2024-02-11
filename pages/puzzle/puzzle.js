@@ -1631,7 +1631,7 @@ window.addEventListener("load", function () {
   autoStart = isMiniature(); // used for nice miniature in CodePen
 
   const puzzle = new Puzzle({
-    img: "/assets/photos/peppa_pig.png",
+    img: "/assets/PuzzleImg/puzzle.png",
     width: window.innerWidth,
     height: window.innerHeight,
     idiv: "forPuzzle",
