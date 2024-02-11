@@ -752,6 +752,7 @@ on number of pieces
         { text: "50 piece", func: this.returnFunct(50) },
         { text: "100 piece", func: this.returnFunct(100) },
         { text: "200 piece", func: this.returnFunct(200) },
+        { text: "200 piece", func: this.returnFunct(20000) },
       ],
     });
   }

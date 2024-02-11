@@ -6,11 +6,7 @@ const scene = new THREE.Scene();
 
 const gltfLoader = new GLTFLoader();
 const legoObjects = [];
-
-const meshTransparent = new THREE.BoxGeometry(5, 5, 5);
-const material = new THREE.MeshBasicMaterial({ alphaMap: true, opacity: 0.5 });
-const meshRaycast = new THREE.Mesh(meshTransparent, material);
-scene.add(meshRaycast);
+const meshRaycasts = [];
 
 const addLegoToScene = (path) => {
   gltfLoader.load(`/3D/mesh/lego_resolved/${path}.gltf`, (gltf) => {
@@ -75,6 +71,20 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 2, 5);
 scene.add(camera);
+
+// RAYCAST MODEL
+const meshTransparent = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({
+  alphaTest: 0.5,
+  transparent: true,
+  opacity: 0.5,
+});
+
+for (let i = 0; i < 5; i++) {
+  const meshRaycast = new THREE.Mesh(meshTransparent, material);
+  scene.add(meshRaycast);
+  meshRaycasts.push(meshRaycast);
+}
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -143,6 +153,13 @@ const tick = () => {
   previousTime = elapsedTime;
 
   performRaycasting();
+
+  for (let i = 0; i < meshRaycasts.length; i++) {
+    if (legoObjects.length > i) {
+      meshRaycasts[i].position.copy(legoObjects[i].position);
+    }
+  }
+
   renderer.render(scene, camera);
 
   window.requestAnimationFrame(tick);

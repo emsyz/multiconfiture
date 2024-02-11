@@ -342,73 +342,70 @@ adoButton.addEventListener("click", () => {
   });
 });
 
-
-
-
-
-
 ///////////////////////////////////////////////// SHOW & HIDE GAME
 
-let openGameButtons = document.querySelectorAll('.js-openGameWindow');
+let openGameButtons = document.querySelectorAll(".js-openGameWindow");
 
 let gsapButtons = document.querySelectorAll(".minigame-button");
 
 let gamedescription = document.querySelector(`.gamesdescription`);
 
-let allGamesDescriptions = gamedescription.querySelectorAll(".gamedescription__card");
+let allGamesDescriptions = gamedescription.querySelectorAll(
+  ".gamedescription__card"
+);
 let allGamesWindows = document.querySelectorAll(".gamemain");
 
 for (let gsapBut of gsapButtons) {
-
   console.log(">>>>> gsap but");
 
   let gameName = gsapBut.dataset.name;
-  let openButton = gamedescription.querySelector(`.${gameName} .js-openGameWindow`);
-  let closeButton = document.querySelector(`.gameslist .${gameName} .js-closeGameWindow`);
-
-  gsapBut.addEventListener(
-    "click",
-    function() {
-
-      setTimeout(() => {
-        gamedescription.classList.add("shown");
-        openButton.closest(".gamedescription__card").classList.add("visible");
-
-      }, 1500);
-    }
+  let openButton = gamedescription.querySelector(
+    `.${gameName} .js-openGameWindow`
+  );
+  let closeButton = document.querySelector(
+    `.gameslist .${gameName} .js-closeGameWindow`
   );
 
-  openButton.addEventListener(
-    "click",
-    function() {
-      gamedescription.classList.remove("shown");
-      for (let gameDesc of allGamesDescriptions) {
-        gameDesc.classList.remove("visible");
-      }
-      setTimeout(() => {
-        document.querySelector('.gameslist').classList.add('shown');
-        closeButton.closest(".gamemain").classList.add("visible");
-      }, 400);
-    }
-  );
+  gsapBut.addEventListener("click", function () {
+    setTimeout(() => {
+      gamedescription.classList.add("shown");
+      openButton.closest(".gamedescription__card").classList.add("visible");
+    }, 1500);
+  });
 
-
-  closeButton.addEventListener(
-    "click", function() {
-        this.closest(".gameslist").classList.remove("shown");
-        for (let gameWindow of allGamesWindows) {
-          gameWindow.classList.remove("visible");
-        }
-        isCameraAnimating = false;
-        toggleAllButtons(true);
+  openButton.addEventListener("click", function () {
+    gamedescription.classList.remove("shown");
+    for (let gameDesc of allGamesDescriptions) {
+      gameDesc.classList.remove("visible");
     }
-  );
+    setTimeout(() => {
+      document.querySelector(".gameslist").classList.add("shown");
+      closeButton.closest(".gamemain").classList.add("visible");
+    }, 400);
+  });
+
+  closeButton.addEventListener("click", function () {
+    this.closest(".gameslist").classList.remove("shown");
+    for (let gameWindow of allGamesWindows) {
+      gameWindow.classList.remove("visible");
+    }
+    isCameraAnimating = false;
+    // toggleAllButtons(true);
+
+    if (!isCameraAnimating) {
+      gsap.to(camera.position, {
+        duration: 2,
+        x: 0,
+        y: -1,
+        z: 5,
+        ease: "power2.inOut",
+      });
+      toggleAllButtons(true);
+    }
+  });
 
   console.log(closeButton);
 }
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////////// TICK
 
