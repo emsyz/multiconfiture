@@ -498,3 +498,19 @@ h1 {
   max-height: 300px;
   overflow: auto; 
 }
+
+
+
+
+
+
+/*********************** LEGOS */
+
+.gamemain.legos .js-closeGameWindow {
+  position: absolute;
+  top: var(--gap);
+  right: var(--gap);
+}
+
+.webgl2 {
+}
