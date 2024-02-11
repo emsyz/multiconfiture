@@ -101,7 +101,7 @@ document.addEventListener("mouseup", onDocumentMouseUp);
 function onDocumentMouseDown(event) {
   event.preventDefault();
 
-  const intersects = raycaster.intersectObjects(legoObjects);
+  const intersects = raycaster.intersectObjects(meshRaycasts);
 
   if (intersects.length > 0) {
     selectedObject = intersects[0].object;
@@ -138,7 +138,7 @@ let previousTime = 0;
 const performRaycasting = () => {
   raycaster.setFromCamera(mouse, camera);
 
-  const intersects = raycaster.intersectObjects(legoObjects);
+  const intersects = raycaster.intersectObjects(meshRaycasts);
 
   if (intersects.length > 0) {
     document.body.style.cursor = "pointer";

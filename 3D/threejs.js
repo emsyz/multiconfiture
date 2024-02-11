@@ -19,8 +19,8 @@ const scene = new THREE.Scene();
 const size = 10;
 const divisions = 10;
 
-const gridHelper = new THREE.GridHelper(size, divisions);
-scene.add(gridHelper);
+// const gridHelper = new THREE.GridHelper(size, divisions);
+// scene.add(gridHelper);
 
 // Lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
@@ -44,8 +44,8 @@ directionalLight.target = targetObject;
 
 scene.add(targetObject);
 
-const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
-scene.add(helper);
+// const helper = new THREE.DirectionalLightHelper(directionalLight, 2);
+// scene.add(helper);
 
 function toggleAllButtons(showsButtons) {
   let shownClass = "button-visible";
@@ -98,54 +98,45 @@ gltfLoader.load("./3D/mesh/room/room.gltf", (gltf) => {
 
 // DOOR
 gltfLoader.load("./3D/mesh/room/door.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
+  const door = gltf.scene.children[0];
 
-  room.castShadow = true;
+  door.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
 
 // LAPTOP
 gltfLoader.load("./3D/mesh/room/laptop.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
+  const laptop = gltf.scene.children[0];
+  laptop.receiveShadow = true;
+  laptop.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
 
 // LEGO
 gltfLoader.load("./3D/mesh/room/lego.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
+  const lego = gltf.scene.children[0];
+  lego.receiveShadow = true;
+  lego.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
 
 // PUZZLE
 gltfLoader.load("./3D/mesh/room/puzzle.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
+  const puzzle = gltf.scene.children[0];
+  puzzle.receiveShadow = true;
+  puzzle.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
 
 // PHOTO
 gltfLoader.load("./3D/mesh/room/photos.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
-
-  scene.add(gltf.scene.children[0]);
-});
-
-// LIGHT
-gltfLoader.load("./3D/mesh/room/light.gltf", (gltf) => {
-  const room = gltf.scene.children[0];
-  room.receiveShadow = true;
-  room.castShadow = true;
+  const photos = gltf.scene.children[0];
+  photos.receiveShadow = true;
+  photos.castShadow = true;
 
   scene.add(gltf.scene.children[0]);
 });
@@ -356,8 +347,6 @@ let allGamesDescriptions = gamedescription.querySelectorAll(
 let allGamesWindows = document.querySelectorAll(".gamemain");
 
 for (let gsapBut of gsapButtons) {
-  console.log(">>>>> gsap but");
-
   let gameName = gsapBut.dataset.name;
   let openButton = gamedescription.querySelector(
     `.${gameName} .js-openGameWindow`
@@ -403,8 +392,6 @@ for (let gsapBut of gsapButtons) {
       toggleAllButtons(true);
     }
   });
-
-  console.log(closeButton);
 }
 
 //////////////////////////////////////////////////////////////////////////////////// TICK
