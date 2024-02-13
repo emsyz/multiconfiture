@@ -513,9 +513,17 @@ let STORY = {
       toggleAllButtons(false);
 
       document.querySelector(".endButton").classList.add("visible");
+
+      const videoContainer = document.querySelector(".video-container");
+      videoContainer.style.display = "block";
+      const video = videoContainer.querySelector("video");
+      video.requestFullscreen().then(() => video.play());
     }
   },
 };
+document.querySelector(".endButton").addEventListener("click", () => {
+  STORY.checkIfGameOver();
+});
 
 ///////////////////////////////////////////////// SHOW & HIDE GAME
 
