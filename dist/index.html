@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TNPP</title>
+    <script type="module" crossorigin src="/assets/index-fYMIq2rc.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-AAJ8-lxj.css">
+  </head>
+  <body>
+
+    
+
+    <!-- Buttons -->
+    <div class="bodyButton">
+      <img class="justBornButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="/assets/button_lock_lego-aagz8-Xt.png" alt="" data-name="legos"/>
+      <img class="babyButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="/assets/button_lock_photo-2SQpgoIl.png" alt="" data-name="photos"/>
+      <img class="childButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="/assets/button_lock_puzzle-wkcWDk-9.png" alt="" data-name="puzzle"/>
+      <img class="adoButton minigame-button JS_AUDIOMANAGE" data-audiofct="button" src="/assets/button_lock_bulle-hbq6h7-P.png" alt="" data-name="sms"/>
+
+
+      <div id="overlay"></div>
+      <img class="endButton JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,jarrivepas" src="/assets/circle-u8E5ZBTT.png" alt=""/>
+    </div>
+
+    <video controls>
+      <source src="/assets/générique-HSb2SifD.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <article id="MINIGAMES">
+
+
+
+        <!------------------------------------- GAMESDESCRIPTION -->
+
+        <ul class="gamepopup gamesdescription unset">
+            <li>
+                <article class="gamedescription__card card-gamedescription sms" data-gamename="sms">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            12 janvier 2007
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        Ca doit faire quoi, cinq, six ans que je n'ai plus vu Noah en face à face ? Parfois je me rappelle encore ces conversations qu'on avait jusqu'à pas d'heure. Une fois qu'il a déménagé on s'est tellement éloignés... Messenger, c'était la seule façon de rester en contact.
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE" data-audiofct="button">
+                            Messenger
+                        </button>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article class="gamedescription__card card-gamedescription right puzzle" data-gamename="puzzle">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            Les puzzles de mon enfance
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        Les puzzles et moi c'était une grande histoire d'amour quand j'étais petite. J'entraînais souvent Noah avec moi pendant des heures !
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE js-openPuzzle" data-audiofct="button">
+                            Jouer
+                        </button>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article class="gamedescription__card card-gamedescription right photos" data-gamename="photos">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            Polaroids
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        Qu'elles sont vieilles ces photos ! Repasser devant ramène tellement de souvenirs à la surface.
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button JS_photo_list JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,ecoleprimaire">
+                            Jouer
+                        </button>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article class="gamedescription__card card-gamedescription legos" data-gamename="legos">
+                    <div class="card-gamedescription__title">
+                        <h1>
+                            Les legos
+                        </h1>
+                    </div>
+
+                    <div class="card-gamedescription__text">
+                        J'ai dû trier ma chambre et laisser ces legos par terre... Qu'est-ce que je construisais déjà quand j'étais petite ?
+                    </div>
+
+                    <div class="card_gamedescription__goto">
+                        <button class="js-openGameWindow card__gamedescription button JS_AUDIOMANAGE js-openLegos" data-audiofct="button">
+                            Jouer
+                        </button>
+                    </div>
+                </article>
+            </li>
+        </ul>
+
+
+
+        <!------------------------------------- GAMESLIST -->
+        <ul class="gamepopup gameslist unset">
+            <li>
+            <article class="gamemain sms plain">
+
+                <article id="SMS" class="sms">
+
+                    <button class="js-closeGameWindow round JS_AUDIOMANAGE" data-audiofct="button">
+                        X
+                    </button>
+                    <div class="sms__grid grid-sms">
+                        <div class="grid-sms__title">
+                            <h2>Discussions</h2>
+                        </div>
+                
+                        <div class="grid-sms__list">
+                            <ul class="unset">
+                                <li>
+                                    <article class="js-sms__card grid-sms__card card-sms" data-person="noah">
+                                        <div class="card-sms__photo">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="card-sms__name bold">
+                                            Noah
+                                        </div>
+                
+                                        <div class="card-sms__text">
+                                            Noah: Et d'ailleurs à propos de...
+                                        </div>
+                
+                                        <div class="card-sms__time grey">
+                                            3 min
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="grid-sms__card card-sms" data-person="papa">
+                                        <div class="card-sms__photo">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="card-sms__name bold">
+                                            Papa
+                                        </div>
+                
+                                        <div class="card-sms__text">
+                                            Vous: Ca c'est sur !!!
+                                        </div>
+                
+                                        <div class="card-sms__time grey">
+                                            4 heures
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="grid-sms__card card-sms" data-person="niels">
+                                        <div class="card-sms__photo">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="card-sms__name bold">
+                                            Niels
+                                        </div>
+                
+                                        <div class="card-sms__text">
+                                            Niels : Ouf !
+                                        </div>
+                
+                                        <div class="card-sms__time grey">
+                                            Hier
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article class="grid-sms__card card-sms" data-person="sasha">
+                                        <div class="card-sms__photo">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="card-sms__name bold">
+                                            Sasha
+                                        </div>
+                
+                                        <div class="card-sms__text">
+                                            Vous: Et aussi pour l'exercice de demain...
+                                        </div>
+                
+                                        <div class="card-sms__time grey">
+                                            2 jours
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </div>
+                
+                
+                
+                
+                        <!-- CONVO PART -->
+                        <ul class="grid-sms__convo unset">
+                            <li>
+                                <article class="sms-chat visible" data-person="noah">
+                                    <div class="sms-chat__header">
+                                        <div class="sms-header__ava">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="sms-header__name bold">
+                                            Noah
+                                        </div>
+                
+                                        <div class="sms-header sms-header__online grey">
+                                            En ligne
+                                        </div>
+                                    </div>
+                
+                                    <div class="js-chat sms-chat__main">
+                                        <ul class="chat__messages unset">
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    heyyy there comment ca va avec ta nouvelle école ?
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    chez moi c'est trop bien !!! y a plein de gens qui jouent au basket aussi
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </div>
+                
+                                    
+                
+                
+                                    <div class="display-none">
+                                        <li class="chat__li self send js-smsExample">
+                                            <article class="js-chat__option chat__send chat__msg">
+                                            </article>
+                                        </li>
+                                    </div>
+                                    <div class="chat__sendsection">
+                                        <ul class="js-chat__send unset">
+                                            <li class="chat__sendsection_title grey">
+                                                Envoyer votre message :</li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                
+                
+                
+                
+                
+                
+                
+                            <li>
+                                <article class="sms-chat" data-person="papa">
+                                    <div class="sms-chat__header">
+                                        <div class="sms-header__ava">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="sms-header__name bold">
+                                            Papa
+                                        </div>
+                
+                                        <div class="sms-header sms-header__online grey">
+                                            En ligne il y a 1 heure
+                                        </div>
+                                    </div>
+                
+                                    <div class="sms-chat__main">
+                                        <ul class="chat__messages unset">
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Coucou Anna, n'oublie pas l'anniversaire de ta grand mère demain !
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Oui ok ! J'espere qu'elle aimera son cadeau
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Je suis sûr que oui. Il n'y a pas de raison que ça ne soit pas à son goût, et c'est sa petite fille chére qui lui offrira ;)
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Maman avait le meme genre de boucles d'oreilles non ?
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Comme sur la photo de nous à Viennes ?
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Oui en effet, tu as l'oeil.
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Ca c'est sur !!!
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                
+                
+                
+                
+                
+                
+                
+                            <li>
+                                <article class="sms-chat" data-person="niels">
+                                    <div class="sms-chat__header">
+                                        <div class="sms-header__ava">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="sms-header__name bold">
+                                            Niels
+                                        </div>
+                
+                                        <div class="sms-header sms-header__online grey">
+                                            En ligne il y a 12 heures
+                                        </div>
+                                    </div>
+                
+                                    <div class="sms-chat__main">
+                                        <ul class="chat__messages unset">
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Mon papa va contacter le tien pour votre caméra que j'ai cassée au ski en janvier passé. Encore désolé !!
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    pas de souciii
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    je sais qu'il a beaucoup crié sur le moment mais il ne t'en veut pas ne t'inquiete pas.
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Ouf !
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                
+                
+                
+                
+                
+                
+                
+                            <li>
+                                <article class="sms-chat" data-person="sasha">
+                                    <div class="sms-chat__header">
+                                        <div class="sms-header__ava">
+                                            <img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png" alt="">
+                                        </div>
+                
+                                        <div class="sms-header__name bold">
+                                            Sasha
+                                        </div>
+                
+                                        <div class="sms-header sms-header__online grey">
+                                            En ligne il y a 2 jours
+                                        </div>
+                                    </div>
+                
+                                    <div class="sms-chat__main">
+                                        <ul class="chat__messages unset">
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    Dis tu as reussi le test d'anglais toi ?????
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Non madame Lacoste etait trop dure
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    J'ai a peine eu 5 alors que mes réponses etaient presque toutes bonnes, juste les calculs cetait raté
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    ah mince c'est trop nulllll
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    moi aussi j'ai pas passé
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    après laisse tomber toi tu revises jamais mdr
+                                                </article>
+                                            </li>
+                                            <li class="chat__li other">
+                                                <article class="chat__msg">
+                                                    chhhhht faut pas dire ça ???? trop méchanteuh :(((
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    ahah c'est pas grave on peut reviser demain si tu veux après les cours !! chez moi
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    mon papa cuisinera pour nous je lui ai demandé !!
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    des crepes yesssss
+                                                </article>
+                                            </li>
+                                            <li class="chat__li self">
+                                                <article class="chat__msg">
+                                                    Et aussi pour l'exercice de demain tu penses qu'il faut la calculette ?
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                </article>
+
+            </article>
+            </li>
+
+
+
+            <li>
+                <article class="gamemain puzzle plain">
+                    <button class="js-closeGameWindow round JS_AUDIOMANAGE" data-audiofct="button">
+                        X
+                    </button>
+                    <div id="forPuzzle"></div>
+                </article>
+            </li>
+
+
+            <li>
+                <article class="gamemain legos plain">
+                    <button class="js-closeGameWindow round JS_AUDIOMANAGE" data-audiofct="button">
+                        X
+                    </button>
+                    <div id="legosCanvasContainer">
+                        <canvas class="webgl2"></canvas>
+                     </div>
+                    
+                </article>
+            </li>
+
+
+            <li>
+                <article class="gamemain photos plain">
+                    
+
+                    <article id="PHOTOS">
+                        <ul class="photos-list unset">
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset ecoleprimaire">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu2.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h2>
+                                            Rentree des classes, 2002
+                                        </h2>
+                                    </div>
+                                    <div class="photoset__button">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="dessin">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset dessin">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="../../assets/photos/illus_slider/dessin.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h2>
+                                            La famille sous l'arc-en-ciel
+                                        </h2>
+                                    </div>
+                                    <div class="photoset__button">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="guitar">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset guitar">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu3.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h2>
+                                            7 ans et deja guitariste !!
+                                        </h2>
+                                    </div>
+                                    <div class="photoset__button">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="cheveux">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset cheveux">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu4.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h2>
+                                            Les cheveux roses !?
+                                        </h2>
+                                    </div>
+                                    <div class="photoset__button">
+                                        <button class="js-photoset__button js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </article>
+                </article>
+            </li>
+        </ul>
+    </article>
+
+
+
+
+
+
+
+    <div class="audios display-none" id="AUDIOS">
+        <div>
+            <button class="JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="goodbye" id="startMusic">
+                goodbye
+            </button>
+        </div>
+
+        <ul class="audios__cat musics">
+            <li>
+                music isolation
+                <audio class="audio music" data-type="music" data-name="isolation" controls>
+                    <source src="/assets/Isolation-sb1H9ahl.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                music goodbye
+                <audio class="audio music" data-type="music" data-name="goodbye" controls loop autoplay playsinline>
+                    <source src="/assets/Another-Goodbye-FflFGy6Z.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+
+        <ul class="audios__cat effects">
+            <li>
+                effect button
+                <audio class="audio effect" data-type="effect" data-name="button" controls>
+                    <source src="data:audio/mpeg;base64,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" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+
+
+
+
+
+
+        <!-- VOFF -->
+
+        <ul class="audios__cat voff">
+            <li>
+                voff annivsansmaman
+                <audio class="audio voff" data-type="voff" data-name="annivsansmaman" controls>
+                    <source src="/assets/annivsansmaman-eG1VA-dB.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff cheveux
+                <audio class="audio voff" data-type="voff" data-name="cheveux" controls>
+                    <source src="/assets/cheveux-Ycl0ZoKY.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff dessin
+                <audio class="audio voff" data-type="voff" data-name="dessin" controls>
+                    <source src="/assets/dessin-Y_WXccN4.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff dinodromadaire
+                <audio class="audio voff" data-type="voff" data-name="dinodromadaire" controls>
+                    <source src="/assets/dinodromadaire-DKTpM2Vn.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff ecoleprimaire
+                <audio class="audio voff" data-type="voff" data-name="ecoleprimaire" controls>
+                    <source src="/assets/ecoleprimaire-wFqMrlg7.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff guitar
+                <audio class="audio voff" data-type="voff" data-name="guitar" controls>
+                    <source src="./assets/audios/voff/guitar.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff intro
+                <audio class="audio voff" data-type="voff" data-name="intro" controls>
+                    <source src="/assets/intro-wHL4xbZm.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jarrivepas
+                <audio class="audio voff" data-type="voff" data-name="jarrivepas" controls>
+                    <source src="/assets/jarrivepas-9NTSMvz7.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jarrivepas2
+                <audio class="audio voff" data-type="voff" data-name="jarrivepas2" controls>
+                    <source src="/assets/jarrivepas2-jXcZeHI8.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu1
+                <audio class="audio voff" data-type="voff" data-name="jeu1" controls>
+                    <source src="/assets/jeu1-5j2guTDk.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu2
+                <audio class="audio voff" data-type="voff" data-name="jeu2" controls>
+                    <source src="/assets/jeu2-wPmNvfTn.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff jeu3
+                <audio class="audio voff" data-type="voff" data-name="jeu3" controls>
+                    <source src="/assets/jeu3-2tNn81Va.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff mrlapinou
+                <audio class="audio voff" data-type="voff" data-name="mrlapinou" controls>
+                    <source src="/assets/mrlapinou-Zz6QGO8q.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff mrlapinou2
+                <audio class="audio voff" data-type="voff" data-name="mrlapinou2" controls>
+                    <source src="/assets/mrlapinou2-J6_kUjvu.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff noah
+                <audio class="audio voff" data-type="voff" data-name="noah" controls>
+                    <source src="/assets/noah-iAMBiNuR.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff papamaman
+                <audio class="audio voff" data-type="voff" data-name="papamaman" controls>
+                    <source src="/assets/papamaman-zTA1Dugs.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff passerlecap
+                <audio class="audio voff" data-type="voff" data-name="passerlecap" controls>
+                    <source src="/assets/passerlecap-G3yHRVu9.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff puzzlenoah
+                <audio class="audio voff" data-type="voff" data-name="puzzlenoah" controls>
+                    <source src="/assets/puzzlenoah-aSfO_Czz.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff regarderenarriere
+                <audio class="audio voff" data-type="voff" data-name="regarderenarriere" controls>
+                    <source src="/assets/regarderenarriere-ptqx2Gc4.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+        </ul>
+        
+    </div>
+
+    <!-- THREEJS CANVA -->
+    <canvas class="webgl"></canvas>
+
+
+    <!-- puzzl js -->
+
+    <!-- Script 3D -->
+
+    <!-- sms js -->
+
+    <!-- photos js -->
+
+     <!-- puzzl js -->
+
+
+
+    <!-- buttons -->
+    <!-- <script type="module" src="./script/buttonsScript.js"></script> -->
+  </body>
+</html>
