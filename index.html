@@ -34,7 +34,8 @@
                 </h1>
             </div>
 
-            <button class="button js-START_GAME JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,intro,goodbye">
+            <button class="button js-START_GAME JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,chezpapa,goodbye">
+            <!-- <button class="button js-START_GAME JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,goodbye"> -->
                 <img src="./assets/BouttonIcones/btn_start.png" alt="">
             </button>
 
@@ -112,7 +113,7 @@
                     </div>
 
                     <div class="card_gamedescription__goto">
-                        <button class="js-openGameWindow card__gamedescription button JS_photo_list JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,ecoleprimaire">
+                        <button class="js-openGameWindow card__gamedescription button JS_photo_list JS_AUDIOMANAGE" data-audiofct="play" data-audiotarget="button,mrlapinou">
                             Jouer
                         </button>
                     </div>
@@ -526,19 +527,38 @@
                     <article id="PHOTOS">
                         <ul class="photos-list unset">
                             <li class="photoset__li">
-                                <article class="photos-list__photoset photoset ecoleprimaire">
+                                <article class="photos-list__photoset photoset mrlapinou">
                                     <div class="photoset__img">
                                         <img 
-                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu2.png"
+                                        src="./assets/textures/photo_bebe.png"
                                         />
                                     </div>
 
                                     <div class="photoset__text">
                                         <h3>
-                                            Rentree des classes, 2002
+                                            Lapinou et moi !
                                         </h3>
                                     </div>
-                                    <div class="photoset__button">
+                                    <div class="photoset__button visible">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="papamaman">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset papamaman">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="./assets/textures/photo_famille.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h3>
+                                            Visite au parc, 1996
+                                        </h3>
+                                    </div>
+                                    <div class="photoset__button visible">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="dessin">
                                         </button>
                                     </div>
@@ -548,45 +568,111 @@
                                 <article class="photos-list__photoset photoset dessin">
                                     <div class="photoset__img">
                                         <img 
-                                        src="../../assets/photos/illus_slider/dessin.png"
+                                        src="./assets/textures/dessinenfant.png"
                                         />
                                     </div>
 
                                     <div class="photoset__text">
                                         <h3>
-                                            La famille sous l'arc-en-ciel
+                                            Toute la famille !
                                         </h3>
                                     </div>
-                                    <div class="photoset__button">
+                                    <div class="photoset__button visible">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="ecoleprimaire">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset ecoleprimaire">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="./assets/textures/photosouvenir_minnijeu2.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h3>
+                                            rentrée des classes
+                                        </h3>
+                                    </div>
+                                    <div class="photoset__button visible">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="annivsansmaman">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+
+                            
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset annivsansmaman">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="./assets/textures/photo_anniversaire.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h3>
+                                            Un anniversaire particulier
+                                        </h3>
+                                    </div>
+                                    <div class="photoset__button visible">
+                                        <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="puzzlenoah">
+                                        </button>
+                                    </div>
+                                </article>
+                            </li>
+
+                            
+                            <li class="photoset__li">
+                                <article class="photos-list__photoset photoset puzzlenoah">
+                                    <div class="photoset__img">
+                                        <img 
+                                        src="./assets/textures/photo_puzzle.png"
+                                        />
+                                    </div>
+
+                                    <div class="photoset__text">
+                                        <h3>
+                                            Des puzzles suuuuper compliqués avec Noah
+                                        </h3>
+                                    </div>
+                                    <div class="photoset__button visible">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="guitar">
                                         </button>
                                     </div>
                                 </article>
                             </li>
+                            
                             <li class="photoset__li">
                                 <article class="photos-list__photoset photoset guitar">
                                     <div class="photoset__img">
                                         <img 
-                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu3.png"
+                                        src="./assets/textures/photosouvenir_minnijeu3.png"
                                         />
                                     </div>
 
                                     <div class="photoset__text">
                                         <h3>
-                                            7 ans et deja guitariste !!
+                                            Future rock star !
                                         </h3>
                                     </div>
-                                    <div class="photoset__button">
+                                    <div class="photoset__button visible">
                                         <button class="js-photoset__button JS_photo_list JS_AUDIOMANAGE" data-audiofct="rewind" data-audiotarget="cheveux">
                                         </button>
                                     </div>
                                 </article>
                             </li>
+
+
+
+
                             <li class="photoset__li">
                                 <article class="photos-list__photoset photoset cheveux">
                                     <div class="photoset__img">
                                         <img 
-                                        src="../../assets/photos/illus_slider/photosouvenir_minnijeu4.png"
+                                        src="./assets/textures/photosouvenir_minnijeu4.png"
                                         />
                                     </div>
 
@@ -595,7 +681,7 @@
                                             Les cheveux roses !?
                                         </h3>
                                     </div>
-                                    <div class="photoset__button">
+                                    <div class="photoset__button visible">
                                         <button class="js-photoset__button js-closeGameWindow JS_AUDIOMANAGE" data-audiofct="button">
                                         </button>
                                     </div>
@@ -667,6 +753,13 @@
                 voff cheveux
                 <audio class="audio voff" data-type="voff" data-name="cheveux" controls>
                     <source src="./assets/audios/voff/cheveux.mp3" type="audio/mp3">
+                    Votre navigateur ne supporte pas cet élément
+                </audio>
+            </li>
+            <li>
+                voff cheveux
+                <audio class="audio voff" data-type="voff" data-name="chezpapa" controls>
+                    <source src="./assets/audios/voff/chezpapa.mp3" type="audio/mp3">
                     Votre navigateur ne supporte pas cet élément
                 </audio>
             </li>

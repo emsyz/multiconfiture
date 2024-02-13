@@ -44,7 +44,7 @@ for (let i = 0; i < photosets.length; i++) {
             "click",
             function() {
                 // let newPos = (height / photosets.length) * (i + 1);
-                let newPos = (i + 1) * window.outerHeight * 1.05;
+                let newPos = (i + 1) * window.outerHeight * 1.08;
                 // photos.scrollTop = newPos;
                 console.log(`${height} / ${photosets.length} = ${newPos}`);
 
