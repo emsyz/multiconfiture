@@ -1,3 +1,27 @@
+.red {
+  border: 10px solid red;
+}
+
+#overlay {
+  transition: 1s opacity ease-in-out;
+}
+
+#overlay.visible {
+  opacity: 1;
+}
+
+#overlay video {
+  /* transition: 1s ease-in-out opacity; */
+  width: 100%;
+  height: 100%;
+  /* opacity: 0; */
+  object-fit: cover;
+}
+
+/* #overlay video.visible {
+  opacity: 1;
+} */
+
 :root {
   font-family: var(--font-family-main);
   --font-family-main: "Montserrat";
@@ -314,6 +338,10 @@ h2 {
   cursor: pointer;
 }
 
+#overlay.visible .endButton {
+  cursor: auto;
+}
+
 #overlay {
   position: fixed;
   z-index: 10;
@@ -558,6 +586,11 @@ h2 {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.intro__titre img {
+  display: block;
+  max-width: 100%;
 }
 
 .intro__titretext {

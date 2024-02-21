@@ -390,7 +390,7 @@ export let tree = {
 
     "self-solution-photo": {
         text: `<i>Envoyer une photo</i>`,
-        trueText: `<img src="https://images2.imgbox.com/78/9c/Xzwv7Tij_o.png">`,
+        trueText: `<img src="./assets/textures/photo_selfie.png" alt="">`,
         id: "self-solution-photo",
         pending: true,
         next: "other-solution-reaction",

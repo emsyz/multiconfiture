@@ -488,13 +488,40 @@ endButton.addEventListener("click", () => {
     ease: "power2.inOut",
     onComplete: () => {
       // Add a fade-in animation for the overlay
-      gsap.to(overlay, {
+
+
+      
+      document.querySelector("#INTRO").remove(); 
+      document.querySelector("#MINIGAMES").remove(); 
+      document.querySelector("#overlay").classList.add("visible");
+      // document.querySelector(".webgl").remove(); 
+      document.querySelector("#overlay + .endButton").classList.remove('visible'); 
+      
+      document.querySelector("#overlay video").play();
+      // document.querySelector("#overlay video").play(); 
+
+
+      /*gsap.to(overlay, {
         duration: 1, // Adjust the duration as needed
         opacity: 1,
         onComplete: () => {
           document.addEventListener("mousemove", handleMouseMove);
+
+          
+
+          // const videoContainer = document.querySelector("#overlay video");
+          // videoContainer.style.display = "block";
+          // videoContainer.classList.add('red');
+          
+          // // const video = videoContainer.querySelector("video");
+          // // videoContainer.requestFullscreen().then(() => video.play());
+          // videoContainer.play();
         },
-      });
+      });*/
+
+
+
+
     },
   });
 });
@@ -509,15 +536,11 @@ let STORY = {
 
   checkIfGameOver: function () {
     console.log(this["legos"] && this["puzzle"]);
-    if (this["legos"] && this["puzzle"] && this["photos"] && this["sms"]) {
+    // if (this["legos"] && this["puzzle"] && this["photos"] && this["sms"]) {
+    if (this["legos"] && this["puzzle"]) {
       toggleAllButtons(false);
 
-      document.querySelector(".endButton").classList.add("visible");
-
-      const videoContainer = document.querySelector(".video-container");
-      videoContainer.style.display = "block";
-      const video = videoContainer.querySelector("video");
-      video.requestFullscreen().then(() => video.play());
+      document.querySelector("#overlay + .endButton").classList.add("visible");
     }
   },
 };
